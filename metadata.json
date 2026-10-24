@@ -1,6 +1,6 @@
 {
-  "name": "Remix FrauenzeitBruehl",
-  "description": "Imported from GitHub: davidalimi/FrauenzeitBruehl",
+  "name": "Frauenzeit Brühl",
+  "description": "Praxis für Frauenheilkunde in Brühl. Mühlenstrasse 37, 50321 Brühl. Ganzheitlich. Individuell. Stärkend.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
