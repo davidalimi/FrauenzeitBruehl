@@ -5,7 +5,7 @@ import { CherryBlossomBranch } from './BotanicalDecorations';
 export function Footer() {
   const [activeModal, setActiveModal] = useState<'impressum' | 'privacy' | null>(null);
 
-  const logoUrl = `${import.meta.env.BASE_URL}assets/aistudio/logo.png`;
+  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.png`;
   const doctolibUrl = 'https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl';
 
   // Handle ESC key to close modal
@@ -50,7 +50,7 @@ export function Footer() {
                     onError={(e) => {
                       const target = e.currentTarget;
                       if (!target.src.includes('public/')) {
-                        target.src = './public/assets/aistudio/logo.png';
+                        target.src = './public/assets/header/logo.png';
                       }
                     }}
                   />

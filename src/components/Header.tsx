@@ -21,7 +21,7 @@ export function Header({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Logo asset URL supporting Vite base path (both local dev and GitHub Pages /DeltaStudio/)
-  const logoUrl = `${import.meta.env.BASE_URL}assets/aistudio/logo.png`;
+  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.png`;
 
   const handleNavClick = (sectionId: string) => {
     if (onNavClick) onNavClick(sectionId);
@@ -56,7 +56,7 @@ export function Header({
                   // Fallback in case of local path variation
                   const target = e.currentTarget;
                   if (!target.src.includes('public/')) {
-                    target.src = './public/assets/aistudio/logo.png';
+                    target.src = './public/assets/header/logo.png';
                   }
                 }}
               />

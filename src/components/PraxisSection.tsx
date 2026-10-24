@@ -34,7 +34,7 @@ export function PraxisSection() {
       category: 'Anmeldung',
       description: 'Ein herzliches Willkommen in entspannter Atmosphäre. Hier nimmt unser MFA-Team Sie in Empfang, koordiniert Termine und beantwortet Ihre organisatorischen Fragen.',
       highlights: ['Diskreter Anmeldebereich', 'Kurze Wartezeiten', 'Barrierearmer Praxiseingang', 'Herzliche Betreuung'],
-      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/praxis/empfang.jpg`,
       alt: 'Moderner, heller Empfangsbereich der Praxis Frauenzeit Brühl'
     },
     {
@@ -43,7 +43,7 @@ export function PraxisSection() {
       category: 'Wartezone',
       description: 'Keine Hektik, kein Krankenhausflair: Unser Wartebereich bietet bequeme Sitzgelegenheiten, sanfte Farben und eine ruhige Umgebung zum Ankommen und Durchatmen.',
       highlights: ['Ruhiges Ambiente', 'Aktuelle Zeitschriften & Infomaterial', 'Kostenfreies Wasser', 'Entspannte Wohlfühlatmosphäre'],
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/praxis/wartebereich.jpg`,
       alt: 'Gemütlicher und heller Wartebereich'
     },
     {
@@ -52,7 +52,7 @@ export function PraxisSection() {
       category: 'Sprechstunde',
       description: 'Hier ist Raum für Ihre Anliegen. In privater und vertrauensvoller Gesprächsatmosphäre nehmen sich Dr. Birkenfeld und Dr. Ledwig ausreichend Zeit für Ihre Fragen.',
       highlights: ['Schallgeschützte Privatsphäre', 'Ausführliche Beratung', 'Ganzheitliche Begleitung', 'Digital vernetzter Arbeitsplatz'],
-      image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/praxis/sprechzimmer.jpg`,
       alt: 'Vertrauensvolles ärztliches Sprechzimmer für persönliche Beratung'
     },
     {
@@ -61,7 +61,7 @@ export function PraxisSection() {
       category: 'Diagnostik',
       description: 'Ausgestattet mit hochmoderner Sonographietechnik für präzise Pränatal- und Brustdiagnostik. Mit großem Zusatzmonitor, damit Sie Ihr Baby live miterleben können.',
       highlights: ['Hochauflösender 3D/4D-Ultraschall', 'Zweitmonitor für werdende Eltern', 'Angenehm temperiertes Kontaktgel', 'Ersttrimesterscreening'],
-      image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/praxis/ultraschall.jpg`,
       alt: 'Moderner Untersuchungs- und Ultraschallraum mit Spezialgeräten'
     },
     {
@@ -70,7 +70,7 @@ export function PraxisSection() {
       category: 'Labor',
       description: 'Präzision und Fürsorge: Hier führen unsere qualifizierten Fachkräfte Blutentnahmen, Abstriche, Schnelltests sowie Impfungen behutsam und zügig durch.',
       highlights: ['Einfühlsame Blutentnahme', 'Schnelle Basislaborwerte vor Ort', 'Impfberatung & Verabreichung', 'Höchste Hygienestandards'],
-      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/praxis/labor.jpg`,
       alt: 'Helles Praxislabor für Diagnostik und Blutanalysen'
     },
     {
@@ -79,7 +79,7 @@ export function PraxisSection() {
       category: 'Spezialtherapie',
       description: 'Unser separater Therapieraum für die innovative BetterPelvi® Magnetstimulation zur gezielten Kräftigung des Beckenbodens – diskret, bekleidet und schmerzfrei.',
       highlights: ['Vollständig bekleidete Behandlung', 'Stärkung bei Blasenschwäche', 'Rückbildung nach der Geburt', 'Entspannte Behandlungsdauer'],
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/praxis/betterpelvi.jpg`,
       alt: 'Ruhiger Behandlungsraum für Beckenbodentherapie'
     }
   ];
@@ -176,9 +176,12 @@ export function PraxisSection() {
                 alt={currentRoom.alt}
                 className="h-full w-full object-cover transition-all duration-700 group-hover/stage:scale-[1.03]"
                 onError={(e) => {
-                  // Fallback in case of network issues
                   const target = e.currentTarget;
-                  target.src = 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80';
+                  const imgSrc = currentRoom.image;
+                  if (imgSrc && !target.src.includes('public/')) {
+                    const rel = imgSrc.startsWith('/') ? imgSrc.slice(1) : imgSrc;
+                    target.src = `./public/${rel}`;
+                  }
                 }}
               />
               

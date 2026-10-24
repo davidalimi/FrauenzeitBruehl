@@ -3,7 +3,7 @@ import { CherryBlossomBranch, CottonSprig } from './BotanicalDecorations';
 
 export function Hero() {
   const doctolibUrl = 'https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl';
-  const teamPhotoUrl = `${import.meta.env.BASE_URL}assets/aistudio/team.png`;
+  const teamPhotoUrl = `${import.meta.env.BASE_URL}assets/hero/team.png`;
 
   return (
     <section className="relative overflow-hidden border-b border-[#F0E6E8] bg-gradient-to-b from-[#FAF5F6] via-white to-[#FCFBF9] py-12 sm:py-16 lg:py-20">
@@ -85,7 +85,7 @@ export function Hero() {
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (!target.src.includes('public/')) {
-                      target.src = './public/assets/aistudio/team.png';
+                      target.src = './public/assets/hero/team.png';
                     }
                   }}
                 />

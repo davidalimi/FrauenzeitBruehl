@@ -38,7 +38,7 @@ export function ServicesSection() {
       category: 'schwangerschaft',
       categoryName: 'Schwangerschaft',
       title: 'Schwangerschaftsbegleitung',
-      image: 'https://images.unsplash.com/photo-1544126592-807ade215a0b?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/schwangerschaftsbegleitung.jpg`,
       alt: 'Einfühlsame und geborgene Begleitung während der Schwangerschaft',
       quote: '„Mit Ihrer Schwangerschaft beginnt ein neuer Lebensabschnitt – voller Vorfreude, Veränderungen und einzigartiger Momente.“',
       description: 'Umfassende und einfühlsame Begleitung von Beginn des Kinderwunsches, durch alle Trimester der Schwangerschaft bis hin zum Wochenbett.',
@@ -55,7 +55,7 @@ export function ServicesSection() {
       category: 'schwangerschaft',
       categoryName: 'Pränataldiagnostik',
       title: 'Ersttrimester-Screening (DEGUM I)',
-      image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/ersttrimester-screening.jpg`,
       alt: 'Einfühlsame, warme ärztliche Betreuung und Pränataldiagnostik',
       quote: '„Modernste Pränataldiagnostik gibt Ihnen Sicherheit, Vertrauen und Klarheit in den frühen Wochen.“',
       description: 'Spezialisierte Ultraschall- und Risikodiagnostik in der 11. bis 14. Schwangerschaftswoche durch Dr. Birkenfeld (DEGUM I) in ruhiger und herzlicher Atmosphäre.',
@@ -72,7 +72,7 @@ export function ServicesSection() {
       category: 'spezial',
       categoryName: 'Ernährungsmedizin',
       title: 'Ernährungsmedizin',
-      image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/ernaehrungsmedizin.jpg`,
       alt: 'Ganzheitliche, gesunde Ernährung und Vitalstoffe',
       quote: '„Eine ausgewogene, gesunde Ernährung ist ein wesentlicher Baustein für unsere Gesundheit und unser Wohlbefinden.“',
       description: 'Ganzheitliche, wissenschaftlich fundierte Ernährungstherapie – beide Fachärztinnen befinden sich in qualifizierter Weiterbildung.',
@@ -89,7 +89,7 @@ export function ServicesSection() {
       category: 'spezial',
       categoryName: 'Spezialsprechstunde',
       title: 'Hormonsprechstunde',
-      image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/hormonsprechstunde.jpg`,
       alt: 'Innere Balance, Energie und hormonelles Wohlbefinden im Querformat',
       quote: '„Hormone beeinflussen den weiblichen Körper in jeder Lebensphase.“',
       description: 'Spezialisierte Sprechstunde zur genauen Diagnostik und einfühlsamen Behandlung hormoneller Dysbalancen für mehr Energie und Wohlbefinden.',
@@ -106,7 +106,7 @@ export function ServicesSection() {
       category: 'spezial',
       categoryName: 'Spezialsprechstunde',
       title: 'Menopausensprechstunde',
-      image: 'https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/menopausensprechstunde.jpg`,
       alt: 'Strahlende, vitale Frau in warmer natürlicher Umgebung',
       quote: '„Mit den Wechseljahren beginnt ein ganz natürlicher Wandel, den jede Frau unterschiedlich erlebt.“',
       description: 'Individuelle Begleitung durch die Wechseljahre mit modernen, sicheren Therapiekonzepten, bioidentischen Hormonen und viel Zeit für Ihre Fragen.',
@@ -123,7 +123,7 @@ export function ServicesSection() {
       category: 'spezial',
       categoryName: 'Beckenbodengesundheit',
       title: 'BetterPelvi®-Therapie',
-      image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/betterpelvi-therapie.jpg`,
       alt: 'Sanfte und effektive Beckenbodentherapie',
       quote: '„Der Beckenboden spielt eine zentrale Rolle für Kontinenz, Stabilität und unser körperliches Wohlbefinden.“',
       description: 'Innovative, schonende und wirksame Magnetstimulation zur gezielten Kräftigung des Beckenbodens – diskret, bekleidet und schmerzfrei.',
@@ -140,7 +140,7 @@ export function ServicesSection() {
       category: 'vorsorge',
       categoryName: 'Gynäkologie & Vorsorge',
       title: 'Krebsfrüherkennung & Vorsorge',
-      image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/krebsfrueherkennung-vorsorge.jpg`,
       alt: 'Vertrauensvolle und beruhigende ärztliche Fürsorge',
       quote: '„Regelmäßige Früherkennung schenkt Sicherheit, Geborgenheit und schützt Ihre Gesundheit nachhaltig.“',
       description: 'Einfühlsame und beruhigende Vorsorgeuntersuchung nach neuesten medizinischen Richtlinien in entspannter, vertrauensvoller Atmosphäre.',
@@ -157,7 +157,7 @@ export function ServicesSection() {
       category: 'vorsorge',
       categoryName: 'Brustgesundheit',
       title: 'Brustsprechstunde & Ultraschall',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/brustsprechstunde.jpg`,
       alt: 'Präzise und strahlenfreie Brustuntersuchung',
       quote: '„Hochauflösender Ultraschall ermöglicht eine strahlenfreie, präzise und schonende Gewebsbeurteilung.“',
       description: 'Schonende Früherkennung und Abklärung von Brustgewebeveränderungen mit modernster Mammasonographie.',
@@ -174,7 +174,7 @@ export function ServicesSection() {
       category: 'spezial',
       categoryName: 'Mädchensprechstunde',
       title: 'Teenager- & Mädchensprechstunde',
-      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/teenager-maedchensprechstunde.jpg`,
       alt: 'Verständnisvolle und lockere Beratung für junge Mädchen',
       quote: '„Ein geschützter Raum für alle Fragen – ganz ohne Angst und auf Wunsch ohne Untersuchung.“',
       description: 'Einfühlsames Kennenlernen für junge Mädchen, gerne auch in Begleitung der besten Freundin oder der Mutter.',
@@ -191,7 +191,7 @@ export function ServicesSection() {
       category: 'vorsorge',
       categoryName: 'Wahlleistungen',
       title: 'Wahlleistungen (IGeL)',
-      image: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=1200&q=80',
+      image: `${import.meta.env.BASE_URL}assets/leistungen/wahlleistungen-igel.jpg`,
       alt: 'Vertrauensvolle und persönliche ärztliche Beratung zu individueller Vorsorge',
       quote: '„Wir bieten Ihnen neben den Kassenleistungen ein ausgewähltes Spektrum sinnvoller Zusatzleistungen an.“',
       description: 'Sinnvolle Ergänzungsuntersuchungen für ein Höchstmaß an persönlicher Vorsorge, Früherkennung und individueller Gesundheitssicherheit.',
@@ -364,7 +364,11 @@ export function ServicesSection() {
                 className="h-full w-full object-cover transition-all duration-700 group-hover/stage:scale-[1.03]"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  target.src = 'https://images.unsplash.com/photo-1544126592-807ade215a0b?auto=format&fit=crop&w=1200&q=80';
+                  const imgSrc = currentService.image;
+                  if (imgSrc && !target.src.includes('public/')) {
+                    const rel = imgSrc.startsWith('/') ? imgSrc.slice(1) : imgSrc;
+                    target.src = `./public/${rel}`;
+                  }
                 }}
               />
               

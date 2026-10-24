@@ -29,7 +29,7 @@ export function TeamSection() {
       name: 'Dr. med. Anika Birkenfeld',
       role: 'Fachärztin für Frauenheilkunde & Geburtshilfe',
       badge: 'Ärztliche Leitung',
-      image: `${import.meta.env.BASE_URL}assets/aistudio/anika-birkenfeld.png`,
+      image: `${import.meta.env.BASE_URL}assets/team/anika-birkenfeld.png`,
       bio: 'Ehemalige Oberärztin am Marienhospital Brühl. Besondere Schwerpunkte in der Pränataldiagnostik, onkologischen Nachsorge und Ernährungsmedizin.',
       points: [
         'Schwangerschaftsbetreuung & Pränatalmedizin',
@@ -45,7 +45,7 @@ export function TeamSection() {
       name: 'Dr. med. Corinna Ledwig',
       role: 'Fachärztin für Frauenheilkunde & Geburtshilfe',
       badge: 'Ärztliche Leitung',
-      image: `${import.meta.env.BASE_URL}assets/aistudio/corinna-ledwig.png`,
+      image: `${import.meta.env.BASE_URL}assets/team/corinna-ledwig.png`,
       bio: 'Spezialisiert auf ganzheitliche Frauengesundheit, Teenager-Sprechstunde, Wechseljahresberatung sowie innovative Beckenbodentherapie (BetterPelvi®).',
       points: [
         'Ganzheitliche Gynäkologie & Prävention',
@@ -61,7 +61,7 @@ export function TeamSection() {
       name: 'Janine Engels',
       role: 'Praxismanagerin',
       badge: 'Praxisleitung',
-      image: `${import.meta.env.BASE_URL}assets/aistudio/janine-engels.png`,
+      image: `${import.meta.env.BASE_URL}assets/team/janine-engels.png`,
       bio: 'Als Praxismanagerin leitet und koordiniert Janine Engels die Praxisorganisation, Abläufe und Qualitätsstandards mit Weitblick und Herzlichkeit.',
       points: [
         'Praxismanagement & Praxisorganisation',
@@ -77,7 +77,7 @@ export function TeamSection() {
       name: 'Saskia Dittrich',
       role: 'Medizinische Fachangestellte (MFA)',
       badge: 'Praxisteam',
-      image: `${import.meta.env.BASE_URL}assets/aistudio/saskia-dittrich.jpg`,
+      image: `${import.meta.env.BASE_URL}assets/team/saskia-dittrich.jpg`,
       bio: 'Mit Herzlichkeit, Organisationstalent und einem offenen Ohr sorgt sie für eine verlässliche Koordination und kurze Wartezeiten am Empfang.',
       points: [
         'Patientinnenbetreuung & Erstaufnahme',
@@ -93,7 +93,7 @@ export function TeamSection() {
       name: 'Melissa Graefen',
       role: 'Medizinische Fachangestellte (MFA)',
       badge: 'Praxisteam',
-      image: `${import.meta.env.BASE_URL}assets/aistudio/melissa-graefen.jpg`,
+      image: `${import.meta.env.BASE_URL}assets/team/melissa-graefen.jpg`,
       bio: 'Verantwortlich für das Praxislabor und diagnostische Vorbereitungen mit höchster Präzision und empathischer Fürsorge.',
       points: [
         'Blutentnahmen & Laboranalysen',
@@ -109,7 +109,7 @@ export function TeamSection() {
       name: 'Nina Greger',
       role: 'Medizinische Fachangestellte (MFA)',
       badge: 'Praxisteam',
-      image: `${import.meta.env.BASE_URL}assets/aistudio/nina-greger.jpg`,
+      image: `${import.meta.env.BASE_URL}assets/team/nina-greger.jpg`,
       bio: 'Unterstützt bei gynäkologischen Untersuchungen, Vorsorgen und Behandlungen mit Ruhe, Erfahrung und menschlicher Wärme.',
       points: [
         'Assistenz bei Krebsfrüherkennungsuntersuchungen',
