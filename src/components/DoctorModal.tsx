@@ -165,7 +165,7 @@ export const DOCTORS_DATA: Record<'birkenfeld' | 'ledwig', DoctorDetail> = {
       'Meine Facharztausbildung begann ich im St. Johannes Krankenhaus Troisdorf-Sieglar (Schwerpunkt Geburtshilfe) und setzte sie im Brustzentrum im St. Josef Krankenhaus Troisdorf fort. Nach Facharztprüfung (2016) und der Geburt meines zweiten Kindes entschied ich mich bewusst für die ambulante Versorgung. Seither war ich in Köln (Praxis Dr. Gringmuth) und Hürth (PD Dr. Willruth) tätig.',
       'Meine berufliche Erfüllung finde ich im persönlichen Kontakt mit meinen Patientinnen, in der langfristigen Begleitung und darin, Frauen in allen Lebensphasen – von Teenagern bis zu den Wechseljahren – individuell und auf Augenhöhe zu betreuen.'
     ],
-    personalNotes: 'Mutter von zwei Kindern. Mit Begeisterung für ganzheitliche Medizin, Naturheilkunde und eine offene Gesprächskultur, in der jede Frage willkommen ist.',
+    personalNotes: 'Mutter von drei Kindern. Mit Begeisterung für ganzheitliche Medizin, Naturheilkunde und eine offene Gesprächskultur, in der jede Frage willkommen ist.',
     doctoralThesis: {
       year: '2011',
       institution: 'Medizinische Fakultät der Universität zu Köln',
