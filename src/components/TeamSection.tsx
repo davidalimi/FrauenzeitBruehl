@@ -4,8 +4,11 @@ import {
   Sparkles,
   Users,
   X,
-  ZoomIn
+  ZoomIn,
+  GraduationCap,
+  ChevronRight
 } from 'lucide-react';
+import { DoctorModal, DOCTORS_DATA } from './DoctorModal';
 
 interface TeamMember {
   id: string;
@@ -21,6 +24,7 @@ interface TeamMember {
 
 export function TeamSection() {
   const [selectedPhoto, setSelectedPhoto] = useState<{ src: string; name: string; role: string } | null>(null);
+  const [selectedDoctorId, setSelectedDoctorId] = useState<'birkenfeld' | 'ledwig' | null>(null);
 
   const teamMembers: TeamMember[] = [
     {
@@ -166,8 +170,14 @@ export function TeamSection() {
               {member.image ? (
                 <div 
                   className="mt-4 overflow-hidden rounded-xl border border-[#E8D2D7] bg-white aspect-4/5 w-full shadow-2xs group/img cursor-pointer relative"
-                  onClick={() => setSelectedPhoto({ src: member.image!, name: member.name, role: member.role })}
-                  title="Klicken zum Vergrößern"
+                  onClick={() => {
+                    if (member.type === 'doctor') {
+                      setSelectedDoctorId(member.id as 'birkenfeld' | 'ledwig');
+                    } else {
+                      setSelectedPhoto({ src: member.image!, name: member.name, role: member.role });
+                    }
+                  }}
+                  title={member.type === 'doctor' ? 'Klicken für Profil & Vita' : 'Klicken zum Vergrößern'}
                 >
                   <img
                     src={member.image}
@@ -182,9 +192,19 @@ export function TeamSection() {
                       }
                     }}
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 transition-colors flex items-end justify-end p-2.5">
-                    <span className="rounded-lg bg-white/90 p-1.5 text-[#2B2326] shadow-xs backdrop-blur-xs opacity-0 group-hover/img:opacity-100 transition-opacity">
-                      <ZoomIn className="h-3.5 w-3.5" />
+                  <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/15 transition-colors flex items-end justify-end p-2.5">
+                    <span className="rounded-lg bg-white/95 px-2.5 py-1 text-[11px] font-semibold text-[#2B2326] shadow-xs backdrop-blur-xs opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center gap-1.5">
+                      {member.type === 'doctor' ? (
+                        <>
+                          <GraduationCap className="h-3.5 w-3.5 text-pink-700" />
+                          <span>Profil & Vita</span>
+                        </>
+                      ) : (
+                        <>
+                          <ZoomIn className="h-3.5 w-3.5 text-pink-700" />
+                          <span>Vergrößern</span>
+                        </>
+                      )}
                     </span>
                   </div>
                 </div>
@@ -237,11 +257,33 @@ export function TeamSection() {
                   </div>
                 ))}
               </div>
+
+              {/* Doctor Details Popup Action Button */}
+              {member.type === 'doctor' && (
+                <div className="mt-4 pt-3 border-t border-[#F0E6E8]">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedDoctorId(member.id as 'birkenfeld' | 'ledwig')}
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-white border border-[#E8D2D7] py-2.5 px-3 text-xs font-semibold text-pink-700 shadow-2xs hover:bg-pink-700 hover:text-white hover:border-pink-700 active:scale-[0.98] transition-all cursor-pointer group/btn"
+                  >
+                    <GraduationCap className="h-4 w-4 text-pink-700 group-hover/btn:text-white transition-colors" />
+                    <span>Vita & Details ansehen</span>
+                    <ChevronRight className="h-3.5 w-3.5 text-pink-400 group-hover/btn:text-white transition-colors" />
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>
 
       </div>
+
+      {/* Doctor Detailed Profile Modal */}
+      <DoctorModal
+        doctor={selectedDoctorId ? DOCTORS_DATA[selectedDoctorId] : null}
+        onClose={() => setSelectedDoctorId(null)}
+        onSwitchDoctor={(newId) => setSelectedDoctorId(newId)}
+      />
 
       {/* Photo Lightbox Modal */}
       {selectedPhoto && (
