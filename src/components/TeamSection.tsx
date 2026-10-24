@@ -306,9 +306,9 @@ export function TeamSection() {
                     </span>
                     <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase ${
                       member.category === 'Managerin'
-                        ? 'bg-[#8F2342] text-white'
+                        ? 'bg-white text-pink-700 border border-[#E8D2D7]'
                         : member.category === 'Praxisassistenz'
-                        ? 'bg-[#2B2326] text-white'
+                        ? 'bg-white text-pink-700 border border-[#E8D2D7]'
                         : 'bg-white text-pink-700 border border-[#E8D2D7]'
                     }`}>
                       {member.category}
