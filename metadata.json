@@ -1,0 +1,8 @@
+{
+  "name": "Remix FrauenzeitBruehl",
+  "description": "Imported from GitHub: davidalimi/FrauenzeitBruehl",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
