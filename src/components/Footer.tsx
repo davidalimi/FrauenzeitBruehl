@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { X, Phone, ShieldCheck, FileText, ExternalLink, Download } from 'lucide-react';
-import { CherryBlossomBranch } from './BotanicalDecorations';
 
 export function Footer() {
   const [activeModal, setActiveModal] = useState<'impressum' | 'privacy' | null>(null);
@@ -30,14 +29,10 @@ export function Footer() {
   return (
     <>
       <footer className="relative overflow-hidden bg-slate-900 text-slate-300 border-t border-slate-800 pt-16 pb-12">
-        {/* Subtle Botanical Watermark */}
-        <div className="absolute -top-12 -right-12 pointer-events-none select-none opacity-[0.06] text-pink-300 hidden md:block">
-          <CherryBlossomBranch className="w-80 h-80" />
-        </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           
-          {/* Main 4-Column Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800 text-left">
+          {/* Main Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800 text-left">
             
             {/* Column 1: Brand & Practice Info (spans 2 columns) */}
             <div className="lg:col-span-2 space-y-4">
@@ -84,45 +79,6 @@ export function Footer() {
                   </a>
                 </div>
               </div>
-            </div>
-
-            {/* Column 2: Leistungsspektrum */}
-            <div className="space-y-3">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200">
-                Leistungsspektrum
-              </h4>
-              <ul className="space-y-2 text-xs text-slate-400">
-                <li>
-                  <a href="#leistungen" className="hover:text-white transition-colors">
-                    Gynäkologische Vorsorge
-                  </a>
-                </li>
-                <li>
-                  <a href="#leistungen" className="hover:text-white transition-colors">
-                    Pränataldiagnostik (DEGUM I)
-                  </a>
-                </li>
-                <li>
-                  <a href="#leistungen" className="hover:text-white transition-colors">
-                    Schwangerschaftsbetreuung
-                  </a>
-                </li>
-                <li>
-                  <a href="#leistungen" className="hover:text-white transition-colors">
-                    Ernährungsmedizin
-                  </a>
-                </li>
-                <li>
-                  <a href="#leistungen" className="hover:text-white transition-colors">
-                    BetterPelvi® Beckenboden
-                  </a>
-                </li>
-                <li>
-                  <a href="#leistungen" className="hover:text-white transition-colors">
-                    Teenager- & Mädchensprechstunde
-                  </a>
-                </li>
-              </ul>
             </div>
 
             {/* Column 3: Service & Termine */}

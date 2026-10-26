@@ -12,6 +12,7 @@ import {
   Stethoscope, 
   Users,
   ExternalLink,
+  ChevronLeft,
   ChevronRight
 } from 'lucide-react';
 
@@ -263,9 +264,16 @@ interface DoctorModalProps {
 export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProps) {
   const [activeTab, setActiveTab] = useState<'vita' | 'career' | 'qualifications' | 'science'>('vita');
 
+  const isAnika = doctor?.id === 'birkenfeld';
+  const otherDoctorKey = isAnika ? 'ledwig' : 'birkenfeld';
+  const otherDoctorName = isAnika ? 'Dr. med. Corinna Ledwig' : 'Dr. med. Anika Birkenfeld';
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
+      if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && onSwitchDoctor) {
+        onSwitchDoctor(otherDoctorKey);
+      }
     };
 
     if (doctor) {
@@ -279,7 +287,7 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [doctor, onClose]);
+  }, [doctor, onClose, onSwitchDoctor, otherDoctorKey]);
 
   // Reset tab to vita when doctor changes
   useEffect(() => {
@@ -287,10 +295,6 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
   }, [doctor?.id]);
 
   if (!doctor) return null;
-
-  const isAnika = doctor.id === 'birkenfeld';
-  const otherDoctorKey = isAnika ? 'ledwig' : 'birkenfeld';
-  const otherDoctorName = isAnika ? 'Dr. med. Corinna Ledwig' : 'Dr. med. Anika Birkenfeld';
 
   return (
     <div 
@@ -300,19 +304,62 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
       aria-modal="true"
       aria-labelledby="doctor-modal-title"
     >
+      {/* Desktop Floating Prev/Next Buttons */}
+      {onSwitchDoctor && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onSwitchDoctor(otherDoctorKey);
+            }}
+            className="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            aria-label={`Zu ${otherDoctorName} wechseln`}
+            title={`Zu ${otherDoctorName} (Pfeiltaste links/rechts)`}
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onSwitchDoctor(otherDoctorKey);
+            }}
+            className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            aria-label={`Zu ${otherDoctorName} wechseln`}
+            title={`Zu ${otherDoctorName} (Pfeiltaste links/rechts)`}
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+        </>
+      )}
+
       <div 
         className="relative w-full max-w-4xl max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-2xl border border-[#F0E6E8] flex flex-col text-left animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top Floating Close Button */}
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-sm border border-[#E8D2D7] transition-colors cursor-pointer"
-          aria-label="Profil schließen"
-        >
-          <X className="h-5 w-5" />
-        </button>
+        {/* Top Controls: Doctor switch and close button */}
+        <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+          {onSwitchDoctor && (
+            <button
+              type="button"
+              onClick={() => onSwitchDoctor(otherDoctorKey)}
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 text-xs font-medium text-[#735F64] hover:text-pink-700 hover:bg-white border border-[#E8D2D7] shadow-xs transition-colors cursor-pointer"
+              title={`Zu ${otherDoctorName} (Pfeiltaste links/rechts)`}
+            >
+              <span>{otherDoctorName.replace('Dr. med. ', 'Dr. ')}</span>
+              <ChevronRight className="h-3.5 w-3.5" />
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-sm border border-[#E8D2D7] transition-colors cursor-pointer"
+            aria-label="Profil schließen"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
 
         {/* Modal Header Banner: Doctor Presentation & Quick Stats */}
         <div className="bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-5 sm:p-7 shrink-0">
@@ -332,25 +379,14 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
               />
             </div>
 
-            {/* Doctor Info & Badges */}
-            <div className="flex-1 text-center sm:text-left space-y-2">
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-pink-50 px-3 py-1 text-xs font-bold text-pink-700 border border-pink-200">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  {doctor.subtitle}
-                </span>
-                <span className="inline-flex items-center rounded-md bg-[#2B2326] px-2.5 py-1 text-[11px] font-semibold text-white">
-                  {doctor.badge}
-                </span>
-              </div>
-
+            {/* Doctor Info */}
+            <div className="flex-1 text-center sm:text-left space-y-1.5">
               <h2 id="doctor-modal-title" className="text-2xl sm:text-3xl font-bold tracking-tight text-[#2B2326]">
                 {doctor.name}
               </h2>
               <p className="text-sm font-medium text-pink-700">
                 {doctor.salutation}
               </p>
-
               {/* Doctor Quote */}
               <p className="text-xs sm:text-sm italic text-[#5C4A4F] max-w-2xl bg-white/80 p-2.5 rounded-xl border border-[#F0E6E8] shadow-2xs">
                 {doctor.quote}
@@ -372,7 +408,6 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
               <Heart className="h-3.5 w-3.5" />
               <span>Über mich & Vita</span>
             </button>
-
             <button
               type="button"
               onClick={() => setActiveTab('career')}
@@ -385,7 +420,6 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
               <Clock className="h-3.5 w-3.5" />
               <span>Beruflicher Werdegang ({doctor.careerTimeline.length})</span>
             </button>
-
             <button
               type="button"
               onClick={() => setActiveTab('qualifications')}
@@ -398,7 +432,6 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
               <Award className="h-3.5 w-3.5" />
               <span>Qualifikationen & Verbände</span>
             </button>
-
             {(doctor.publications && doctor.publications.length > 0) && (
               <button
                 type="button"
@@ -468,34 +501,33 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
             </div>
           )}
 
-          {/* TAB 2: Beruflicher Werdegang Timeline */}
+          {/* TAB 2: Beruflicher Werdegang Timeline (More compact) */}
           {activeTab === 'career' && (
-            <div className="space-y-4 animate-in fade-in duration-150">
-              <h3 className="text-base font-bold text-[#2B2326] flex items-center gap-2 mb-4">
+            <div className="space-y-3 animate-in fade-in duration-150">
+              <h3 className="text-sm font-bold text-[#2B2326] flex items-center gap-2 mb-2">
                 <Clock className="h-4 w-4 text-pink-700" />
                 <span>Stationen des beruflichen Werdegangs</span>
               </h3>
-
-              <div className="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#E8D2D7]">
+              <div className="relative pl-5 space-y-2.5 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#E8D2D7]">
                 {doctor.careerTimeline.map((item, idx) => (
-                  <div key={idx} className="relative group">
+                  <div key={idx} className="relative">
                     {/* Timeline bullet */}
-                    <div className="absolute -left-6 top-1.5 h-3 w-3 rounded-full border-2 border-white bg-pink-700 shadow-xs" />
+                    <div className="absolute -left-5 top-2.5 h-2 w-2 rounded-full border-2 border-white bg-pink-700 shadow-xs" />
                     
-                    <div className="rounded-xl border border-[#F0E6E8] bg-white p-4 shadow-2xs hover:border-[#E8D2D7] transition-all">
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="font-mono text-xs font-bold text-pink-700 bg-pink-50 px-2.5 py-0.5 rounded-md border border-pink-100">
+                    <div className="rounded-xl border border-[#F0E6E8] bg-white py-2.5 px-3.5 shadow-2xs hover:border-[#E8D2D7] transition-all">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <span className="font-mono text-xs font-bold text-pink-700">
                           {item.year}
                         </span>
-                        <span className="text-[11px] text-[#735F64] font-medium">
+                        <span className="text-[11px] text-[#735F64]">
                           {item.organization}
                         </span>
                       </div>
-                      <h4 className="mt-1 text-sm font-bold text-[#2B2326]">
+                      <h4 className="text-xs sm:text-sm font-semibold text-[#2B2326]">
                         {item.title}
                       </h4>
                       {item.details && (
-                        <p className="mt-1 text-xs text-[#5C4A4F] leading-relaxed">
+                        <p className="mt-0.5 text-[11px] text-[#5C4A4F] leading-snug">
                           {item.details}
                         </p>
                       )}

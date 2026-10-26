@@ -1,57 +1,38 @@
-import { useState, useRef, useEffect } from 'react';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Building2, 
-  Maximize2, 
-  X, 
-  Sparkles,
-  CheckCircle2,
-  Camera,
-  HeartHandshake
-} from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight, Building2 } from 'lucide-react';
 
-interface PraxisRoom {
+interface PraxisPhoto {
   id: string;
   title: string;
   category: string;
-  description: string;
-  highlights: string[];
   image: string;
   alt: string;
 }
 
 export function PraxisSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [lightboxRoom, setLightboxRoom] = useState<PraxisRoom | null>(null);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const rooms: PraxisRoom[] = [
+  const photos: PraxisPhoto[] = [
     {
       id: 'empfang',
       title: 'Empfang & Willkommensbereich',
       category: 'Anmeldung',
-      description: 'Ein herzliches Willkommen in entspannter Atmosphäre. Hier nimmt unser MFA-Team Sie in Empfang, koordiniert Termine und beantwortet Ihre organisatorischen Fragen.',
-      highlights: ['Diskreter Anmeldebereich', 'Kurze Wartezeiten', 'Barrierearmer Praxiseingang', 'Herzliche Betreuung'],
       image: `${import.meta.env.BASE_URL}assets/praxis/empfang.jpg`,
       alt: 'Moderner, heller Empfangsbereich der Praxis Frauenzeit Brühl'
     },
     {
       id: 'wartebereich',
       title: 'Wartebereich & Lounge',
-      category: 'Wartezone',
-      description: 'Keine Hektik, kein Krankenhausflair: Unser Wartebereich bietet bequeme Sitzgelegenheiten, sanfte Farben und eine ruhige Umgebung zum Ankommen und Durchatmen.',
-      highlights: ['Ruhiges Ambiente', 'Aktuelle Zeitschriften & Infomaterial', 'Kostenfreies Wasser', 'Entspannte Wohlfühlatmosphäre'],
+      category: 'Wartebereich',
       image: `${import.meta.env.BASE_URL}assets/praxis/wartebereich.jpg`,
       alt: 'Gemütlicher und heller Wartebereich'
     },
     {
       id: 'sprechzimmer',
       title: 'Ärztliches Beratungszimmer',
-      category: 'Sprechstunde',
-      description: 'Hier ist Raum für Ihre Anliegen. In privater und vertrauensvoller Gesprächsatmosphäre nehmen sich Dr. Birkenfeld und Dr. Ledwig ausreichend Zeit für Ihre Fragen.',
-      highlights: ['Schallgeschützte Privatsphäre', 'Ausführliche Beratung', 'Ganzheitliche Begleitung', 'Digital vernetzter Arbeitsplatz'],
+      category: 'Sprechzimmer',
       image: `${import.meta.env.BASE_URL}assets/praxis/sprechzimmer.jpg`,
       alt: 'Vertrauensvolles ärztliches Sprechzimmer für persönliche Beratung'
     },
@@ -59,8 +40,6 @@ export function PraxisSection() {
       id: 'ultraschall',
       title: 'Ultraschall & Pränataldiagnostik',
       category: 'Diagnostik',
-      description: 'Ausgestattet mit hochmoderner Sonographietechnik für präzise Pränatal- und Brustdiagnostik. Mit großem Zusatzmonitor, damit Sie Ihr Baby live miterleben können.',
-      highlights: ['Hochauflösender 3D/4D-Ultraschall', 'Zweitmonitor für werdende Eltern', 'Angenehm temperiertes Kontaktgel', 'Ersttrimesterscreening'],
       image: `${import.meta.env.BASE_URL}assets/praxis/ultraschall.jpg`,
       alt: 'Moderner Untersuchungs- und Ultraschallraum mit Spezialgeräten'
     },
@@ -68,288 +47,141 @@ export function PraxisSection() {
       id: 'labor',
       title: 'Praxislabor & Vorsorgebereich',
       category: 'Labor',
-      description: 'Präzision und Fürsorge: Hier führen unsere qualifizierten Fachkräfte Blutentnahmen, Abstriche, Schnelltests sowie Impfungen behutsam und zügig durch.',
-      highlights: ['Einfühlsame Blutentnahme', 'Schnelle Basislaborwerte vor Ort', 'Impfberatung & Verabreichung', 'Höchste Hygienestandards'],
       image: `${import.meta.env.BASE_URL}assets/praxis/labor.jpg`,
       alt: 'Helles Praxislabor für Diagnostik und Blutanalysen'
     },
     {
       id: 'betterpelvi',
-      title: 'BetterPelvi® & Beckenbodentherapie',
+      title: 'BetterPelvi® Therapieraum',
       category: 'Spezialtherapie',
-      description: 'Unser separater Therapieraum für die innovative BetterPelvi® Magnetstimulation zur gezielten Kräftigung des Beckenbodens – diskret, bekleidet und schmerzfrei.',
-      highlights: ['Vollständig bekleidete Behandlung', 'Stärkung bei Blasenschwäche', 'Rückbildung nach der Geburt', 'Entspannte Behandlungsdauer'],
       image: `${import.meta.env.BASE_URL}assets/praxis/betterpelvi.jpg`,
       alt: 'Ruhiger Behandlungsraum für Beckenbodentherapie'
     }
   ];
 
-  // Auto-advance carousel
+  // Auto advance carousel
   useEffect(() => {
     if (!isAutoPlaying) return;
     timerRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % rooms.length);
-    }, 6000);
+      setCurrentIndex((prev) => (prev + 1) % photos.length);
+    }, 5000);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isAutoPlaying, rooms.length]);
+  }, [isAutoPlaying, photos.length]);
 
   const handlePrev = () => {
     setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev === 0 ? rooms.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
     setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev + 1) % rooms.length);
+    setCurrentIndex((prev) => (prev + 1) % photos.length);
   };
 
-  const handleSelect = (index: number) => {
-    setIsAutoPlaying(false);
-    setCurrentIndex(index);
-  };
-
-  const currentRoom = rooms[currentIndex];
+  const currentPhoto = photos[currentIndex];
 
   return (
-    <section id="praxis" className="py-16 sm:py-20 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-20">
+    <section id="praxis" className="py-16 sm:py-24 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8">
-          <div className="max-w-2xl text-left">
-            <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
-              <Building2 className="h-3.5 w-3.5" />
-              <span>Praxis · Mühlenstrasse 37 · 50321 Brühl</span>
-            </div>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl">
-              Unsere Praxis
-            </h2>
-            <p className="mt-2 text-sm text-[#5C4A4F] leading-relaxed">
-              Lichtdurchflutet, modern und einladend gestaltet. Wir legen großen Wert auf eine Umgebung, in der Sie sich von der ersten Minute an sicher, diskret betreut und wohlfühlen können.
-            </p>
+        {/* Header */}
+        <div className="max-w-3xl text-left pb-8">
+          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
+            <Building2 className="h-3.5 w-3.5" />
+            <span>Praxis · Mühlenstrasse 37 · 50321 Brühl</span>
           </div>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl lg:text-4xl">
+            Unsere Praxis
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-[#5C4A4F] leading-relaxed">
+            Einblicke in unsere Praxisräume in der Mühlenstraße.
+          </p>
+        </div>
 
-          {/* Top Controls: Navigation Buttons */}
-          <div className="flex items-center gap-1.5 self-start sm:self-auto shrink-0">
+        {/* Simple Photo Carousel */}
+        <div 
+          className="relative overflow-hidden rounded-3xl border border-[#E8D2D7] bg-white shadow-md group"
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
+        >
+          {/* Main Photo Display */}
+          <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full max-h-[540px] overflow-hidden bg-neutral-900">
+            <img
+              src={currentPhoto.image}
+              alt={currentPhoto.alt}
+              className="h-full w-full object-cover transition-all duration-700"
+              onError={(e) => {
+                const target = e.currentTarget;
+                const imgSrc = currentPhoto.image;
+                if (imgSrc && !target.src.includes('public/')) {
+                  const rel = imgSrc.startsWith('/') ? imgSrc.slice(1) : imgSrc;
+                  target.src = `./public/${rel}`;
+                }
+              }}
+            />
+
+            {/* Subtle Gradient for Caption Readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+
+            {/* Left / Right Chevron Navigation Buttons */}
             <button
               type="button"
               onClick={handlePrev}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#E8D2D7] bg-white text-[#2B2326] hover:bg-[#FAF5F6] hover:text-pink-700 transition-colors shadow-2xs cursor-pointer"
-                aria-label="Vorheriges Bild"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#E8D2D7] bg-white text-[#2B2326] hover:bg-[#FAF5F6] hover:text-pink-700 transition-colors shadow-2xs cursor-pointer"
-                aria-label="Nächstes Bild"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-
-        {/* Main Interactive Stage */}
-        <div className="overflow-hidden rounded-2xl border border-[#E8D2D7] bg-white shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            
-            {/* Visual Photo Area (7 cols on lg) */}
-            <div 
-              className="relative lg:col-span-7 aspect-16/10 sm:aspect-16/9 lg:aspect-auto lg:min-h-[460px] bg-neutral-900 group/stage overflow-hidden cursor-pointer"
-              onClick={() => setLightboxRoom(currentRoom)}
-              title="Klicken für Vollbildansicht"
+              className="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
+              aria-label="Vorheriges Bild"
             >
-              <img
-                src={currentRoom.image}
-                alt={currentRoom.alt}
-                className="h-full w-full object-cover transition-all duration-700 group-hover/stage:scale-[1.03]"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  const imgSrc = currentRoom.image;
-                  if (imgSrc && !target.src.includes('public/')) {
-                    const rel = imgSrc.startsWith('/') ? imgSrc.slice(1) : imgSrc;
-                    target.src = `./public/${rel}`;
-                  }
-                }}
-              />
-              
-              {/* Gradient Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
-
-              {/* Tag / Category Badge Overlay */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-xs font-semibold text-pink-700 shadow-sm border border-[#E8D2D7]">
-                  <Sparkles className="h-3 w-3" />
-                  {currentRoom.category}
-                </span>
-              </div>
-
-              {/* Placeholder Note Badge */}
-              <div className="absolute bottom-4 left-4 z-10">
-                <span className="inline-flex items-center gap-1.5 rounded-lg bg-black/65 backdrop-blur-md px-2.5 py-1 text-[11px] font-medium text-white shadow-sm">
-                  <Camera className="h-3 w-3 text-pink-300" />
-                  <span>Beispielfoto · Eigene Praxisaufnahmen folgen</span>
-                </span>
-              </div>
-
-              {/* Zoom Trigger Button Overlay */}
-              <div className="absolute bottom-4 right-4 z-10">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setLightboxRoom(currentRoom);
-                  }}
-                  className="flex items-center gap-1.5 rounded-xl bg-white/90 backdrop-blur-md px-3 py-1.5 text-xs font-semibold text-[#2B2326] shadow-md hover:bg-white hover:text-pink-700 transition-colors"
-                >
-                  <Maximize2 className="h-3.5 w-3.5" />
-                  <span className="hidden sm:inline">Vollbild</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Room Details & Feature Panel (5 cols on lg) */}
-            <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between text-left bg-white">
-              <div>
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-pink-700">
-                    {currentRoom.category}
-                  </span>
-                  <span className="text-xs font-medium text-[#735F64]">
-                    Praxis Frauenzeit Brühl
-                  </span>
-                </div>
-
-                <h3 className="mt-2 text-xl sm:text-2xl font-bold text-[#2B2326] leading-tight">
-                  {currentRoom.title}
-                </h3>
-
-                <p className="mt-3 text-sm text-[#5C4A4F] leading-relaxed">
-                  {currentRoom.description}
-                </p>
-
-                {/* Highlights List */}
-                <div className="mt-6 pt-5 border-t border-[#F0E6E8]">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#735F64] mb-3">
-                    Ausstattung & Merkmale:
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {currentRoom.highlights.map((item) => (
-                      <div key={item} className="flex items-start gap-2 text-xs text-[#4D3F43]">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-pink-700 shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Atmosphere Note */}
-              <div className="mt-8 pt-5 border-t border-[#F0E6E8] flex items-center gap-2 text-xs text-[#735F64]">
-                <HeartHandshake className="h-4 w-4 text-pink-700" />
-                <span>Persönliche und geschützte Atmosphäre vor Ort</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Thumbnail Selector Strip */}
-        <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {rooms.map((room, idx) => (
-            <button
-              key={room.id}
-              type="button"
-              onClick={() => handleSelect(idx)}
-              className={`group relative overflow-hidden rounded-xl border p-2 text-left transition-all cursor-pointer ${
-                currentIndex === idx
-                  ? 'border-pink-700 bg-white ring-2 ring-pink-700/20 shadow-xs'
-                  : 'border-[#F0E6E8] bg-white/70 hover:bg-white hover:border-[#E8D2D7]'
-              }`}
-            >
-              <div className="relative aspect-16/10 w-full overflow-hidden rounded-lg bg-neutral-100">
-                <img
-                  src={room.image}
-                  alt={room.title}
-                  className={`h-full w-full object-cover transition-transform duration-300 ${
-                    currentIndex === idx ? 'scale-105' : 'group-hover:scale-105 opacity-80 group-hover:opacity-100'
-                  }`}
-                />
-                {currentIndex === idx && (
-                  <div className="absolute inset-0 bg-pink-700/10 border-2 border-pink-700 rounded-lg pointer-events-none" />
-                )}
-              </div>
-              <div className="mt-2 truncate">
-                <p className={`text-xs font-semibold truncate ${
-                  currentIndex === idx ? 'text-pink-700' : 'text-[#2B2326]'
-                }`}>
-                  {room.title}
-                </p>
-                <p className="text-[10px] text-[#735F64] truncate">
-                  {room.category}
-                </p>
-              </div>
+              <ChevronLeft className="h-5 w-5" />
             </button>
-          ))}
+            <button
+              type="button"
+              onClick={handleNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
+              aria-label="Nächstes Bild"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+
+            {/* Caption on the Image */}
+            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-white">
+              <div className="text-left">
+                <span className="inline-block rounded-full bg-white/20 backdrop-blur-md px-3 py-0.5 text-xs font-semibold text-pink-200 border border-white/25 mb-1.5">
+                  {currentPhoto.category}
+                </span>
+                <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-white drop-shadow-sm">
+                  {currentPhoto.title}
+                </h3>
+              </div>
+              <span className="text-xs sm:text-sm font-mono font-medium bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full text-white/90 border border-white/20 shrink-0">
+                {currentIndex + 1} / {photos.length}
+              </span>
+            </div>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="py-4 bg-[#FAF5F6] border-t border-[#F0E6E8] flex items-center justify-center gap-2">
+            {photos.map((photo, idx) => (
+              <button
+                key={photo.id}
+                type="button"
+                onClick={() => {
+                  setIsAutoPlaying(false);
+                  setCurrentIndex(idx);
+                }}
+                className={`transition-all rounded-full cursor-pointer ${
+                  currentIndex === idx
+                    ? 'w-8 h-2.5 bg-pink-700'
+                    : 'w-2.5 h-2.5 bg-[#D4C3C7] hover:bg-pink-400'
+                }`}
+                aria-label={`Gehe zu Bild ${idx + 1}: ${photo.title}`}
+              />
+            ))}
+          </div>
         </div>
 
       </div>
-
-      {/* Lightbox Modal */}
-      {lightboxRoom && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-150"
-          onClick={() => setLightboxRoom(null)}
-        >
-          <div 
-            className="relative max-w-4xl w-full overflow-hidden rounded-2xl bg-white shadow-2xl border border-[#F0E6E8] p-4 text-left animate-in zoom-in-95 duration-150"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between pb-3 border-b border-[#F0E6E8]">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-pink-700">
-                  {lightboxRoom.category}
-                </span>
-                <h4 className="text-base font-bold text-[#2B2326]">{lightboxRoom.title}</h4>
-              </div>
-              <button
-                type="button"
-                onClick={() => setLightboxRoom(null)}
-                className="p-1.5 rounded-lg text-neutral-400 hover:text-[#2B2326] hover:bg-neutral-100 transition-colors cursor-pointer"
-                aria-label="Schließen"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* Modal Image */}
-            <div className="mt-3 overflow-hidden rounded-xl border border-[#E8D2D7] bg-neutral-900 aspect-16/10 w-full max-h-[65vh]">
-              <img
-                src={lightboxRoom.image}
-                alt={lightboxRoom.title}
-                className="h-full w-full object-cover"
-              />
-            </div>
-
-            {/* Modal Caption */}
-            <div className="mt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#5C4A4F]">
-              <p className="leading-relaxed">{lightboxRoom.description}</p>
-              <button
-                type="button"
-                onClick={() => setLightboxRoom(null)}
-                className="self-end sm:self-auto shrink-0 rounded-lg bg-[#2B2326] px-4 py-2 text-xs font-semibold text-white hover:bg-neutral-800 transition-colors cursor-pointer"
-              >
-                Schließen
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

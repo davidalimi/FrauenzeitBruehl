@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   CheckCircle2, 
-  Users,
-  X,
-  ZoomIn,
-  GraduationCap,
-  ChevronRight,
-  HeartHandshake,
-  Stethoscope,
-  Award
+  X, 
+  ZoomIn, 
+  GraduationCap, 
+  ChevronLeft,
+  ChevronRight, 
+  HeartHandshake, 
+  Stethoscope
 } from 'lucide-react';
 import { DoctorModal, DOCTORS_DATA } from './DoctorModal';
 
@@ -37,7 +36,7 @@ interface TeamAssistant {
 }
 
 export function TeamSection() {
-  const [selectedPhoto, setSelectedPhoto] = useState<{ src: string; name: string; role: string } | null>(null);
+  const [selectedMember, setSelectedMember] = useState<TeamAssistant | null>(null);
   const [selectedDoctorId, setSelectedDoctorId] = useState<'birkenfeld' | 'ledwig' | null>(null);
 
   // The 2 Doctors (Executive / Clinical Leaders)
@@ -114,7 +113,7 @@ export function TeamSection() {
     {
       id: 'dittrich',
       name: 'Saskia Dittrich',
-      role: 'Medizinische Fachangestellte (MFA)',
+      role: 'Medizinische Fachangestellte',
       badge: 'Praxisteam',
       category: 'MFA',
       image: `${import.meta.env.BASE_URL}assets/team/saskia-dittrich.jpg`,
@@ -130,7 +129,7 @@ export function TeamSection() {
     {
       id: 'graefen',
       name: 'Melissa Graefen',
-      role: 'Medizinische Fachangestellte (MFA)',
+      role: 'Medizinische Fachangestellte',
       badge: 'Praxisteam',
       category: 'MFA',
       image: `${import.meta.env.BASE_URL}assets/team/melissa-graefen.jpg`,
@@ -151,11 +150,7 @@ export function TeamSection() {
         
         {/* Section Header */}
         <div className="max-w-3xl text-left pb-10">
-          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
-            <Users className="h-3.5 w-3.5" />
-            <span>Team Frauenzeit Brühl · 6 Persönlichkeiten für Ihre Gesundheit</span>
-          </div>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#2B2326] sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-[#2B2326] sm:text-4xl">
             Unser Team
           </h2>
           <p className="mt-3 text-base text-[#5C4A4F] leading-relaxed">
@@ -171,7 +166,7 @@ export function TeamSection() {
             <div className="flex items-center gap-2">
               <Stethoscope className="h-4 w-4 text-pink-700" />
               <h3 className="text-sm font-bold uppercase tracking-wider text-[#735F64]">
-                Ärztliche Leitung & Fachärztinnen
+                Ärztliche Leitung
               </h3>
             </div>
           </div>
@@ -183,29 +178,16 @@ export function TeamSection() {
                 className="group relative flex flex-col justify-between rounded-3xl border-2 border-[#EADBDD] bg-[#FCF8F9] p-6 sm:p-7 text-left shadow-sm transition-all duration-300 hover:border-pink-600/60 hover:shadow-md"
               >
                 <div>
-                  {/* Doctor Top Meta Badges */}
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-pink-700 px-3 py-1 text-xs font-semibold text-white shadow-2xs">
-                      <Award className="h-3.5 w-3.5" />
-                      {doc.badge}
-                    </span>
-                    <span className="inline-flex items-center rounded-full bg-white px-3 py-0.5 text-[11px] font-semibold text-pink-700 border border-[#E8D2D7]">
-                      {doc.specialtyBadge}
-                    </span>
-                  </div>
-
                   {/* Doctor Photo & Basic Bio Layout */}
-                  <div className="mt-6 flex flex-col sm:flex-row gap-6 items-start">
-                    {/* Portrait Photo Container with Quick Click */}
+                  <div className="flex flex-col sm:flex-row gap-6 items-start">
+                    {/* Portrait Photo Container */}
                     <div 
-                      className="relative w-full sm:w-48 sm:h-60 shrink-0 aspect-[3/4] sm:aspect-auto overflow-hidden rounded-2xl border-2 border-[#E8D2D7] bg-white shadow-sm cursor-pointer group/docimg"
-                      onClick={() => setSelectedDoctorId(doc.id)}
-                      title="Klicken für vollständiges Profil & Lebenslauf"
+                      className="relative w-full sm:w-48 sm:h-60 shrink-0 aspect-[3/4] sm:aspect-auto overflow-hidden rounded-2xl border-2 border-[#E8D2D7] bg-white shadow-sm"
                     >
                       <img
                         src={doc.image}
                         alt={`Porträt von ${doc.name}`}
-                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/docimg:scale-105"
+                        className="h-full w-full object-cover object-top"
                         onError={(e) => {
                           const target = e.currentTarget;
                           const imgSrc = doc.image;
@@ -215,12 +197,6 @@ export function TeamSection() {
                           }
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover/docimg:opacity-100 transition-opacity flex items-end justify-center p-3">
-                        <span className="rounded-lg bg-white/95 px-3 py-1.5 text-xs font-semibold text-[#2B2326] shadow-sm backdrop-blur-xs flex items-center gap-1.5">
-                          <GraduationCap className="h-4 w-4 text-pink-700" />
-                          <span>Vita ansehen</span>
-                        </span>
-                      </div>
                     </div>
 
                     {/* Name, Subtitle, Bio */}
@@ -287,9 +263,6 @@ export function TeamSection() {
                 Team & Assistenz
               </h3>
             </div>
-            <span className="text-xs text-[#826970]">
-              4 Mitarbeiterinnen · Organisation, Praxisassistenz, Empfang & Labor
-            </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -299,26 +272,10 @@ export function TeamSection() {
                 className="flex flex-col justify-between rounded-2xl border border-[#F0E6E8] bg-[#FCF8F9] p-5 text-left shadow-2xs transition-all duration-200 hover:border-[#E8D2D7] hover:shadow-sm"
               >
                 <div>
-                  {/* Card Header Badge */}
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-[11px] font-semibold text-pink-700">
-                      {member.badge}
-                    </span>
-                    <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase ${
-                      member.category === 'Managerin'
-                        ? 'bg-white text-pink-700 border border-[#E8D2D7]'
-                        : member.category === 'Praxisassistenz'
-                        ? 'bg-white text-pink-700 border border-[#E8D2D7]'
-                        : 'bg-white text-pink-700 border border-[#E8D2D7]'
-                    }`}>
-                      {member.category}
-                    </span>
-                  </div>
-
                   {/* Team Member Photo */}
                   <div 
-                    className="mt-3.5 overflow-hidden rounded-xl border border-[#E8D2D7] bg-white aspect-[4/5] w-full shadow-2xs group/img cursor-pointer relative"
-                    onClick={() => setSelectedPhoto({ src: member.image, name: member.name, role: member.role })}
+                    className="overflow-hidden rounded-xl border border-[#E8D2D7] bg-white aspect-[4/5] w-full shadow-2xs group/img cursor-pointer relative"
+                    onClick={() => setSelectedMember(member)}
                     title="Klicken zum Vergrößern"
                   >
                     <img
@@ -362,19 +319,6 @@ export function TeamSection() {
                     {member.quote}
                   </div>
                 </div>
-
-                {/* Aufgabengebiete / Core Points */}
-                <div className="mt-3.5 pt-3 border-t border-[#F0E6E8] space-y-1">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#735F64] block mb-1">
-                    Tätigkeitsschwerpunkte:
-                  </span>
-                  {member.points.slice(0, 3).map((pt) => (
-                    <div key={pt} className="flex items-start gap-1.5 text-[11px] text-[#5C4A4F]">
-                      <CheckCircle2 className="h-3 w-3 text-pink-700 shrink-0 mt-0.5" />
-                      <span className="leading-tight">{pt}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             ))}
           </div>
@@ -389,41 +333,104 @@ export function TeamSection() {
         onSwitchDoctor={(newId) => setSelectedDoctorId(newId)}
       />
 
-      {/* Photo Lightbox Modal for Team Members */}
-      {selectedPhoto && (
+      {/* Photo Lightbox Modal for Team Members with Left/Right Navigation */}
+      {selectedMember && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs animate-in fade-in duration-150"
-          onClick={() => setSelectedPhoto(null)}
+          onClick={() => setSelectedMember(null)}
         >
+          {/* Desktop Floating Prev/Next Buttons */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              const idx = teamMembers.findIndex(m => m.id === selectedMember.id);
+              const prevIdx = idx <= 0 ? teamMembers.length - 1 : idx - 1;
+              setSelectedMember(teamMembers[prevIdx]);
+            }}
+            className="hidden sm:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 h-11 w-11 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            aria-label="Vorherige Mitarbeiterin"
+            title="Vorherige Mitarbeiterin (Pfeiltaste links)"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              const idx = teamMembers.findIndex(m => m.id === selectedMember.id);
+              const nextIdx = (idx + 1) % teamMembers.length;
+              setSelectedMember(teamMembers[nextIdx]);
+            }}
+            className="hidden sm:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 h-11 w-11 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-110 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            aria-label="Nächste Mitarbeiterin"
+            title="Nächste Mitarbeiterin (Pfeiltaste rechts)"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+
           <div 
             className="relative max-w-sm sm:max-w-md w-full overflow-hidden rounded-2xl bg-white shadow-2xl border border-[#F0E6E8] p-4 text-left animate-in zoom-in-95 duration-150"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-[#F0E6E8]">
               <div>
-                <h4 className="text-base font-bold text-[#2B2326]">{selectedPhoto.name}</h4>
-                <p className="text-xs text-pink-700 font-medium">{selectedPhoto.role}</p>
+                <h4 className="text-base font-bold text-[#2B2326]">{selectedMember.name}</h4>
+                <p className="text-xs text-pink-700 font-medium">{selectedMember.role}</p>
               </div>
-              <button
-                type="button"
-                onClick={() => setSelectedPhoto(null)}
-                className="p-1.5 rounded-lg text-neutral-400 hover:text-[#2B2326] hover:bg-neutral-100 transition-colors cursor-pointer"
-                aria-label="Schließen"
-              >
-                <X className="h-5 w-5" />
-              </button>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const idx = teamMembers.findIndex(m => m.id === selectedMember.id);
+                    const prevIdx = idx <= 0 ? teamMembers.length - 1 : idx - 1;
+                    setSelectedMember(teamMembers[prevIdx]);
+                  }}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-700 hover:bg-[#FAF5F6] transition-colors cursor-pointer"
+                  aria-label="Vorherige Mitarbeiterin"
+                  title="Vorherige (Pfeiltaste links)"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const idx = teamMembers.findIndex(m => m.id === selectedMember.id);
+                    const nextIdx = (idx + 1) % teamMembers.length;
+                    setSelectedMember(teamMembers[nextIdx]);
+                  }}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-700 hover:bg-[#FAF5F6] transition-colors cursor-pointer"
+                  aria-label="Nächste Mitarbeiterin"
+                  title="Nächste (Pfeiltaste rechts)"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedMember(null)}
+                  className="p-1.5 rounded-lg text-neutral-400 hover:text-[#2B2326] hover:bg-neutral-100 transition-colors cursor-pointer ml-1"
+                  aria-label="Schließen"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
             </div>
+
             <div className="mt-3 overflow-hidden rounded-xl border border-[#E8D2D7] bg-[#FCF8F9] aspect-3/4 w-full">
               <img
-                src={selectedPhoto.src}
-                alt={selectedPhoto.name}
+                src={selectedMember.image}
+                alt={selectedMember.name}
                 className="h-full w-full object-cover object-top"
               />
             </div>
-            <div className="mt-3 text-right">
+
+            <div className="mt-3 flex items-center justify-between text-xs text-[#5C4A4F]">
+              <span className="text-[11px] text-[#826970]">
+                {teamMembers.findIndex(m => m.id === selectedMember.id) + 1} von {teamMembers.length}
+              </span>
               <button
                 type="button"
-                onClick={() => setSelectedPhoto(null)}
+                onClick={() => setSelectedMember(null)}
                 className="rounded-lg bg-[#2B2326] px-4 py-2 text-xs font-semibold text-white hover:bg-neutral-800 transition-colors cursor-pointer"
               >
                 Schließen

@@ -1,26 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { 
-  ChevronLeft, 
-  ChevronRight, 
   Sparkles, 
   CheckCircle2, 
   HeartHandshake, 
   ShieldCheck, 
-  Maximize2, 
   X, 
   Calendar,
   ExternalLink,
-  BookOpen,
+  ChevronLeft,
+  ChevronRight,
   Activity,
-  Heart,
-  Baby,
-  Salad,
-  Zap,
-  Stethoscope,
-  Syringe,
-  Clock
+  Phone
 } from 'lucide-react';
-import { CottonSprig } from './BotanicalDecorations';
 
 export interface LeistungItem {
   id: 
@@ -707,10 +698,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
 
 export function ServicesSection() {
   const [activeFilter, setActiveFilter] = useState<'alle' | 'schwerpunkt' | 'gynaekologie'>('alle');
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedItem, setSelectedItem] = useState<LeistungItem | null>(null);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const filteredItems = LEISTUNGEN_DATA.filter(item => {
     if (activeFilter === 'schwerpunkt') return item.category === 'schwerpunkt';
@@ -718,129 +706,58 @@ export function ServicesSection() {
     return true;
   });
 
-  // Ensure currentIndex stays within bounds when filter changes
-  useEffect(() => {
-    if (currentIndex >= filteredItems.length) {
-      setCurrentIndex(0);
-    }
-  }, [activeFilter, filteredItems.length, currentIndex]);
+  const currentModalIndex = selectedItem 
+    ? filteredItems.findIndex(i => i.id === selectedItem.id) 
+    : -1;
 
-  // Auto-advance carousel (only when enabled)
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    timerRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % filteredItems.length);
-    }, 7000);
+  const handlePrevModal = () => {
+    if (currentModalIndex === -1 || filteredItems.length === 0) return;
+    const prevIndex = currentModalIndex === 0 ? filteredItems.length - 1 : currentModalIndex - 1;
+    setSelectedItem(filteredItems[prevIndex]);
+  };
 
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+  const handleNextModal = () => {
+    if (currentModalIndex === -1 || filteredItems.length === 0) return;
+    const nextIndex = (currentModalIndex + 1) % filteredItems.length;
+    setSelectedItem(filteredItems[nextIndex]);
+  };
+
+  useEffect(() => {
+    if (!selectedItem) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        handlePrevModal();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        handleNextModal();
+      } else if (e.key === 'Escape') {
+        setSelectedItem(null);
+      }
     };
-  }, [isAutoPlaying, filteredItems.length]);
-
-  const handlePrev = () => {
-    setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev === 0 ? filteredItems.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev + 1) % filteredItems.length);
-  };
-
-  const handleSelect = (index: number) => {
-    setIsAutoPlaying(false);
-    setCurrentIndex(index);
-  };
-
-  const currentItem = filteredItems[currentIndex] || LEISTUNGEN_DATA[0];
-
-  // Helper icons per Leistung
-  const getIcon = (id: LeistungItem['id']) => {
-    switch (id) {
-      case 'allgemeine-gynaekologie':
-        return <Stethoscope className="h-4 w-4" />;
-      case 'maedchensprechstunde':
-        return <Sparkles className="h-4 w-4" />;
-      case 'empfaengnisverhuetung':
-        return <ShieldCheck className="h-4 w-4" />;
-      case 'kinderwunsch':
-        return <HeartHandshake className="h-4 w-4" />;
-      case 'schwangerschaft':
-        return <Baby className="h-4 w-4" />;
-      case 'krebsfrueherkennung':
-        return <Activity className="h-4 w-4" />;
-      case 'krebsnachsorge':
-        return <Heart className="h-4 w-4" />;
-      case 'impfungen':
-        return <Syringe className="h-4 w-4" />;
-      case 'hormone':
-        return <Zap className="h-4 w-4" />;
-      case 'menopause':
-        return <Clock className="h-4 w-4" />;
-      case 'ernaehrung':
-        return <Salad className="h-4 w-4" />;
-      case 'betterpelvi':
-        return <Activity className="h-4 w-4" />;
-      case 'igel':
-        return <ShieldCheck className="h-4 w-4" />;
-    }
-  };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedItem, currentModalIndex, filteredItems]);
 
   return (
     <section id="leistungen" className="relative overflow-hidden py-16 sm:py-24 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-20">
-      {/* Subtle Botanical Watermarks */}
-      <div className="absolute -top-10 -left-10 pointer-events-none select-none opacity-15 hidden lg:block">
-        <CottonSprig className="w-64 h-64 text-[#CFB6BC]" />
-      </div>
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 text-left">
-          <div className="max-w-3xl">
-            {/* Header badge without flower icon as requested */}
-            <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>Ganzheitliche Frauenheilkunde · 13 Leistungsbereiche</span>
-            </div>
-            {/* Renamed to "Leistungen" */}
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl lg:text-4xl">
-              Leistungen
-            </h2>
-            <p className="mt-2 text-sm sm:text-base text-[#5C4A4F] leading-relaxed">
-              Vorsorge, Begleitung und moderne Spezialtherapien: Wir verbinden fundierte Schulmedizin mit ganzheitlicher Zuwendung für Frauen in allen Lebensphasen.
-            </p>
-          </div>
-
-          {/* Stepper Controls: Nav Buttons */}
-          <div className="flex items-center gap-2 self-start md:self-end shrink-0">
-
-            <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={handlePrev}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#E8D2D7] bg-white text-[#2B2326] hover:bg-[#FAF5F6] hover:text-pink-700 transition-colors shadow-2xs cursor-pointer"
-                aria-label="Vorherige Leistung"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#E8D2D7] bg-white text-[#2B2326] hover:bg-[#FAF5F6] hover:text-pink-700 transition-colors shadow-2xs cursor-pointer"
-                aria-label="Nächste Leistung"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
+        <div className="max-w-3xl text-left pb-8">
+          <h2 className="text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl lg:text-4xl">
+            Leistungen
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-[#5C4A4F] leading-relaxed">
+            Vorsorge, Begleitung und moderne Spezialtherapien: Wir verbinden fundierte Schulmedizin mit ganzheitlicher Zuwendung für Frauen in allen Lebensphasen.
+          </p>
         </div>
 
-        {/* Filter Tabs: Alle, Schwerpunkte, Gynäkologie & Vorsorge */}
-        <div className="flex flex-wrap items-center gap-2 pb-4">
+        {/* Filter Tabs: Clean, simplified 3-button filter */}
+        <div className="flex flex-wrap items-center gap-2 pb-8">
           <button
             type="button"
-            onClick={() => { setActiveFilter('alle'); setCurrentIndex(0); }}
+            onClick={() => setActiveFilter('alle')}
             className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
               activeFilter === 'alle'
                 ? 'bg-pink-700 text-white shadow-xs'
@@ -851,7 +768,7 @@ export function ServicesSection() {
           </button>
           <button
             type="button"
-            onClick={() => { setActiveFilter('schwerpunkt'); setCurrentIndex(0); }}
+            onClick={() => setActiveFilter('schwerpunkt')}
             className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
               activeFilter === 'schwerpunkt'
                 ? 'bg-pink-700 text-white shadow-xs'
@@ -862,7 +779,7 @@ export function ServicesSection() {
           </button>
           <button
             type="button"
-            onClick={() => { setActiveFilter('gynaekologie'); setCurrentIndex(0); }}
+            onClick={() => setActiveFilter('gynaekologie')}
             className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
               activeFilter === 'gynaekologie'
                 ? 'bg-pink-700 text-white shadow-xs'
@@ -873,207 +790,64 @@ export function ServicesSection() {
           </button>
         </div>
 
-        {/* Quick Pill Selector Bar: Wrapped so all 13 items are immediately visible on screen */}
-        <div className="flex flex-wrap gap-2 pb-5 pt-1">
-          {filteredItems.map((item, idx) => (
-            <button
+        {/* Clean Responsive Service Cards Grid (3 cols on lg, 2 on md, 1 on mobile) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {filteredItems.map((item) => (
+            <div
               key={item.id}
-              type="button"
-              onClick={() => handleSelect(idx)}
-              className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer ${
-                currentIndex === idx
-                  ? 'bg-pink-700 text-white shadow-sm ring-2 ring-pink-700/25 scale-[1.02]'
-                  : 'bg-white text-[#5C4A4F] hover:text-[#2B2326] border border-[#F0E6E8] hover:border-[#E8D2D7] shadow-2xs hover:bg-[#FAF5F6]'
-              }`}
+              onClick={() => setSelectedItem(item)}
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[#F0E6E8] bg-white p-5 sm:p-6 text-left shadow-2xs transition-all duration-300 hover:border-[#E8D2D7] hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
             >
-              <span className={`shrink-0 ${currentIndex === idx ? 'text-white' : 'text-pink-700'}`}>
-                {getIcon(item.id)}
-              </span>
-              <span>{item.title}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Main Interactive Spotlight Stage */}
-        <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-[#E8D2D7] bg-white shadow-md">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            
-            {/* Visual Photo & Practice Advantage Area (7 cols on lg) */}
-            <div className="lg:col-span-7 flex flex-col justify-between bg-[#FAF5F6]/40 border-b lg:border-b-0 lg:border-r border-[#F0E6E8]">
-              {/* Landscape Photo Stage */}
-              <div 
-                className="relative aspect-[16/10] sm:aspect-[16/9] w-full shrink-0 bg-neutral-900 group/stage overflow-hidden cursor-pointer"
-                onClick={() => setSelectedItem(currentItem)}
-                title="Klicken für ausführliche Details zu dieser Leistung"
-              >
-                <img
-                  src={currentItem.image}
-                  alt={currentItem.alt}
-                  className="h-full w-full object-cover object-center transition-all duration-700 group-hover/stage:scale-[1.03]"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    const imgSrc = currentItem.image;
-                    if (imgSrc && !target.src.includes('public/')) {
-                      const rel = imgSrc.startsWith('/') ? imgSrc.slice(1) : imgSrc;
-                      target.src = `./public/${rel}`;
-                    }
-                  }}
-                />
-                
-                {/* Subtle Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
-
-                {/* Top Badge Overlay */}
-                <div className="absolute top-4 left-4 z-10 flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-xs font-bold text-pink-700 shadow-sm border border-white/50">
-                    <Sparkles className="h-3 w-3" />
-                    {currentItem.badge}
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-md px-2.5 py-1 text-[11px] font-medium text-white">
-                    {currentItem.categoryLabel}
-                  </span>
-                </div>
-
-                {/* Zoom Trigger Button Overlay */}
-                <div className="absolute bottom-4 right-4 z-10">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedItem(currentItem);
-                    }}
-                    className="flex items-center gap-1.5 rounded-xl bg-white/95 backdrop-blur-md px-3.5 py-1.5 text-xs font-bold text-[#2B2326] shadow-md hover:bg-white hover:text-pink-700 transition-colors cursor-pointer"
-                  >
-                    <Maximize2 className="h-3.5 w-3.5 text-pink-700" />
-                    <span>Details öffnen</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Practice Advantage Card Under Landscape Photo */}
-              <div className="p-4 sm:p-5 flex flex-col justify-between gap-3 text-left">
-                <div className="rounded-xl border border-pink-100 bg-white/90 p-3.5 flex items-start gap-3 text-xs text-[#5C4A4F] shadow-2xs">
-                  <ShieldCheck className="h-4 w-4 text-pink-700 shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-[#2B2326] font-semibold block mb-0.5">Praxis-Vorteil Frauenzeit Brühl:</strong>
-                    <span>{currentItem.practiceAdvantage}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Content & Details Panel (5 cols on lg) */}
-            <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between text-left bg-white">
               <div>
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-pink-700">
-                    {currentItem.categoryLabel}
-                  </span>
-                  <span className="text-xs font-semibold text-[#735F64] bg-[#FAF5F6] px-2.5 py-0.5 rounded-md border border-[#F0E6E8]">
-                    Praxis Frauenzeit Brühl
-                  </span>
+                {/* Photo */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#FAF5F6] border border-[#F0E6E8]">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      const imgSrc = item.image;
+                      if (imgSrc && !target.src.includes('public/')) {
+                        const rel = imgSrc.startsWith('/') ? imgSrc.slice(1) : imgSrc;
+                        target.src = `./public/${rel}`;
+                      }
+                    }}
+                  />
                 </div>
 
-                <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-[#2B2326] leading-tight">
-                  {currentItem.title}
-                </h3>
-                <p className="text-xs font-semibold text-pink-700 mt-1">
-                  {currentItem.subtitle}
-                </p>
+                {/* Content */}
+                <div className="mt-4">
+                  <h3 className="text-xl font-bold text-[#2B2326] group-hover:text-pink-700 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-xs font-semibold text-pink-700">
+                    {item.subtitle}
+                  </p>
+                  <p className="mt-2.5 text-xs sm:text-sm text-[#5C4A4F] leading-relaxed line-clamp-3">
+                    {item.teaser}
+                  </p>
 
-                {/* Lead Quote */}
-                <div className="mt-4 rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-3 text-xs italic text-[#4D3F43] leading-relaxed">
-                  {currentItem.leadQuote}
-                </div>
-
-                <p className="mt-3 text-xs sm:text-sm text-[#5C4A4F] leading-relaxed">
-                  {currentItem.teaser}
-                </p>
-
-                {/* Highlights List */}
-                <div className="mt-5 pt-4 border-t border-[#F0E6E8]">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#735F64] mb-2.5">
-                    Leistungsmerkmale:
-                  </h4>
-                  <div className="space-y-2">
-                    {currentItem.keyHighlights.slice(0, 4).map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-[#3E3236]">
+                  {/* Highlights */}
+                  <div className="mt-4 space-y-1.5 border-t border-[#F0E6E8] pt-3">
+                    {item.keyHighlights.slice(0, 2).map((h, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs text-[#4D3F43]">
                         <CheckCircle2 className="h-3.5 w-3.5 text-pink-700 shrink-0 mt-0.5" />
-                        <span>{item}</span>
+                        <span className="leading-snug">{h}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-
-                {/* Target Audience Hint */}
-                <div className="mt-4 rounded-xl bg-[#FAF5F6] p-3 text-xs text-[#5C4A4F] border border-[#F0E6E8]">
-                  <strong className="text-[#2B2326] font-semibold">Für wen:</strong> {currentItem.forWhom}
-                </div>
               </div>
 
-              {/* Bottom Actions: Deep-Dive Modal Button & Doctolib */}
-              <div className="mt-6 pt-5 border-t border-[#F0E6E8] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={() => setSelectedItem(currentItem)}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#E8D2D7] bg-white px-4 py-2.5 text-xs font-bold text-pink-700 shadow-2xs hover:bg-pink-700 hover:text-white hover:border-pink-700 transition-all cursor-pointer"
-                >
-                  <BookOpen className="h-3.5 w-3.5" />
-                  <span>Ausführliche Details lesen</span>
-                </button>
-
-                <a
-                  href="https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-pink-700 px-4 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-pink-800 transition-colors"
-                >
-                  <Calendar className="h-3.5 w-3.5" />
-                  <span>Termin vereinbaren</span>
-                </a>
+              {/* Card Footer Action */}
+              <div className="mt-5 pt-3 border-t border-[#F0E6E8] flex items-center justify-between">
+                <span className="text-xs font-bold text-pink-700 group-hover:underline flex items-center gap-1">
+                  <span>Details ansehen</span>
+                  <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </span>
               </div>
             </div>
-
-          </div>
-        </div>
-
-        {/* Thumbnail Visual Strip for Quick Browsing */}
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2.5">
-          {filteredItems.map((item, idx) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => handleSelect(idx)}
-              className={`group relative overflow-hidden rounded-xl border p-2 text-left transition-all cursor-pointer ${
-                currentIndex === idx
-                  ? 'border-pink-700 bg-white ring-2 ring-pink-700/25 shadow-xs'
-                  : 'border-[#F0E6E8] bg-white/70 hover:bg-white hover:border-[#E8D2D7]'
-              }`}
-            >
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-neutral-100">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className={`h-full w-full object-cover object-center transition-transform duration-300 ${
-                    currentIndex === idx ? 'scale-105' : 'group-hover:scale-105 opacity-80 group-hover:opacity-100'
-                  }`}
-                  loading="lazy"
-                />
-                {currentIndex === idx && (
-                  <div className="absolute inset-0 bg-pink-700/10 border-2 border-pink-700 rounded-lg pointer-events-none" />
-                )}
-              </div>
-              <div className="mt-2 truncate px-0.5">
-                <p className={`text-xs font-bold truncate ${
-                  currentIndex === idx ? 'text-pink-700' : 'text-[#2B2326]'
-                }`}>
-                  {item.title}
-                </p>
-                <p className="text-[10px] text-[#735F64] truncate">
-                  {item.categoryLabel}
-                </p>
-              </div>
-            </button>
           ))}
         </div>
 
@@ -1087,22 +861,69 @@ export function ServicesSection() {
           role="dialog"
           aria-modal="true"
         >
+          {/* Desktop Floating Prev/Next Buttons */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrevModal();
+            }}
+            className="hidden xl:flex fixed left-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-110 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            aria-label="Vorherige Leistung"
+            title="Vorherige Leistung (Pfeiltaste links)"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNextModal();
+            }}
+            className="hidden xl:flex fixed right-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-110 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            aria-label="Nächste Leistung"
+            title="Nächste Leistung (Pfeiltaste rechts)"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+
           <div 
             className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-2xl border border-[#F0E6E8] flex flex-col animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header Banner */}
             <div className="relative bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-5 sm:p-7 shrink-0">
-              <button
-                type="button"
-                onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-sm border border-[#E8D2D7] transition-colors cursor-pointer"
-                aria-label="Schließen"
-              >
-                <X className="h-5 w-5" />
-              </button>
+              {/* Modal Navigation & Close Controls */}
+              <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={handlePrevModal}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-700 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
+                  aria-label="Vorherige Leistung"
+                  title="Vorherige Leistung (Pfeiltaste links)"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNextModal}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-700 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
+                  aria-label="Nächste Leistung"
+                  title="Nächste Leistung (Pfeiltaste rechts)"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedItem(null)}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer ml-1"
+                  aria-label="Schließen"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pr-10">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pr-24 sm:pr-28">
                 <div className="h-16 w-24 sm:h-20 sm:w-32 rounded-xl overflow-hidden border border-[#E8D2D7] bg-white shrink-0 shadow-2xs">
                   <img
                     src={selectedItem.image}
@@ -1111,14 +932,10 @@ export function ServicesSection() {
                   />
                 </div>
                 <div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-pink-50 px-3 py-0.5 text-xs font-bold text-pink-700 border border-pink-200">
-                    <Sparkles className="h-3 w-3" />
-                    {selectedItem.badge}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#2B2326] mt-1">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#2B2326]">
                     {selectedItem.title}
                   </h3>
-                  <p className="text-xs font-semibold text-[#5C4A4F]">
+                  <p className="text-xs font-semibold text-[#5C4A4F] mt-0.5">
                     {selectedItem.subtitle}
                   </p>
                 </div>
