@@ -85,6 +85,15 @@ export function Header({
             </button>
             <button
               type="button"
+              onClick={() => handleNavClick('philosophie')}
+              className={`transition-colors py-1 hover:text-pink-700 whitespace-nowrap shrink-0 cursor-pointer ${
+                activeNav === 'philosophie' ? 'text-pink-700 font-semibold border-b-2 border-pink-700' : ''
+              }`}
+            >
+              Philosophie
+            </button>
+            <button
+              type="button"
               onClick={() => handleNavClick('leistungen')}
               className={`transition-colors py-1 hover:text-pink-700 whitespace-nowrap shrink-0 cursor-pointer ${
                 activeNav === 'leistungen' ? 'text-pink-700 font-semibold border-b-2 border-pink-700' : ''
@@ -167,6 +176,14 @@ export function Header({
               className="flex items-center justify-between py-2 text-left hover:text-pink-700"
             >
               <span>Startseite</span>
+              <ChevronRight className="h-4 w-4 text-[#A37B85]" />
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick('philosophie')}
+              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
+            >
+              <span>Philosophie</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
             </button>
             <button

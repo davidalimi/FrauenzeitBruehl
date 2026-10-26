@@ -873,14 +873,14 @@ export function ServicesSection() {
           </button>
         </div>
 
-        {/* Quick Pill Selector Bar (Scrollable on small screens) */}
-        <div className="flex overflow-x-auto gap-2 pb-5 pt-1 no-scrollbar">
+        {/* Quick Pill Selector Bar: Wrapped so all 13 items are immediately visible on screen */}
+        <div className="flex flex-wrap gap-2 pb-5 pt-1">
           {filteredItems.map((item, idx) => (
             <button
               key={item.id}
               type="button"
               onClick={() => handleSelect(idx)}
-              className={`flex items-center gap-2 rounded-xl px-3.5 py-2.5 text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+              className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer ${
                 currentIndex === idx
                   ? 'bg-pink-700 text-white shadow-sm ring-2 ring-pink-700/25 scale-[1.02]'
                   : 'bg-white text-[#5C4A4F] hover:text-[#2B2326] border border-[#F0E6E8] hover:border-[#E8D2D7] shadow-2xs hover:bg-[#FAF5F6]'
@@ -898,53 +898,67 @@ export function ServicesSection() {
         <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-[#E8D2D7] bg-white shadow-md">
           <div className="grid grid-cols-1 lg:grid-cols-12">
             
-            {/* Visual Photo Area (7 cols on lg) */}
-            <div 
-              className="relative lg:col-span-7 aspect-16/10 sm:aspect-16/9 lg:aspect-auto lg:min-h-[520px] bg-neutral-900 group/stage overflow-hidden cursor-pointer"
-              onClick={() => setSelectedItem(currentItem)}
-              title="Klicken für ausführliche Details zu dieser Leistung"
-            >
-              <img
-                src={currentItem.image}
-                alt={currentItem.alt}
-                className="h-full w-full object-cover transition-all duration-700 group-hover/stage:scale-[1.03]"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  const imgSrc = currentItem.image;
-                  if (imgSrc && !target.src.includes('public/')) {
-                    const rel = imgSrc.startsWith('/') ? imgSrc.slice(1) : imgSrc;
-                    target.src = `./public/${rel}`;
-                  }
-                }}
-              />
-              
-              {/* Subtle Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+            {/* Visual Photo & Practice Advantage Area (7 cols on lg) */}
+            <div className="lg:col-span-7 flex flex-col justify-between bg-[#FAF5F6]/40 border-b lg:border-b-0 lg:border-r border-[#F0E6E8]">
+              {/* Landscape Photo Stage */}
+              <div 
+                className="relative aspect-[16/10] sm:aspect-[16/9] w-full shrink-0 bg-neutral-900 group/stage overflow-hidden cursor-pointer"
+                onClick={() => setSelectedItem(currentItem)}
+                title="Klicken für ausführliche Details zu dieser Leistung"
+              >
+                <img
+                  src={currentItem.image}
+                  alt={currentItem.alt}
+                  className="h-full w-full object-cover object-center transition-all duration-700 group-hover/stage:scale-[1.03]"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    const imgSrc = currentItem.image;
+                    if (imgSrc && !target.src.includes('public/')) {
+                      const rel = imgSrc.startsWith('/') ? imgSrc.slice(1) : imgSrc;
+                      target.src = `./public/${rel}`;
+                    }
+                  }}
+                />
+                
+                {/* Subtle Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
-              {/* Top Badge Overlay */}
-              <div className="absolute top-4 left-4 z-10 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-xs font-bold text-pink-700 shadow-sm border border-white/50">
-                  <Sparkles className="h-3 w-3" />
-                  {currentItem.badge}
-                </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-md px-2.5 py-1 text-[11px] font-medium text-white">
-                  {currentItem.categoryLabel}
-                </span>
+                {/* Top Badge Overlay */}
+                <div className="absolute top-4 left-4 z-10 flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-xs font-bold text-pink-700 shadow-sm border border-white/50">
+                    <Sparkles className="h-3 w-3" />
+                    {currentItem.badge}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-md px-2.5 py-1 text-[11px] font-medium text-white">
+                    {currentItem.categoryLabel}
+                  </span>
+                </div>
+
+                {/* Zoom Trigger Button Overlay */}
+                <div className="absolute bottom-4 right-4 z-10">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedItem(currentItem);
+                    }}
+                    className="flex items-center gap-1.5 rounded-xl bg-white/95 backdrop-blur-md px-3.5 py-1.5 text-xs font-bold text-[#2B2326] shadow-md hover:bg-white hover:text-pink-700 transition-colors cursor-pointer"
+                  >
+                    <Maximize2 className="h-3.5 w-3.5 text-pink-700" />
+                    <span>Details öffnen</span>
+                  </button>
+                </div>
               </div>
 
-              {/* Zoom Trigger Button Overlay */}
-              <div className="absolute bottom-4 right-4 z-10">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedItem(currentItem);
-                  }}
-                  className="flex items-center gap-1.5 rounded-xl bg-white/95 backdrop-blur-md px-3.5 py-1.5 text-xs font-bold text-[#2B2326] shadow-md hover:bg-white hover:text-pink-700 transition-colors cursor-pointer"
-                >
-                  <Maximize2 className="h-3.5 w-3.5 text-pink-700" />
-                  <span>Details öffnen</span>
-                </button>
+              {/* Practice Advantage Card Under Landscape Photo */}
+              <div className="p-4 sm:p-5 flex flex-col justify-between gap-3 text-left">
+                <div className="rounded-xl border border-pink-100 bg-white/90 p-3.5 flex items-start gap-3 text-xs text-[#5C4A4F] shadow-2xs">
+                  <ShieldCheck className="h-4 w-4 text-pink-700 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-[#2B2326] font-semibold block mb-0.5">Praxis-Vorteil Frauenzeit Brühl:</strong>
+                    <span>{currentItem.practiceAdvantage}</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1036,11 +1050,11 @@ export function ServicesSection() {
                   : 'border-[#F0E6E8] bg-white/70 hover:bg-white hover:border-[#E8D2D7]'
               }`}
             >
-              <div className="relative aspect-16/10 w-full overflow-hidden rounded-lg bg-neutral-100">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-neutral-100">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className={`h-full w-full object-cover transition-transform duration-300 ${
+                  className={`h-full w-full object-cover object-center transition-transform duration-300 ${
                     currentIndex === idx ? 'scale-105' : 'group-hover:scale-105 opacity-80 group-hover:opacity-100'
                   }`}
                   loading="lazy"

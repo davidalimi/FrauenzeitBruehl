@@ -6,6 +6,7 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { PhilosophySection } from './components/PhilosophySection';
 import { TeamSection } from './components/TeamSection';
 import { PraxisSection } from './components/PraxisSection';
 import { ServicesSection } from './components/ServicesSection';
@@ -25,8 +26,11 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main id="start">
-        {/* Welcome Hero Section featuring Praxisteam */}
+        {/* Welcome Hero Section featuring Praxisteam & Personal Welcome Message */}
         <Hero />
+
+        {/* Unsere Philosophie Section */}
+        <PhilosophySection />
 
         {/* Medical Services (Leistungen) Section */}
         <ServicesSection />
