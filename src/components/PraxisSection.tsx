@@ -132,18 +132,11 @@ export function PraxisSection() {
             </p>
           </div>
 
-          {/* Top Controls: Slide Indicator & Navigation Buttons */}
-          <div className="flex items-center gap-3 self-start sm:self-auto shrink-0">
-            <div className="flex items-center gap-1.5 font-mono text-xs font-semibold text-[#735F64] bg-white px-3 py-1.5 rounded-xl border border-[#F0E6E8] shadow-2xs">
-              <span className="text-pink-700 font-bold">{String(currentIndex + 1).padStart(2, '0')}</span>
-              <span>/</span>
-              <span>{String(rooms.length).padStart(2, '0')}</span>
-            </div>
-
-            <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={handlePrev}
+          {/* Top Controls: Navigation Buttons */}
+          <div className="flex items-center gap-1.5 self-start sm:self-auto shrink-0">
+            <button
+              type="button"
+              onClick={handlePrev}
                 className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#E8D2D7] bg-white text-[#2B2326] hover:bg-[#FAF5F6] hover:text-pink-700 transition-colors shadow-2xs cursor-pointer"
                 aria-label="Vorheriges Bild"
               >
@@ -159,7 +152,6 @@ export function PraxisSection() {
               </button>
             </div>
           </div>
-        </div>
 
         {/* Main Interactive Stage */}
         <div className="overflow-hidden rounded-2xl border border-[#E8D2D7] bg-white shadow-sm">
@@ -224,8 +216,8 @@ export function PraxisSection() {
             <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between text-left bg-white">
               <div>
                 <div className="flex items-center justify-between gap-3">
-                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-pink-700">
-                    Bereich {String(currentIndex + 1).padStart(2, '0')}
+                  <span className="text-xs font-semibold uppercase tracking-wider text-pink-700">
+                    {currentRoom.category}
                   </span>
                   <span className="text-xs font-medium text-[#735F64]">
                     Praxis Frauenzeit Brühl
