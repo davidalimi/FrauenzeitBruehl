@@ -28,14 +28,14 @@ export default function App() {
         {/* Welcome Hero Section featuring Praxisteam */}
         <Hero />
 
+        {/* Medical Services (Leistungen) Section */}
+        <ServicesSection />
+
         {/* Team Section */}
         <TeamSection />
 
         {/* Praxis Räumlichkeiten Carousel Section */}
         <PraxisSection />
-
-        {/* Medical Services Carousel Section */}
-        <ServicesSection />
 
         {/* Contact & Hours Section */}
         <ContactSection />

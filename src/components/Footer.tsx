@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, Phone, ShieldCheck, FileText, ExternalLink } from 'lucide-react';
+import { X, Phone, ShieldCheck, FileText, ExternalLink, Download } from 'lucide-react';
 import { CherryBlossomBranch } from './BotanicalDecorations';
 
 export function Footer() {
@@ -144,22 +144,17 @@ export function Footer() {
                 </li>
                 <li>
                   <a href="#team" className="hover:text-white transition-colors">
-                    Ärztinnen & Praxisteam
+                    Ärztinnen & Team
                   </a>
                 </li>
                 <li>
                   <a href="#praxis" className="hover:text-white transition-colors">
-                    Praxisräume & Ambiente
-                  </a>
-                </li>
-                <li>
-                  <a href="#sprechzeiten" className="hover:text-white transition-colors">
-                    Sprechzeiten & Öffnungszeiten
+                    Praxis
                   </a>
                 </li>
                 <li>
                   <a href="#kontakt" className="hover:text-white transition-colors">
-                    Anfahrt & Kontakt
+                    Kontakt & Sprechzeiten
                   </a>
                 </li>
                 <li>
@@ -360,6 +355,32 @@ export function Footer() {
                     <p>
                       Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Datenverarbeitung. Zudem steht Ihnen das Recht auf Berichtigung, Sperrung oder Löschung dieser Daten zu, soweit dem keine gesetzliche Aufbewahrungspflicht entgegensteht.
                     </p>
+                  </div>
+
+                  {/* Official PDF Document Download */}
+                  <div className="mt-6 p-4 sm:p-5 rounded-2xl border border-pink-200 bg-[#FCF8F9] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-pink-100 text-pink-700">
+                        <FileText className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-[#2B2326]">
+                          Patienteninformation zum Datenschutz (PDF)
+                        </h4>
+                        <p className="text-xs text-[#5C4A4F] mt-0.5 leading-relaxed">
+                          Offizielles Dokument inklusive Einwilligung zur Nutzung bisheriger Behandlungsunterlagen & Abholung durch Dritte.
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href={`${import.meta.env.BASE_URL}assets/docs/patienteninformation-datenschutz.pdf`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-pink-700 hover:bg-pink-800 text-white px-4 py-2.5 text-xs font-semibold shadow-xs transition-colors shrink-0 cursor-pointer"
+                    >
+                      <Download className="h-4 w-4" />
+                      <span>PDF ansehen / herunterladen</span>
+                    </a>
                   </div>
                 </>
               )}

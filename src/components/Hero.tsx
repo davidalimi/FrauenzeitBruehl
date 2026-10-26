@@ -94,7 +94,7 @@ export function Hero() {
               {/* Clean, Subtle Caption below the photo */}
               <div className="flex items-center justify-between gap-3 px-3.5 py-2.5 text-xs text-[#735F64] bg-[#FAF5F6]/70 rounded-xl mt-2.5">
                 <span className="font-semibold text-[#2B2326]">
-                  Ihr Praxisteam FrauenzeitBrühl
+                  Ihr Team FrauenzeitBrühl
                 </span>
                 <span className="text-[11px] text-pink-700 font-medium inline-flex items-center gap-1">
                   Gemeinsam für Ihre Gesundheit

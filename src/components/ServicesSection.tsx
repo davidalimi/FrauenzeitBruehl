@@ -15,13 +15,31 @@ import {
   Heart,
   Baby,
   Salad,
-  Zap
+  Zap,
+  Stethoscope,
+  Syringe,
+  Clock
 } from 'lucide-react';
-import { CherryBlossomFlower, CottonSprig } from './BotanicalDecorations';
+import { CottonSprig } from './BotanicalDecorations';
 
-export interface SchwerpunktItem {
-  id: 'schwangerschaft' | 'ernaehrung' | 'hormone' | 'menopause' | 'betterpelvi' | 'igel';
+export interface LeistungItem {
+  id: 
+    | 'allgemeine-gynaekologie' 
+    | 'maedchensprechstunde' 
+    | 'empfaengnisverhuetung' 
+    | 'kinderwunsch' 
+    | 'schwangerschaft' 
+    | 'krebsfrueherkennung' 
+    | 'krebsnachsorge' 
+    | 'impfungen' 
+    | 'hormone' 
+    | 'menopause' 
+    | 'ernaehrung' 
+    | 'betterpelvi' 
+    | 'igel';
   number: string;
+  category: 'schwerpunkt' | 'gynaekologie';
+  categoryLabel: string;
   title: string;
   subtitle: string;
   badge: string;
@@ -40,14 +58,215 @@ export interface SchwerpunktItem {
   costNote?: string;
 }
 
-export const SCHWERPUNKTE_DATA: SchwerpunktItem[] = [
+export const LEISTUNGEN_DATA: LeistungItem[] = [
+  {
+    id: 'allgemeine-gynaekologie',
+    number: '01',
+    category: 'gynaekologie',
+    categoryLabel: 'Gynäkologie & Vorsorge',
+    title: 'Allgemeine Gynäkologie',
+    subtitle: 'Zeit für Ihre Anliegen · Diagnostik & einfühlsame Behandlung',
+    badge: 'Gynäkologische Grundversorgung',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/allgemeine-gynaekologie.jpg`,
+    alt: 'Allgemeine Gynäkologie und einfühlsame Beratung in der Praxis Frauenzeit Brühl',
+    leadQuote: '„In unserer allgemeinen gynäkologischen Sprechstunde nehmen wir uns Zeit für Ihre Anliegen und behandeln Sie bei Beschwerden und gynäkologischen Erkrankungen. Unser Ziel ist es, die Ursachen Ihrer Beschwerden zu erkennen und gemeinsam mit Ihnen einen passenden Behandlungsweg zu finden.“',
+    teaser: 'Ob Regelschmerzen, Endometriose und Adenomyose, Hormonstörungen oder die Nachsorge nach Krankenhausaufenthalten: Wir gehen den Ursachen auf den Grund und finden gemeinsam die optimale Therapie.',
+    detailedText: [
+      'In unserer allgemeinen gynäkologischen Sprechstunde nehmen wir uns bewusst Zeit für Ihre Anliegen und behandeln Sie bei allen akuten wie chronischen Beschwerden sowie gynäkologischen Erkrankungen. Unser Ziel ist es, die Ursachen zu erkennen und gemeinsam mit Ihnen einen passenden Behandlungsweg zu finden.',
+      'Wir unterstützen Sie verlässlich bei Regelschmerzen und Unterleibsbeschwerden, Endometriose und Adenomyose – Erkrankungen, die oft spät erkannt werden und mit starken Schmerzen, Blutungsstörungen oder unerfülltem Kinderwunsch einhergehen können. Wir begleiten Sie von der fundierten Diagnosestellung bis zur langfristigen Betreuung.',
+      'Ebenso übernehmen wir die ambulante Nachsorge und Wundkontrolle nach stationären Krankenhausaufenthalten und gynäkologischen Operationen. Auch bei Schmerzen beim Geschlechtsverkehr, Sexualstörungen oder chronischen Unterbauchschmerzen bieten wir Ihnen einen vertrauensvollen, geschützten Rahmen.',
+      'Weitere Schwerpunkte umfassen Beckenboden- und Blasenschwäche, Infektionen der Geschlechtsorgane und Harnwege, Veränderungen der Vulva sowie gutartige Veränderungen von Gebärmutter und Eierstöcken (Myome, Zysten, Polypen).'
+    ],
+    keyHighlights: [
+      'Gründliche Abklärung von Regelschmerzen & Unterleibsbeschwerden',
+      'Diagnostik & langfristige Begleitung bei Endometriose und Adenomyose',
+      'Ambulante Nachsorge & Kontrollen nach Operationen und Klinikaufenthalten',
+      'Einfühlsame Hilfe bei Dyspareunie (Schmerzen beim Geschlechtsverkehr) & Sexualstörungen',
+      'Behandlung von Infektionen, Vulva-Veränderungen & gutartigen Organbefunden'
+    ],
+    clinicalFocus: [
+      {
+        category: 'Wir unterstützen Sie unter anderem bei',
+        items: [
+          'Regelschmerzen und Unterleibsbeschwerden (Ursachenabklärung & Therapie)',
+          'Endometriose und Adenomyose (von Diagnosestellung bis Dauerbegleitung)',
+          'Hormonstörungen & Zyklusunregelmäßigkeiten',
+          'Nachsorge nach Krankenhausaufenthalten und gynäkologischen Operationen',
+          'Schmerzen beim Geschlechtsverkehr und Sexualstörungen',
+          'Chronischen Unterbauchschmerzen'
+        ]
+      },
+      {
+        category: 'Organische Diagnostik & Organbefunde',
+        items: [
+          'Beckenboden- und Blasenschwäche (Senkungsbeschwerden, Harninkontinenz)',
+          'Infektionen der inneren/äußeren Geschlechtsorgane und ableitenden Harnwege',
+          'Veränderungen der Vulva & Beschwerden im Intimbereich (Juckreiz, Brennen)',
+          'Gutartige Veränderungen der Gebärmutter und Eierstöcke (Myome, Zysten, Polypen)'
+        ]
+      }
+    ],
+    forWhom: 'Frauen aller Altersgruppen bei Beschwerden, Schmerzen, Infektionen, nach Operationen oder mit chronischen gynäkologischen Fragestellungen.',
+    practiceAdvantage: 'Verbindung leitliniengerechter Facharztmedizin mit ganzheitlicher Zuwendung und ausreichend Zeit für das persönliche Gespräch.',
+    costNote: 'Die allgemeine gynäkologische Untersuchung und Behandlung ist Bestandteil der vertragsärztlichen Versorgung (gesetzliche Krankenkasse).'
+  },
+  {
+    id: 'maedchensprechstunde',
+    number: '02',
+    category: 'gynaekologie',
+    categoryLabel: 'Gynäkologie & Vorsorge',
+    title: 'Mädchensprechstunde',
+    subtitle: 'Ein guter Start in die Frauengesundheit · Für Mädchen & Teenager',
+    badge: 'Jugendgesundheit · Einfühlsam & Vertraulich',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/teenager-maedchensprechstunde.jpg`,
+    alt: 'Zwei junge Freundinnen lachen entspannt – Mädchensprechstunde Praxis Frauenzeit Brühl',
+    leadQuote: '„Der erste Besuch bei der Frauenärztin ist für viele junge Mädchen ein besonderer Moment – verbunden mit Neugier, Fragen oder auch Unsicherheit. Uns ist es wichtig, dass du dich bei uns wohlfühlst und einen geschützten Raum findest, in dem alle deine Fragen Platz haben.“',
+    teaser: 'Keine Angst vor dem ersten Termin: Eine körperliche Untersuchung auf dem Stuhl ist beim Kennenlernen meist gar nicht nötig! Wir nehmen uns Zeit für alle deine Fragen zu Pubertät, Periode, Liebe & Verhütung.',
+    detailedText: [
+      'Der erste Besuch bei der Frauenärztin ist ein ganz besonderer Schritt – verbunden mit vielen Fragen, Neugier, aber oft auch ein wenig Nervosität. In unserer Mädchen-Sprechstunde schaffen wir einen entspannten, geschützten Raum, in dem du offen über alles sprechen kannst.',
+      'Wir nehmen uns viel Zeit, dich kennenzulernen und dir zuzuhören. Dabei geht es vor allem um Vertrauen, gegenseitiges Kennenlernen und verständliche Erklärungen rund um deinen Körper. Eine körperliche Untersuchung ist beim ersten Besuch in den allermeisten Fällen nicht erforderlich.',
+      'Du entscheidest selbst, welche Themen du besprechen möchtest und ob du allein kommen möchtest oder in Begleitung – zum Beispiel mit deiner besten Freundin, deinem Freund oder deiner Mutter.',
+      'Unser Ziel ist es, dich auf deinem Weg zu einer selbstbestimmten und gesunden Entwicklung zu begleiten – mit viel Verständnis und auf Augenhöhe.'
+    ],
+    keyHighlights: [
+      'Erster Praxisbesuch ohne Untersuchungszwang – Fokus auf Gespräch & Vertrauen',
+      'Beratung zu Veränderungen in der Pubertät, Körper & Menstruationszyklus',
+      'Offene Aufklärung zu Verhütung, Sexualität & Schutz vor Infektionen',
+      'Kostenfreies Chlamydien-Screening bis zum vollendeten 25. Lebensjahr',
+      'HPV-Impfberatung & Impfpass-Check für langfristigen Schutz'
+    ],
+    clinicalFocus: [
+      {
+        category: 'Wir sprechen unter anderem über',
+        items: [
+          'Veränderungen in der Pubertät (körperliche Entwicklung, erste Regelblutung, Zyklus)',
+          'Menstruation und Umgang mit der Periode (Hygieneprodukte, Körpergefühl)',
+          'Zyklusbeschwerden (starke Regelschmerzen, unregelmäßige Blutungen, PMS)',
+          'Haut, Haare und Hormone (Akne, Haarausfall, hormonelle Schwankungen)'
+        ]
+      },
+      {
+        category: 'Sexualität & Prävention',
+        items: [
+          'Verhütung und Sexualität (Pille, Alternativen, erste Liebe, Schutz vor STIs)',
+          'Chlamydien-Screening bis zum vollendeten 25. Lebensjahr als Kassenleistung',
+          'Impfungen und Vorsorge (insbesondere die HPV-Impfung)',
+          'Vertrauliche Gespräche ganz ohne Begleitperson auf Wunsch'
+        ]
+      }
+    ],
+    forWhom: 'Mädchen und junge Frauen (ca. 11 bis 25 Jahre) – allein oder mit Begleitperson ihrer Wahl.',
+    practiceAdvantage: 'Verständnisvolles Ärztinnen-Team ohne Vorurteile oder Tabus, das medizinische Sachverhalte leicht verständlich erklärt.',
+    costNote: 'Vollständige Kassenleistung: Beratung, Impfungen und Chlamydien-Screening bis 25 Jahre werden von den gesetzlichen Krankenkassen übernommen.'
+  },
+  {
+    id: 'empfaengnisverhuetung',
+    number: '03',
+    category: 'gynaekologie',
+    categoryLabel: 'Gynäkologie & Vorsorge',
+    title: 'Empfängnisverhütung',
+    subtitle: 'Die passende Verhütung – so individuell wie Ihr Leben',
+    badge: 'Familienplanung & Schutz',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/empfaengnisverhuetung.jpg`,
+    alt: 'Individuelle Beratung zur Empfängnisverhütung und Familienplanung – Praxis Frauenzeit Brühl',
+    leadQuote: '„Die Wahl der richtigen Verhütungsmethode ist eine sehr persönliche Entscheidung. Alter, Familienplanung, gesundheitliche Voraussetzungen und persönliche Wünsche spielen dabei eine wichtige Rolle.“',
+    teaser: 'Von hormonfreien Alternativen über moderne Spiralen (Kupfer & Hormon) bis zu Mikropillen: Wir beraten Sie unabhängig, evidenzbasiert und abgestimmt auf Ihre aktuelle Lebenssituation.',
+    detailedText: [
+      'Die Wahl der richtigen Verhütungsmethode ist eine sehr persönliche Entscheidung. Alter, persönliche Familienplanung, Vorerkrankungen, gesundheitliche Voraussetzungen und individuelle Wünsche greifen hier ineinander.',
+      'Wir nehmen uns Zeit, Ihre Fragen ausführlich zu beantworten und gemeinsam mit Ihnen die Methode zu finden, die ideal zu Ihrem Alltag und Ihrem Wohlbefinden passt. Dabei informieren wir Sie detailliert über die verschiedenen Möglichkeiten, deren Wirkweise sowie Vor- und Nachteile.',
+      'Zu unserem Beratungsangebot gehören hormonelle Methoden (Pille, Vaginalring, Pflaster), intrauterine Systeme (hormonhaltige Spiralen wie Mirena/Kyleena/Jaydess sowie hormonfreie Kupferspiralen) und Barrieremethoden.',
+      'Auch wenn sich Ihre Lebenssituation verändert, begleiten wir Sie weiter: Bei der Umstellung oder Beendigung einer bisherigen Methode, bei Fragen zu Zyklus und Fruchtbarkeit oder bei beginnendem Kinderwunsch.'
+    ],
+    keyHighlights: [
+      'Unabhängige, bedürfnisorientierte Beratung ohne Dogmen',
+      'Hormonelle Verhütungsmethoden: Pille, Vaginalring & weitere Präparate',
+      'Intrauterine Systeme (Spirale): Hormonspirale & hormonfreie Kupferspirale',
+      'Schonende Einlage mit präziser Ultraschall-Lagekontrolle',
+      'Barrieremethoden & Schutz vor sexuell übertragbaren Infektionen'
+    ],
+    clinicalFocus: [
+      {
+        category: 'Zu unserem Beratungsangebot gehören unter anderem',
+        items: [
+          'Hormonelle Verhütungsmethoden (Pille, Vaginalring, hormonelle Präparate – Hemmung des Eisprungs)',
+          'Intrauterine Verhütung / Spirale (Hormonspirale sowie hormonfreie Kupferspirale)',
+          'Barrieremethoden (z. B. Kondom für Verhütung plus Schutz vor vielen STIs)',
+          'Notfallkontrazeption & zeitnahe Beratung im Akutfall'
+        ]
+      },
+      {
+        category: 'Lebensphasen & Umstellung',
+        items: [
+          'Verhütung in der Stillzeit und nach einer Entbindung',
+          'Verhütung in der Perimenopause und bei hormonellen Schwankungen',
+          'Begleitung bei der Beendigung der Verhütung und Vorbereitung auf eine Schwangerschaft',
+          'Beratung zu Zyklusbeobachtung und natürlicher Fruchtbarkeit'
+        ]
+      }
+    ],
+    forWhom: 'Frauen und Paare in allen Lebensphasen vom Beginn der Sexualität über die Familienphase bis zu den Wechseljahren.',
+    practiceAdvantage: 'Moderne hochauflösende Sonographie zur exakten Passformprüfung und Lagekontrolle bei Spiralen.',
+    costNote: 'Verhütungsberatung ist Kassenleistung. Verschreibungspflichtige Verhütungsmittel werden bis zum 22. Geburtstag von den gesetzlichen Kassen erstattet.'
+  },
+  {
+    id: 'kinderwunsch',
+    number: '04',
+    category: 'gynaekologie',
+    categoryLabel: 'Gynäkologie & Vorsorge',
+    title: 'Kinderwunsch',
+    subtitle: 'Gemeinsam auf dem Weg zu Ihrem Wunschkind · Vorbereitung & Diagnostik',
+    badge: 'Präkonzeptionelle Begleitung',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/ersttrimester-screening.jpg`,
+    alt: 'Ultraschall und Vorbereitung auf das Wunschkind – Kinderwunsch Praxis Frauenzeit Brühl',
+    leadQuote: '„Der Wunsch nach einem Kind ist für viele Frauen und Paare eine ganz besondere Zeit – voller Vorfreude, Hoffnung und neuer Pläne. Wir begleiten Sie gerne bereits vor einer geplanten Schwangerschaft und unterstützen Sie dabei, gute Voraussetzungen für eine gesunde Schwangerschaft zu schaffen.“',
+    teaser: 'Gute Voraussetzungen für eine gesunde Schwangerschaft schaffen: Von Zyklus- und Hormondiagnostik über Ernährung und Mikronährstoffe bis zur Begleitung bei Endometriose oder PCOS.',
+    detailedText: [
+      'Der Wunsch nach einem Kind ist für Frauen und Paare eine intensive Lebensphase voller Vorfreude, Hoffnung und Gedanken an die Zukunft. Wir begleiten Sie gerne bereits im Vorfeld, um Ihren Körper bestmöglich auf die Empfängnis vorzubereiten.',
+      'In einem persönlichen, ruhigen Gespräch nehmen wir uns Zeit für Ihre Fragen. Wir betrachten Ihre persönliche Situation, Ihren Zyklus, Ihren Lebensstil und eventuelle Vorerkrankungen.',
+      'Bei Zyklusunregelmäßigkeiten, hormonellen Dysbalancen oder bekannten Erkrankungen wie Endometriose und Adenomyose leiten wir eine zielgerichtete Diagnostik ein und behandeln mögliche Ursachen.',
+      'Sollten weiterführende Untersuchungen oder eine spezielle reproduktionsmedizinische Kinderwunschbehandlung erforderlich sein, arbeiten wir eng mit spezialisierten Kinderwunschzentren im Rheinland zusammen.'
+    ],
+    keyHighlights: [
+      'Beratung zur Schwangerschaftsplanung (Zyklus, fruchtbare Tage, Timing)',
+      'Fundierte Zyklus- & Hormondiagnostik bei unregelmäßigen Blutungen',
+      'Ernährungsmedizin & Mikronährstoffversorgung (Folsäure, Jod, Vitamin D, Eisen)',
+      'Gesundheits- & Impfstatuscheck vor Eintritt der Schwangerschaft',
+      'Begleitung bei Endometriose, Adenomyose & PMOS / PCOS'
+    ],
+    clinicalFocus: [
+      {
+        category: 'Zu unserer Kinderwunschbegleitung gehören unter anderem',
+        items: [
+          'Beratung zur Schwangerschaftsplanung (Zyklusphasen, optimaler Empfängniszeitpunkt)',
+          'Zyklus- und Hormonberatung bei Unregelmäßigkeiten oder Lutealinsuffizienz',
+          'Ernährung und Lebensstil (Mikronährstoffversorgung, Schlaf, Stressregulation)',
+          'Gesundheitscheck vor der Schwangerschaft (Impfstatus, Blutwerte, Folsäure)',
+          'Begleitung bei besonderen Fragestellungen (Endometriose, Adenomyose, PCOS)'
+        ]
+      },
+      {
+        category: 'Spezialisierte Vernetzung',
+        items: [
+          'Ovulationsmonitoring mittels hochauflösendem Ultraschall',
+          'Kooperation mit regionalen Kinderwunschzentren in Köln und Bonn',
+          'Unterstützung bei psychosozialen Belastungen während der Kinderwunschzeit',
+          'Nahtloser Übergang in die Schwangerschaftsbegleitung bei erfolgreicher Empfängnis'
+        ]
+      }
+    ],
+    forWhom: 'Frauen und Paare mit Kinderwunsch – von der ersten Planung bis zur Abklärung bei verzögertem Eintritt.',
+    practiceAdvantage: 'Verzahnung von gynäkologischer Pränatalmedizin, DEGUM I Ultraschall und ärztlicher Ernährungsmedizin.',
+    costNote: 'Die präkonzeptionelle Beratung und medizinische Zyklusdiagnostik ist eine Leistung der gesetzlichen Krankenkassen.'
+  },
   {
     id: 'schwangerschaft',
-    number: '01',
+    number: '05',
+    category: 'schwerpunkt',
+    categoryLabel: 'Schwerpunkt',
     title: 'Schwangerschaft',
     subtitle: 'Einfühlsame & ganzheitliche Schwangerschaftsbegleitung',
-    badge: 'Schwerpunkt 01 · Pränatale Begleitung',
-    image: `${import.meta.env.BASE_URL}assets/leistungen/schwangerschaft.webp`,
+    badge: 'Schwerpunkt · Pränatale Begleitung',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/schwangerschaftsbegleitung.jpg`,
     alt: 'Schwangere Frau hält behutsam rosa Babyschuhe auf ihrem Bauch',
     leadQuote: '„Mit Ihrer Schwangerschaft beginnt ein neuer Lebensabschnitt – voller Vorfreude, Veränderungen und einzigartiger Momente.“',
     teaser: 'Vom positiven Schwangerschaftstest über alle Trimester bis ins Wochenbett: Wir begleiten Sie mit medizinischer Kompetenz, hoher Feindiagnostik-Expertise (DEGUM I) und herzlicher Fürsorge.',
@@ -58,9 +277,9 @@ export const SCHWERPUNKTE_DATA: SchwerpunktItem[] = [
       'In regelmäßigen Patientinnenseminaren rund um Schwangerschaft, Geburt und Ernährung erhalten Sie fundierte Informationen und praktische Tipps in entspannter Praxisatmosphäre.'
     ],
     keyHighlights: [
-      'Mutterschaftsvorsorge nach aktuellen Richtlinien',
+      'Mutterschaftsvorsorge nach aktuellen Richtlinien & Leitlinien',
       'DEGUM I Ultraschalldiagnostik & fetomaternale Sonographie',
-      'Screening auf Gestationsdiabetes (Glukosetoleranztest)',
+      'Screening auf Gestationsdiabetes (oraler Glukosetoleranztest)',
       'Regelmäßige Patientinnenseminare zu Schwangerschaft & Ernährung'
     ],
     clinicalFocus: [
@@ -79,70 +298,171 @@ export const SCHWERPUNKTE_DATA: SchwerpunktItem[] = [
           'Ersttrimesterscreening (11+0 bis 13+6 SSW) nach FMF-Kriterien',
           'Nicht-invasiver Pränataltest (NIPT) auf Trisomie 13, 18 und 21',
           'Präeklampsiescreening zur Früherkennung von Schwangerschaftshochdruck',
-          'Doppler-Ultraschall zur Beurteilung der mütterlichen & kindlichen Durchblutung',
-          'Infektionsdiagnostik (CMV, Toxoplasmose, B-Streptokokken-Abstrich)'
+          'Doppler-Ultraschall zur Beurteilung der Durchblutung',
+          'Infektionsdiagnostik (CMV, Toxoplasmose, B-Streptokokken)'
         ]
       }
     ],
-    forWhom: 'Werdende Mütter & Paare vom Kinderwunsch über die Frühschwangerschaft bis zur Entbindung & Wochenbett.',
+    forWhom: 'Werdende Mütter & Paare vom Kinderwunsch über alle Trimester bis zur Entbindung & ins Wochenbett.',
     practiceAdvantage: 'Hochqualifizierte Betreuung durch ehemalige Oberärztin & DEGUM I zertifizierte Pränatalmedizinerin mit Zweitmonitor für Eltern.',
     costNote: 'Die reguläre Schwangerschaftsvorsorge ist Kassenleistung. Spezialisierte Pränataltests (z. B. NIPT ohne Indikation, erweitertes Ersttrimesterscreening) sind Wahlleistungen (IGeL).'
   },
   {
-    id: 'ernaehrung',
-    number: '02',
-    title: 'Ernährungsmedizin',
-    subtitle: 'Wissenschaftlich fundierte Ernährungstherapie & Vitalstoffberatung',
-    badge: 'Schwerpunkt 02 · Ganzheitliche Vitalität',
-    image: `${import.meta.env.BASE_URL}assets/leistungen/ernaehrungsmedizin.webp`,
-    alt: 'Frische, gesunde bunte Ernährung mit mediterranem Gemüse, Beeren, Nüssen und Vitalstoffen',
-    leadQuote: '„Eine ausgewogene, gesunde Ernährung ist ein wesentlicher Baustein für unsere Gesundheit und unser Wohlbefinden.“',
-    teaser: 'Gezielte ernährungsmedizinische Therapie verbindet gynäkologische Behandlung mit individueller Prävention. Alltagstauglich, nachhaltig und ohne kurzfristige Diäten.',
+    id: 'krebsfrueherkennung',
+    number: '06',
+    category: 'gynaekologie',
+    categoryLabel: 'Gynäkologie & Vorsorge',
+    title: 'Krebsfrüherkennung',
+    subtitle: 'Früher erkennen. Besser behandeln. · Regelmäßige Vorsorge rettet Leben',
+    badge: 'Prävention & Früherkennung',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/krebsfrueherkennung.jpg`,
+    alt: 'Einfühlsame Krebsfrüherkennung und gynäkologische Vorsorgeuntersuchung – Praxis Frauenzeit Brühl',
+    leadQuote: '„Viele gynäkologische Krebserkrankungen verursachen in frühen Stadien keine Beschwerden. Regelmäßige Früherkennungsuntersuchungen ermöglichen es, Zellveränderungen oder Erkrankungen frühzeitig zu entdecken und dadurch die Heilungschancen deutlich zu verbessern.“',
+    teaser: 'Regelmäßige gynäkologische Früherkennung: Jährliche Vorsorge, Pap-Abstrich, HPV-Co-Test ab 35 und Tastuntersuchung der Brust in vertrauensvoller Atmosphäre.',
     detailedText: [
-      'Die Ernährungsmedizin berücksichtigt die enge, wissenschaftlich belegte Wechselwirkung zwischen Ernährung, Stoffwechsel, Hormonhaushalt und Entzündungsprozessen im weiblichen Körper.',
-      'Viele gynäkologische Beschwerden – von chronischen Schmerzen bei Endometriose über Zyklusstörungen bis hin zu Wechseljahresbeschwerden – können durch eine gezielte Anpassung der Ernährungsweise spürbar positiv beeinflusst werden.',
-      'Beide Fachärztinnen unserer Praxis befinden sich in qualifizierter ernährungsmedizinischer Weiterbildung. Gemeinsam entwickeln wir realistische, machbare Strategien, die sich harmonisch in Ihren persönlichen Alltag einfügen.',
-      'Wir verstehen gesunde Ernährung nicht als Verzicht, sondern als tägliche Möglichkeit, Ihren Körper bestmöglich mit wertvollen Mikronährstoffen und Energie zu versorgen.'
+      'Viele gynäkologische Krebserkrankungen verursachen in frühen Stadien keinerlei Beschwerden oder Schmerzen. Regelmäßige Früherkennungsuntersuchungen ermöglichen es, Zellveränderungen oder Vorstufen zu entdecken, lange bevor ernsthafte Probleme auftreten – dadurch steigen die Heilungschancen signifikant.',
+      'Im Rahmen der gesetzlichen Krebsfrüherkennung bieten wir Ihnen die jährliche gynäkologische Vorsorgeuntersuchung mit Spekulumeinstellung, Zellabstrich vom Gebärmutterhals und Brusttastuntersuchung.',
+      'Ab dem 35. Lebensjahr erfolgt alle drei Jahre die Kombination aus HPV-Test und Zellabstrich (Co-Testing) als Leistung der gesetzlichen Krankenkassen. Ab dem 50. Lebensjahr beraten wir Sie zum Mammographie-Screening sowie zur Darmkrebsfrüherkennung.',
+      'Vorsorge bedeutet, die Gesundheit aktiv zu schützen (Lebensstil, Ernährung, Bewegung); Früherkennung spürt unbemerkte Zellveränderungen rechtzeitig auf. Unser Ziel ist es, Ihre Gesundheit langfristig zu erhalten.'
     ],
     keyHighlights: [
-      'Fundierte Ernährungstherapie bei Endometriose & chronischen Schmerzen',
-      'Unterstützung bei PMOS (PCOS), Zyklusstörungen & Kinderwunsch',
-      'Gezielte Nährstoffberatung in Schwangerschaft & Stillzeit',
-      'Konzepte zur Osteoporose- & Stoffwechselprävention'
+      'Jährliche gynäkologische Untersuchung & Spekulumeinstellung',
+      'Zellabstrich vom Gebärmutterhals (Pap-Test) zur Früherkennung',
+      'Ab 35 Jahren: HPV-Test kombiniert mit Zellabstrich (Co-Test) alle 3 Jahre',
+      'Gründliche Tastuntersuchung der Brust und regionalen Lymphknoten',
+      'Aufklärung & Beratung zum Mammographie-Screening und zur Darmkrebsvorsorge'
     ],
     clinicalFocus: [
       {
-        category: 'Häufige Behandlungsanlässe',
+        category: 'Im Rahmen der gesetzlichen Krebsfrüherkennung bieten wir Ihnen',
         items: [
-          'Endometriose & chronisch-entzündliche Beckenschmerzen',
-          'Polyendokrines metabolisches Ovarialsyndrom (PMOS / PCOS)',
-          'Kinderwunsch, Schwangerschaftsvorbereitung & Gestationsdiabetes',
-          'Hormonelle Umstellungsphasen & Wechseljahresbeschwerden',
-          'Gewichtsregulation, Insulinresistenz & Mangelernährung',
-          'Osteoporoseprävention durch knochenaktive Mikronährstoffe'
+          'Jährliche gynäkologische Vorsorgeuntersuchung mit Spekulumeinstellung und Zellabstrich',
+          'Sorgfältige Tastuntersuchung der Brustdrüsen und Lymphabflusswege',
+          'Ab dem 35. Lebensjahr: HPV-Test in Kombination mit Zellabstrich (Co-Test) alle drei Jahre',
+          'Ab dem 50. Lebensjahr: Mammographie-Screening und Darmkrebsfrüherkennung (iFOBT-Stuhltest)'
         ]
       },
       {
-        category: 'Unser Beratungsansatz',
+        category: 'Vorsorge vs. Früherkennung',
         items: [
-          'Ausführliche ernährungs- und anamnestische Statuserhebung',
-          'Wissenschaftlich fundierte, leitliniengerechte Nährstoffanalyse',
-          'Individuelle Pläne ohne Radikaldiäten oder Dogmen',
-          'Integration praxistauglicher Ernährungsgewohnheiten in Familie & Beruf'
+          'Vorsorge: Aktive Gesundheitsförderung durch gesunden Lebensstil und Risikominimierung',
+          'Früherkennung: Frühzeitiges Entdecken bereits bestehender, symptomloser Zellveränderungen',
+          'Ergänzende Ultraschallfrüherkennung auf Wunsch (Mammasonographie & Beckenultraschall)',
+          'Feinfühlige, schmerzarme Untersuchungstechnik'
         ]
       }
     ],
-    forWhom: 'Frauen in allen Lebensphasen mit hormonellen Dysbalancen, Kinderwunsch, chronischen Schmerzen oder dem Wunsch nach präventiver Vitalität.',
-    practiceAdvantage: 'Ärztlich geleitete Ernährungsmedizin direkt verzahnt mit gynäkologischer Diagnostik.',
-    costNote: 'Ernährungsmedizinische Spezialberatung wird als individuelle Gesundheitsleistung (IGeL) angeboten; viele Krankenkassen bezuschussen ernährungsmedizinische Präventionsangebote.'
+    forWhom: 'Alle Frauen ab 20 Jahren zur regelmäßigen lebenslangen Gesundheitserhaltung.',
+    practiceAdvantage: 'Verbindung von Zytologie-Expertise, moderner Mikroskopie und schonender Untersuchungsmethode.',
+    costNote: 'Die reguläre Krebsfrüherkennung ist eine vollständige Pflichtleistung aller gesetzlichen und privaten Krankenkassen.'
+  },
+  {
+    id: 'krebsnachsorge',
+    number: '07',
+    category: 'gynaekologie',
+    categoryLabel: 'Gynäkologie & Vorsorge',
+    title: 'Krebsnachsorge',
+    subtitle: 'Gemeinsam zurück in den Alltag · Verlässliche Begleitung mit Herz',
+    badge: 'Onkologische Nachsorge & Fürsorge',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/brustsprechstunde.jpg`,
+    alt: 'Einfühlsames Gespräch zur Krebsnachsorge in der Praxis Frauenzeit Brühl',
+    leadQuote: '„Die Diagnose einer Krebserkrankung verändert das Leben oft von einem Tag auf den anderen. In unserer Krebsnachsorge stehen nicht nur medizinische Kontrolluntersuchungen im Mittelpunkt, sondern vor allem Sie als Mensch. Wir nehmen uns Zeit, hören zu und unterstützen Sie.“',
+    teaser: 'Nach Abschluss der Akutbehandlung (OP, Chemo, Bestrahlung) begleiten wir Sie leitliniengerecht über mindestens fünf Jahre – medizinisch kompetent, psychosomatisch stärkend und einfühlsam.',
+    detailedText: [
+      'Die Diagnose einer Krebserkrankung verändert das Leben fundamental. Doch auch nach Abschluss der primären Behandlung bleiben oft Fragen, Ängste, körperliche Erschöpfung oder Beschwerden zurück, und der Wunsch nach verlässlicher medizinischer Begleitung wächst.',
+      'In unserer Krebsnachsorge stehen nicht nur die medizinischen Kontrolluntersuchungen im Mittelpunkt, sondern vor allem Sie als ganzer Mensch. Wir nehmen uns Zeit, hören zu und unterstützen Sie dabei, Schritt für Schritt wieder Vertrauen in Ihren Körper und Ihren Alltag zu gewinnen.',
+      'Die Nachsorge beginnt nach Abschluss der Erstbehandlung (z. B. nach Operation, Chemotherapie oder Strahlentherapie) und erfolgt leitliniengerecht in regelmäßigen Abständen, in der Regel über einen Zeitraum von fünf Jahren.',
+      'Sie müssen diesen Weg nicht allein gehen: Wir begleiten Sie mit medizinischer Fachkompetenz, viel Einfühlungsvermögen und dem Ziel, Ihnen Sicherheit, Orientierung und Zuversicht zu geben.'
+    ],
+    keyHighlights: [
+      'Strukturierte Nachsorge nach aktuellen onkologischen Leitlinien (S3)',
+      'Regelmäßige Ultraschallkontrollen der Brust (Mammasonographie) & Beckenorgane',
+      'Begleitung bei körperlichen, seelischen und sozialen Herausforderungen',
+      'Behandlung und Linderung von Therapiefolgen & Nebenwirkungen (z.B. Hormonentzug, Fatigue)',
+      'Frühzeitiges Erkennen eines möglichen Rückfalls oder neuer Veränderungen'
+    ],
+    clinicalFocus: [
+      {
+        category: 'Ziele der Krebsnachsorge',
+        items: [
+          'Unterstützung bei der Rückkehr in den Alltag sowie ins Berufsleben',
+          'Begleitung bei körperlichen, seelischen und sozialen Herausforderungen',
+          'Behandlung und Linderung von Beschwerden sowie möglicher Therapiefolgen',
+          'Frühzeitiges Erkennen eines möglichen Rückfalls oder neuer Veränderungen'
+        ]
+      },
+      {
+        category: 'Leitliniengerechte Untersuchungsintervalle',
+        items: [
+          '1. bis 3. Jahr: Vierteljährliche Kontroll- und Beratungsuntersuchungen',
+          '4. und 5. Jahr: Halbjährliche Kontrollen',
+          'Körperliche Untersuchung, Narbenkontrolle & gezielte Ultraschalluntersuchung',
+          'Enge Kooperation mit zertifizierten Brustzentren und onkologischen Praxen'
+        ]
+      }
+    ],
+    forWhom: 'Frauen nach Abschluss der Erstbehandlung einer gynäkologischen Krebserkrankung oder von Brustkrebs.',
+    practiceAdvantage: 'Langjährige oberärztliche Erfahrung im Brustzentrum sowie qualifizierte psychosomatische Grundversorgung.',
+    costNote: 'Die strukturierte onkologische Krebsnachsorge ist eine vollständige Leistung der gesetzlichen und privaten Krankenkassen.'
+  },
+  {
+    id: 'impfungen',
+    number: '08',
+    category: 'gynaekologie',
+    categoryLabel: 'Gynäkologie & Vorsorge',
+    title: 'Impfungen',
+    subtitle: 'Schutz für Ihre Gesundheit – heute und in der Zukunft',
+    badge: 'Präventiver Infektionsschutz',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/impfungen.jpg`,
+    alt: 'Fachgerechte Schutzimpfung und Impfpass-Beratung – Praxis Frauenzeit Brühl',
+    leadQuote: '„Impfungen gehören zu den wichtigsten Maßnahmen der Gesundheitsvorsorge. Sie schützen nicht nur vor bestimmten Infektionskrankheiten, sondern können auch dazu beitragen, schwerwiegende Folgeerkrankungen zu verhindern.“',
+    teaser: 'Von der HPV-Impfung zum Schutz vor Gebärmutterhalskrebs über Impfungen vor und in der Schwangerschaft bis zum kostenfreien Impfpass-Check bei jedem Praxisbesuch.',
+    detailedText: [
+      'Impfungen gehören zu den wirksamsten Maßnahmen der modernen Gesundheitsvorsorge. Sie schützen nicht nur vor Infektionskrankheiten, sondern verhindern oft lebensbedrohliche Folgeerkrankungen.',
+      'Ein besonderer Schwerpunkt in der Frauenheilkunde ist die HPV-Impfung. Humane Papillomviren (HPV) gehören zu den häufigsten sexuell übertragbaren Viren. Bestimmte HPV-Typen können Zellveränderungen verursachen und an der Entstehung von Gebärmutterhalskrebs sowie Genitalwarzen beteiligt sein. Die Impfung bietet hochwirksamen Schutz – besonders im Jugendalter, aber auch darüber hinaus.',
+      'Gerade vor einer geplanten Schwangerschaft ist es sinnvoll, den Impfstatus frühzeitig zu überprüfen (z. B. Röteln, Windpocken, Masern), um das ungeborene Kind vor Infektionen zu schützen.',
+      'Bringen Sie einfach zu jedem Termin Ihren Impfausweis mit – wir überprüfen ihn gerne und führen empfohlene Impfungen direkt durch.'
+    ],
+    keyHighlights: [
+      'HPV-Impfung für Mädchen, Jungen und junge Erwachsene',
+      'Überprüfung und Vervollständigung des Impfstatus nach aktuellen STIKO-Empfehlungen',
+      'Impfberatung vor der Schwangerschaft (Ausschluss von Impflücken)',
+      'Empfohlene Schutzimpfungen in der Schwangerschaft (z.B. Keuchhusten & Grippe)',
+      'Auffrischimpfungen und Standardimpfungen für Erwachsene (Tetanus, Diphtherie, Polio)'
+    ],
+    clinicalFocus: [
+      {
+        category: 'Wir beraten Sie gerne zu',
+        items: [
+          'HPV-Impfung für Mädchen, Jungen und junge Erwachsene (Schutz vor Gebärmutterhalskrebs)',
+          'Überprüfung und Vervollständigung des Impfstatus nach STIKO-Richtlinien',
+          'Impfungen in der Schwangerschaft sowie optimale Vorbereitung auf eine Schwangerschaft',
+          'Auffrischungsimpfungen und fehlende Standardimpfungen im Erwachsenenalter'
+        ]
+      },
+      {
+        category: 'Service in der Praxis Frauenzeit',
+        items: [
+          'Kostenloser Impfpass-Check bei regulären Vorsorgeterminen',
+          'Verfügbarkeit gängiger Impfstoffe direkt in der Praxis',
+          'Umfassende Aufklärung über Verträglichkeit und Schutzdauer',
+          'Schutz der Familie durch die sogenannte Kokon-Strategie'
+        ]
+      }
+    ],
+    forWhom: 'Teenager, junge Erwachsene, Frauen mit Kinderwunsch, Schwangere und alle Patientinnen zur Auffrischung.',
+    practiceAdvantage: 'Unkomplizierte Durchführung im Rahmen regulärer Praxisbesuche ohne zusätzliche Termine.',
+    costNote: 'STIKO-empfohlene Schutzimpfungen (einschließlich HPV-Impfung in der Regel bis zum 18. bzw. 26. Lebensjahr) sind vollständige Kassenleistungen.'
   },
   {
     id: 'hormone',
-    number: '03',
+    number: '09',
+    category: 'schwerpunkt',
+    categoryLabel: 'Schwerpunkt',
     title: 'Hormonsprechstunde',
     subtitle: 'Präzise Diagnostik & einfühlsame Therapie hormoneller Dysbalancen',
-    badge: 'Schwerpunkt 03 · Hormonelle Balance',
-    image: `${import.meta.env.BASE_URL}assets/leistungen/hormonsprechstunde.webp`,
+    badge: 'Schwerpunkt · Hormonelle Balance',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/hormonsprechstunde.jpg`,
     alt: 'Hormonbalance Bausteine mit den Aufschriften Estrogen und Progesterone',
     leadQuote: '„Hormone beeinflussen den weiblichen Körper in jeder Lebensphase.“',
     teaser: 'Sie steuern Vitalität, Zyklus, Fruchtbarkeit und seelisches Wohlbefinden: Bereits feinste hormonelle Ungleichgewichte können den Alltag belasten. Wir finden die Ursache.',
@@ -187,11 +507,13 @@ export const SCHWERPUNKTE_DATA: SchwerpunktItem[] = [
   },
   {
     id: 'menopause',
-    number: '04',
+    number: '10',
+    category: 'schwerpunkt',
+    categoryLabel: 'Schwerpunkt',
     title: 'Menopausensprechstunde',
     subtitle: 'Individuelle, moderne Begleitung durch die Wechseljahre',
-    badge: 'Schwerpunkt 04 · Wechseljahresbegleitung',
-    image: `${import.meta.env.BASE_URL}assets/leistungen/menopausensprechstunde.webp`,
+    badge: 'Schwerpunkt · Wechseljahresbegleitung',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/menopausensprechstunde.jpg`,
     alt: 'Arrangement aus zarten Rosen, Uhr und Menopause-Schriftzug auf rosa Hintergrund',
     leadQuote: '„Mit den Wechseljahren beginnt ein ganz natürlicher Wandel, den jede Frau unterschiedlich erlebt.“',
     teaser: 'Bereits ab dem 40. Lebensjahr können erste hormonelle Veränderungen eintreffen. Wir betrachten Sie als Ganzes und bieten moderne, sichere Therapiekonzepte.',
@@ -234,12 +556,64 @@ export const SCHWERPUNKTE_DATA: SchwerpunktItem[] = [
     costNote: 'Die ausführliche Menopausensprechstunde mit ganzheitlicher Beratung ist eine individuelle Gesundheitsleistung (IGeL).'
   },
   {
+    id: 'ernaehrung',
+    number: '11',
+    category: 'schwerpunkt',
+    categoryLabel: 'Schwerpunkt',
+    title: 'Ernährungsmedizin',
+    subtitle: 'Wissenschaftlich fundierte Ernährungstherapie & Vitalstoffberatung',
+    badge: 'Schwerpunkt · Ganzheitliche Vitalität',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/ernaehrungsmedizin.jpg`,
+    alt: 'Frische, gesunde bunte Ernährung mit mediterranem Gemüse, Beeren, Nüssen und Vitalstoffen',
+    leadQuote: '„Eine ausgewogene, gesunde Ernährung ist ein wesentlicher Baustein für unsere Gesundheit und unser Wohlbefinden.“',
+    teaser: 'Gezielte ernährungsmedizinische Therapie verbindet gynäkologische Behandlung mit individueller Prävention. Alltagstauglich, nachhaltig und ohne kurzfristige Diäten.',
+    detailedText: [
+      'Die Ernährungsmedizin berücksichtigt die enge, wissenschaftlich belegte Wechselwirkung zwischen Ernährung, Stoffwechsel, Hormonhaushalt und Entzündungsprozessen im weiblichen Körper.',
+      'Viele gynäkologische Beschwerden – von chronischen Schmerzen bei Endometriose über Zyklusstörungen bis hin zu Wechseljahresbeschwerden – können durch eine gezielte Anpassung der Ernährungsweise spürbar positiv beeinflusst werden.',
+      'Beide Fachärztinnen unserer Praxis befinden sich in qualifizierter ernährungsmedizinischer Weiterbildung. Gemeinsam entwickeln wir realistische, machbare Strategien, die sich harmonisch in Ihren persönlichen Alltag einfügen.',
+      'Wir verstehen gesunde Ernährung nicht als Verzicht, sondern als tägliche Möglichkeit, Ihren Körper bestmöglich mit wertvollen Mikronährstoffen und Energie zu versorgen.'
+    ],
+    keyHighlights: [
+      'Fundierte Ernährungstherapie bei Endometriose & chronischen Schmerzen',
+      'Unterstützung bei PMOS (PCOS), Zyklusstörungen & Kinderwunsch',
+      'Gezielte Nährstoffberatung in Schwangerschaft & Stillzeit',
+      'Konzepte zur Osteoporose- & Stoffwechselprävention'
+    ],
+    clinicalFocus: [
+      {
+        category: 'Häufige Behandlungsanlässe',
+        items: [
+          'Endometriose & chronisch-entzündliche Beckenschmerzen',
+          'Polyendokrines metabolisches Ovarialsyndrom (PMOS / PCOS)',
+          'Kinderwunsch, Schwangerschaftsvorbereitung & Gestationsdiabetes',
+          'Hormonelle Umstellungsphasen & Wechseljahresbeschwerden',
+          'Gewichtsregulation, Insulinresistenz & Mangelernährung',
+          'Osteoporoseprävention durch knochenaktive Mikronährstoffe'
+        ]
+      },
+      {
+        category: 'Unser Beratungsansatz',
+        items: [
+          'Ausführliche ernährungs- und anamnestische Statuserhebung',
+          'Wissenschaftlich fundierte, leitliniengerechte Nährstoffanalyse',
+          'Individuelle Pläne ohne Radikaldiäten oder Dogmen',
+          'Integration praxistauglicher Ernährungsgewohnheiten in Familie & Beruf'
+        ]
+      }
+    ],
+    forWhom: 'Frauen in allen Lebensphasen mit hormonellen Dysbalancen, Kinderwunsch, chronischen Schmerzen oder dem Wunsch nach präventiver Vitalität.',
+    practiceAdvantage: 'Ärztlich geleitete Ernährungsmedizin direkt verzahnt mit gynäkologischer Diagnostik.',
+    costNote: 'Ernährungsmedizinische Spezialberatung wird als individuelle Gesundheitsleistung (IGeL) angeboten; viele Krankenkassen bezuschussen ernährungsmedizinische Präventionsangebote.'
+  },
+  {
     id: 'betterpelvi',
-    number: '05',
+    number: '12',
+    category: 'schwerpunkt',
+    categoryLabel: 'Schwerpunkt',
     title: 'BetterPelvi- Therapie',
     subtitle: 'Innovative Beckenbodentherapie mit Magnetstimulation für Sie & Ihn',
-    badge: 'Schwerpunkt 05 · Beckenbodengesundheit',
-    image: `${import.meta.env.BASE_URL}assets/leistungen/betterpelvi-therapie.webp`,
+    badge: 'Schwerpunkt · Beckenbodengesundheit',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/betterpelvi-therapie.jpg`,
     alt: 'Hände halten behutsam eine blühende Rose als Symbol für Beckenbodengesundheit und Wohlbefinden',
     leadQuote: '„Der Beckenboden spielt eine zentrale Rolle für Kontinenz, Stabilität und unser körperliches Wohlbefinden.“',
     teaser: 'Gezielte Aktivierung der tiefen Beckenbodenmuskulatur: Vollständig bekleidet, schmerzfrei und in nur 20–30 Minuten auf dem innovativen BetterPelvi® Beckenbodenstuhl.',
@@ -282,11 +656,13 @@ export const SCHWERPUNKTE_DATA: SchwerpunktItem[] = [
   },
   {
     id: 'igel',
-    number: '06',
+    number: '13',
+    category: 'schwerpunkt',
+    categoryLabel: 'Schwerpunkt',
     title: 'Wahlleistungen (IGeL)',
     subtitle: 'Sinnvolle individuelle Zusatzuntersuchungen für maximale Sicherheit',
-    badge: 'Schwerpunkt 06 · Individuelle Vorsorge',
-    image: `${import.meta.env.BASE_URL}assets/leistungen/wahlleistungen-igel.webp`,
+    badge: 'Schwerpunkt · Individuelle Vorsorge',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/wahlleistungen-igel.jpg`,
     alt: 'Zart blühender Kirschblütenzweig vor hellem Hintergrund als Symbol für Schutz und Vorsorge',
     leadQuote: '„Wir bieten Ihnen neben den Kassenleistungen ein ausgewähltes Spektrum sinnvoller individueller Gesundheitsleistungen an.“',
     teaser: 'Erweiterte Vorsorge und Diagnostik über den gesetzlichen Basisschutz hinaus: Individuell abgestimmt auf Ihr persönliches Sicherheitsbedürfnis und Lebensalter.',
@@ -330,31 +706,45 @@ export const SCHWERPUNKTE_DATA: SchwerpunktItem[] = [
 ];
 
 export function ServicesSection() {
+  const [activeFilter, setActiveFilter] = useState<'alle' | 'schwerpunkt' | 'gynaekologie'>('alle');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedSchwerpunkt, setSelectedSchwerpunkt] = useState<SchwerpunktItem | null>(null);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [selectedItem, setSelectedItem] = useState<LeistungItem | null>(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto-advance carousel
+  const filteredItems = LEISTUNGEN_DATA.filter(item => {
+    if (activeFilter === 'schwerpunkt') return item.category === 'schwerpunkt';
+    if (activeFilter === 'gynaekologie') return item.category === 'gynaekologie';
+    return true;
+  });
+
+  // Ensure currentIndex stays within bounds when filter changes
+  useEffect(() => {
+    if (currentIndex >= filteredItems.length) {
+      setCurrentIndex(0);
+    }
+  }, [activeFilter, filteredItems.length, currentIndex]);
+
+  // Auto-advance carousel (only when enabled)
   useEffect(() => {
     if (!isAutoPlaying) return;
     timerRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % SCHWERPUNKTE_DATA.length);
+      setCurrentIndex((prev) => (prev + 1) % filteredItems.length);
     }, 7000);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, filteredItems.length]);
 
   const handlePrev = () => {
     setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev === 0 ? SCHWERPUNKTE_DATA.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? filteredItems.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
     setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev + 1) % SCHWERPUNKTE_DATA.length);
+    setCurrentIndex((prev) => (prev + 1) % filteredItems.length);
   };
 
   const handleSelect = (index: number) => {
@@ -362,21 +752,35 @@ export function ServicesSection() {
     setCurrentIndex(index);
   };
 
-  const currentItem = SCHWERPUNKTE_DATA[currentIndex];
+  const currentItem = filteredItems[currentIndex] || LEISTUNGEN_DATA[0];
 
-  // Helper icons per Schwerpunkt
-  const getIcon = (id: SchwerpunktItem['id']) => {
+  // Helper icons per Leistung
+  const getIcon = (id: LeistungItem['id']) => {
     switch (id) {
+      case 'allgemeine-gynaekologie':
+        return <Stethoscope className="h-4 w-4" />;
+      case 'maedchensprechstunde':
+        return <Sparkles className="h-4 w-4" />;
+      case 'empfaengnisverhuetung':
+        return <ShieldCheck className="h-4 w-4" />;
+      case 'kinderwunsch':
+        return <HeartHandshake className="h-4 w-4" />;
       case 'schwangerschaft':
         return <Baby className="h-4 w-4" />;
+      case 'krebsfrueherkennung':
+        return <Activity className="h-4 w-4" />;
+      case 'krebsnachsorge':
+        return <Heart className="h-4 w-4" />;
+      case 'impfungen':
+        return <Syringe className="h-4 w-4" />;
+      case 'hormone':
+        return <Zap className="h-4 w-4" />;
+      case 'menopause':
+        return <Clock className="h-4 w-4" />;
       case 'ernaehrung':
         return <Salad className="h-4 w-4" />;
-      case 'hormone':
-        return <Activity className="h-4 w-4" />;
-      case 'menopause':
-        return <Heart className="h-4 w-4" />;
       case 'betterpelvi':
-        return <Zap className="h-4 w-4" />;
+        return <Activity className="h-4 w-4" />;
       case 'igel':
         return <ShieldCheck className="h-4 w-4" />;
     }
@@ -394,32 +798,29 @@ export function ServicesSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 text-left">
           <div className="max-w-3xl">
+            {/* Header badge without flower icon as requested */}
             <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
-              <CherryBlossomFlower className="h-3.5 w-3.5 text-pink-600 shrink-0" />
-              <span>Ganzheitliche Frauenheilkunde · 6 Schwerpunkte</span>
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Ganzheitliche Frauenheilkunde · 13 Leistungsbereiche</span>
             </div>
+            {/* Renamed to "Leistungen" */}
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl lg:text-4xl">
-              Unsere Schwerpunkte
+              Leistungen
             </h2>
             <p className="mt-2 text-sm sm:text-base text-[#5C4A4F] leading-relaxed">
-              Vorsorge, Begleitung und moderne Spezialtherapien: Wir verbinden fundierte Schulmedizin mit ganzheitlicher Zuwendung in 6 medizinischen Kernbereichen.
+              Vorsorge, Begleitung und moderne Spezialtherapien: Wir verbinden fundierte Schulmedizin mit ganzheitlicher Zuwendung für Frauen in allen Lebensphasen.
             </p>
           </div>
 
-          {/* Stepper Controls: Slide Counter & Nav Buttons */}
-          <div className="flex items-center gap-3 self-start md:self-end shrink-0">
-            <div className="flex items-center gap-1.5 font-mono text-xs font-semibold text-[#735F64] bg-white px-3.5 py-2 rounded-xl border border-[#F0E6E8] shadow-2xs">
-              <span className="text-pink-700 font-bold">{currentItem.number}</span>
-              <span>/</span>
-              <span>06</span>
-            </div>
+          {/* Stepper Controls: Nav Buttons */}
+          <div className="flex items-center gap-2 self-start md:self-end shrink-0">
 
             <div className="flex items-center gap-1.5">
               <button
                 type="button"
                 onClick={handlePrev}
                 className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#E8D2D7] bg-white text-[#2B2326] hover:bg-[#FAF5F6] hover:text-pink-700 transition-colors shadow-2xs cursor-pointer"
-                aria-label="Vorheriger Schwerpunkt"
+                aria-label="Vorherige Leistung"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
@@ -427,7 +828,7 @@ export function ServicesSection() {
                 type="button"
                 onClick={handleNext}
                 className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#E8D2D7] bg-white text-[#2B2326] hover:bg-[#FAF5F6] hover:text-pink-700 transition-colors shadow-2xs cursor-pointer"
-                aria-label="Nächster Schwerpunkt"
+                aria-label="Nächste Leistung"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -435,14 +836,51 @@ export function ServicesSection() {
           </div>
         </div>
 
-        {/* 6 Schwerpunkte Quick Pill Selectors (Desktop & Mobile) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 pt-2 pb-6">
-          {SCHWERPUNKTE_DATA.map((item, idx) => (
+        {/* Filter Tabs: Alle, Schwerpunkte, Gynäkologie & Vorsorge */}
+        <div className="flex flex-wrap items-center gap-2 pb-4">
+          <button
+            type="button"
+            onClick={() => { setActiveFilter('alle'); setCurrentIndex(0); }}
+            className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
+              activeFilter === 'alle'
+                ? 'bg-pink-700 text-white shadow-xs'
+                : 'bg-white text-[#5C4A4F] border border-[#F0E6E8] hover:border-pink-300'
+            }`}
+          >
+            Alle Leistungen ({LEISTUNGEN_DATA.length})
+          </button>
+          <button
+            type="button"
+            onClick={() => { setActiveFilter('schwerpunkt'); setCurrentIndex(0); }}
+            className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
+              activeFilter === 'schwerpunkt'
+                ? 'bg-pink-700 text-white shadow-xs'
+                : 'bg-white text-[#5C4A4F] border border-[#F0E6E8] hover:border-pink-300'
+            }`}
+          >
+            Schwerpunkte & Spezialtherapien (6)
+          </button>
+          <button
+            type="button"
+            onClick={() => { setActiveFilter('gynaekologie'); setCurrentIndex(0); }}
+            className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
+              activeFilter === 'gynaekologie'
+                ? 'bg-pink-700 text-white shadow-xs'
+                : 'bg-white text-[#5C4A4F] border border-[#F0E6E8] hover:border-pink-300'
+            }`}
+          >
+            Gynäkologische Versorgung & Vorsorge (7)
+          </button>
+        </div>
+
+        {/* Quick Pill Selector Bar (Scrollable on small screens) */}
+        <div className="flex overflow-x-auto gap-2 pb-5 pt-1 no-scrollbar">
+          {filteredItems.map((item, idx) => (
             <button
               key={item.id}
               type="button"
               onClick={() => handleSelect(idx)}
-              className={`flex items-center justify-center gap-2 rounded-xl px-3 py-2.5 text-xs font-semibold transition-all cursor-pointer text-center ${
+              className={`flex items-center gap-2 rounded-xl px-3.5 py-2.5 text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                 currentIndex === idx
                   ? 'bg-pink-700 text-white shadow-sm ring-2 ring-pink-700/25 scale-[1.02]'
                   : 'bg-white text-[#5C4A4F] hover:text-[#2B2326] border border-[#F0E6E8] hover:border-[#E8D2D7] shadow-2xs hover:bg-[#FAF5F6]'
@@ -451,20 +889,20 @@ export function ServicesSection() {
               <span className={`shrink-0 ${currentIndex === idx ? 'text-white' : 'text-pink-700'}`}>
                 {getIcon(item.id)}
               </span>
-              <span className="truncate">{item.title}</span>
+              <span>{item.title}</span>
             </button>
           ))}
         </div>
 
-        {/* Main Interactive Stage for Selected Schwerpunkt */}
+        {/* Main Interactive Spotlight Stage */}
         <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-[#E8D2D7] bg-white shadow-md">
           <div className="grid grid-cols-1 lg:grid-cols-12">
             
             {/* Visual Photo Area (7 cols on lg) */}
             <div 
-              className="relative lg:col-span-7 aspect-16/10 sm:aspect-16/9 lg:aspect-auto lg:min-h-[500px] bg-neutral-900 group/stage overflow-hidden cursor-pointer"
-              onClick={() => setSelectedSchwerpunkt(currentItem)}
-              title="Klicken für ausführliche Details zum Schwerpunkt"
+              className="relative lg:col-span-7 aspect-16/10 sm:aspect-16/9 lg:aspect-auto lg:min-h-[520px] bg-neutral-900 group/stage overflow-hidden cursor-pointer"
+              onClick={() => setSelectedItem(currentItem)}
+              title="Klicken für ausführliche Details zu dieser Leistung"
             >
               <img
                 src={currentItem.image}
@@ -480,22 +918,17 @@ export function ServicesSection() {
                 }}
               />
               
-              {/* Subtle Gradient Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent pointer-events-none" />
+              {/* Subtle Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
-              {/* Tag / Category Badge Overlay */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3.5 py-1 text-xs font-bold text-pink-700 shadow-sm border border-[#E8D2D7]">
+              {/* Top Badge Overlay */}
+              <div className="absolute top-4 left-4 z-10 flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-xs font-bold text-pink-700 shadow-sm border border-white/50">
                   <Sparkles className="h-3 w-3" />
                   {currentItem.badge}
                 </span>
-              </div>
-
-              {/* Reassurance Badge Bottom Left */}
-              <div className="absolute bottom-4 left-4 z-10 max-w-[85%] sm:max-w-none">
-                <span className="inline-flex items-center gap-1.5 rounded-lg bg-black/70 backdrop-blur-md px-3 py-1.5 text-xs font-medium text-white shadow-sm">
-                  <ShieldCheck className="h-3.5 w-3.5 text-pink-300 shrink-0" />
-                  <span className="truncate sm:whitespace-normal">Frauenzeit Brühl · Ganzheitlicher Schwerpunkt</span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-md px-2.5 py-1 text-[11px] font-medium text-white">
+                  {currentItem.categoryLabel}
                 </span>
               </div>
 
@@ -505,7 +938,7 @@ export function ServicesSection() {
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    setSelectedSchwerpunkt(currentItem);
+                    setSelectedItem(currentItem);
                   }}
                   className="flex items-center gap-1.5 rounded-xl bg-white/95 backdrop-blur-md px-3.5 py-1.5 text-xs font-bold text-[#2B2326] shadow-md hover:bg-white hover:text-pink-700 transition-colors cursor-pointer"
                 >
@@ -519,8 +952,8 @@ export function ServicesSection() {
             <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between text-left bg-white">
               <div>
                 <div className="flex items-center justify-between gap-3">
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-pink-700">
-                    Schwerpunkt {currentItem.number} von 06
+                  <span className="text-xs font-semibold uppercase tracking-wider text-pink-700">
+                    {currentItem.categoryLabel}
                   </span>
                   <span className="text-xs font-semibold text-[#735F64] bg-[#FAF5F6] px-2.5 py-0.5 rounded-md border border-[#F0E6E8]">
                     Praxis Frauenzeit Brühl
@@ -549,7 +982,7 @@ export function ServicesSection() {
                     Leistungsmerkmale:
                   </h4>
                   <div className="space-y-2">
-                    {currentItem.keyHighlights.map((item, idx) => (
+                    {currentItem.keyHighlights.slice(0, 4).map((item, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-xs text-[#3E3236]">
                         <CheckCircle2 className="h-3.5 w-3.5 text-pink-700 shrink-0 mt-0.5" />
                         <span>{item}</span>
@@ -568,7 +1001,7 @@ export function ServicesSection() {
               <div className="mt-6 pt-5 border-t border-[#F0E6E8] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                 <button
                   type="button"
-                  onClick={() => setSelectedSchwerpunkt(currentItem)}
+                  onClick={() => setSelectedItem(currentItem)}
                   className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#E8D2D7] bg-white px-4 py-2.5 text-xs font-bold text-pink-700 shadow-2xs hover:bg-pink-700 hover:text-white hover:border-pink-700 transition-all cursor-pointer"
                 >
                   <BookOpen className="h-3.5 w-3.5" />
@@ -590,9 +1023,9 @@ export function ServicesSection() {
           </div>
         </div>
 
-        {/* 6 Schwerpunkte Thumbnail Visual Strip */}
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {SCHWERPUNKTE_DATA.map((item, idx) => (
+        {/* Thumbnail Visual Strip for Quick Browsing */}
+        <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2.5">
+          {filteredItems.map((item, idx) => (
             <button
               key={item.id}
               type="button"
@@ -623,7 +1056,7 @@ export function ServicesSection() {
                   {item.title}
                 </p>
                 <p className="text-[10px] text-[#735F64] truncate">
-                  Schwerpunkt {item.number}
+                  {item.categoryLabel}
                 </p>
               </div>
             </button>
@@ -632,11 +1065,11 @@ export function ServicesSection() {
 
       </div>
 
-      {/* Comprehensive Schwerpunkt Detail Modal */}
-      {selectedSchwerpunkt && (
+      {/* Comprehensive Leistung Detail Modal */}
+      {selectedItem && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/75 backdrop-blur-sm animate-in fade-in duration-200 text-left"
-          onClick={() => setSelectedSchwerpunkt(null)}
+          onClick={() => setSelectedItem(null)}
           role="dialog"
           aria-modal="true"
         >
@@ -648,7 +1081,7 @@ export function ServicesSection() {
             <div className="relative bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-5 sm:p-7 shrink-0">
               <button
                 type="button"
-                onClick={() => setSelectedSchwerpunkt(null)}
+                onClick={() => setSelectedItem(null)}
                 className="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-sm border border-[#E8D2D7] transition-colors cursor-pointer"
                 aria-label="Schließen"
               >
@@ -658,21 +1091,21 @@ export function ServicesSection() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pr-10">
                 <div className="h-16 w-24 sm:h-20 sm:w-32 rounded-xl overflow-hidden border border-[#E8D2D7] bg-white shrink-0 shadow-2xs">
                   <img
-                    src={selectedSchwerpunkt.image}
-                    alt={selectedSchwerpunkt.title}
+                    src={selectedItem.image}
+                    alt={selectedItem.title}
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-pink-50 px-3 py-0.5 text-xs font-bold text-pink-700 border border-pink-200">
                     <Sparkles className="h-3 w-3" />
-                    {selectedSchwerpunkt.badge}
+                    {selectedItem.badge}
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold text-[#2B2326] mt-1">
-                    {selectedSchwerpunkt.title}
+                    {selectedItem.title}
                   </h3>
                   <p className="text-xs font-semibold text-[#5C4A4F]">
-                    {selectedSchwerpunkt.subtitle}
+                    {selectedItem.subtitle}
                   </p>
                 </div>
               </div>
@@ -683,7 +1116,7 @@ export function ServicesSection() {
               
               {/* Lead Quote */}
               <div className="rounded-2xl border border-[#F0E6E8] bg-[#FAF5F6] p-4 text-xs sm:text-sm italic text-[#4D3F43] leading-relaxed font-medium">
-                {selectedSchwerpunkt.leadQuote}
+                {selectedItem.leadQuote}
               </div>
 
               {/* In-Depth Text Paragraphs from official practice page */}
@@ -692,7 +1125,7 @@ export function ServicesSection() {
                   <HeartHandshake className="h-4 w-4 text-pink-700" />
                   <span>Medizinisches Konzept & Betreuung in unserer Praxis</span>
                 </h4>
-                {selectedSchwerpunkt.detailedText.map((p, idx) => (
+                {selectedItem.detailedText.map((p, idx) => (
                   <p key={idx} className="bg-white p-3.5 rounded-xl border border-[#F0E6E8] shadow-2xs">
                     {p}
                   </p>
@@ -703,10 +1136,10 @@ export function ServicesSection() {
               <div className="space-y-4 pt-2">
                 <h4 className="font-bold text-[#2B2326] text-sm flex items-center gap-1.5">
                   <Activity className="h-4 w-4 text-pink-700" />
-                  <span>Behandlungsspektrum & Diagnostik</span>
+                  <span>Behandlungsspektrum & Schwerpunkte</span>
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {selectedSchwerpunkt.clinicalFocus.map((focusGroup, idx) => (
+                  {selectedItem.clinicalFocus.map((focusGroup, idx) => (
                     <div key={idx} className="rounded-xl border border-[#E8D2D7] bg-[#FCF8F9] p-4 space-y-2.5">
                       <h5 className="text-xs font-bold uppercase tracking-wider text-pink-800">
                         {focusGroup.category}
@@ -729,15 +1162,15 @@ export function ServicesSection() {
                 <ShieldCheck className="h-4 w-4 text-pink-700 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-[#2B2326] font-semibold block">Besonderheit in unserer Praxis:</strong>
-                  <span>{selectedSchwerpunkt.practiceAdvantage}</span>
+                  <span>{selectedItem.practiceAdvantage}</span>
                 </div>
               </div>
 
               {/* Cost & Insurance hint */}
-              {selectedSchwerpunkt.costNote && (
+              {selectedItem.costNote && (
                 <div className="rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-4 text-xs text-[#735F64] leading-relaxed">
                   <strong className="text-[#2B2326] block font-semibold mb-1">Abrechnung & Krankenkassen:</strong>
-                  <p>{selectedSchwerpunkt.costNote}</p>
+                  <p>{selectedItem.costNote}</p>
                 </div>
               )}
 
@@ -752,7 +1185,7 @@ export function ServicesSection() {
               <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
                 <button
                   type="button"
-                  onClick={() => setSelectedSchwerpunkt(null)}
+                  onClick={() => setSelectedItem(null)}
                   className="px-4 py-2.5 text-xs font-semibold text-[#5C4A4F] bg-white hover:bg-[#F0E6E8] border border-[#E8D2D7] rounded-xl transition-colors cursor-pointer"
                 >
                   Schließen
@@ -765,7 +1198,7 @@ export function ServicesSection() {
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-pink-700 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-pink-800 transition-all cursor-pointer"
                 >
                   <Calendar className="h-4 w-4" />
-                  <span>Termin zu diesem Schwerpunkt buchen</span>
+                  <span>Termin zu dieser Leistung buchen</span>
                   <ExternalLink className="h-3.5 w-3.5 opacity-80" />
                 </a>
               </div>

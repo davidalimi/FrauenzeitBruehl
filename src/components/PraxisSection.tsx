@@ -122,10 +122,10 @@ export function PraxisSection() {
           <div className="max-w-2xl text-left">
             <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
               <Building2 className="h-3.5 w-3.5" />
-              <span>Praxisräume · Mühlenstrasse 37 · 50321 Brühl</span>
+              <span>Praxis · Mühlenstrasse 37 · 50321 Brühl</span>
             </div>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl">
-              Unsere Praxisräume
+              Unsere Praxis
             </h2>
             <p className="mt-2 text-sm text-[#5C4A4F] leading-relaxed">
               Lichtdurchflutet, modern und einladend gestaltet. Wir legen großen Wert auf eine Umgebung, in der Sie sich von der ersten Minute an sicher, diskret betreut und wohlfühlen können.

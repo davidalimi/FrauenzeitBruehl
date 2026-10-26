@@ -4,15 +4,15 @@ export function ContactSection() {
   const doctolibUrl = 'https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl';
 
   return (
-    <section id="sprechzeiten" className="py-16 sm:py-24 bg-[#FAF5F6] border-b border-[#F0E6E8] scroll-mt-20">
+    <section id="kontakt" className="py-16 sm:py-24 bg-[#FAF5F6] border-b border-[#F0E6E8] scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Practice Details & Address */}
-          <div id="kontakt" className="lg:col-span-6 text-left space-y-6 scroll-mt-24">
+          <div id="sprechzeiten" className="lg:col-span-6 text-left space-y-6 scroll-mt-24">
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-pink-700">
-                Kontakt & Anfahrt
+                Kontakt & Sprechzeiten
               </span>
               <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl">
                 Wir freuen uns auf Ihren Besuch

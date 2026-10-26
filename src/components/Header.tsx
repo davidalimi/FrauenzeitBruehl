@@ -85,24 +85,6 @@ export function Header({
             </button>
             <button
               type="button"
-              onClick={() => handleNavClick('team')}
-              className={`transition-colors py-1 hover:text-pink-700 whitespace-nowrap shrink-0 cursor-pointer ${
-                activeNav === 'team' ? 'text-pink-700 font-semibold border-b-2 border-pink-700' : ''
-              }`}
-            >
-              Praxisteam
-            </button>
-            <button
-              type="button"
-              onClick={() => handleNavClick('praxis')}
-              className={`transition-colors py-1 hover:text-pink-700 whitespace-nowrap shrink-0 cursor-pointer ${
-                activeNav === 'praxis' ? 'text-pink-700 font-semibold border-b-2 border-pink-700' : ''
-              }`}
-            >
-              Praxisräume
-            </button>
-            <button
-              type="button"
               onClick={() => handleNavClick('leistungen')}
               className={`transition-colors py-1 hover:text-pink-700 whitespace-nowrap shrink-0 cursor-pointer ${
                 activeNav === 'leistungen' ? 'text-pink-700 font-semibold border-b-2 border-pink-700' : ''
@@ -112,12 +94,21 @@ export function Header({
             </button>
             <button
               type="button"
-              onClick={() => handleNavClick('sprechzeiten')}
+              onClick={() => handleNavClick('team')}
               className={`transition-colors py-1 hover:text-pink-700 whitespace-nowrap shrink-0 cursor-pointer ${
-                activeNav === 'sprechzeiten' ? 'text-pink-700 font-semibold border-b-2 border-pink-700' : ''
+                activeNav === 'team' ? 'text-pink-700 font-semibold border-b-2 border-pink-700' : ''
               }`}
             >
-              Sprechzeiten
+              Team
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick('praxis')}
+              className={`transition-colors py-1 hover:text-pink-700 whitespace-nowrap shrink-0 cursor-pointer ${
+                activeNav === 'praxis' ? 'text-pink-700 font-semibold border-b-2 border-pink-700' : ''
+              }`}
+            >
+              Praxis
             </button>
             <button
               type="button"
@@ -126,7 +117,7 @@ export function Header({
                 activeNav === 'kontakt' ? 'text-pink-700 font-semibold border-b-2 border-pink-700' : ''
               }`}
             >
-              Kontakt & Anfahrt
+              Kontakt
             </button>
           </nav>
 
@@ -180,22 +171,6 @@ export function Header({
             </button>
             <button
               type="button"
-              onClick={() => handleNavClick('team')}
-              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
-            >
-              <span>Praxisteam</span>
-              <ChevronRight className="h-4 w-4 text-[#A37B85]" />
-            </button>
-            <button
-              type="button"
-              onClick={() => handleNavClick('praxis')}
-              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
-            >
-              <span>Praxisräume</span>
-              <ChevronRight className="h-4 w-4 text-[#A37B85]" />
-            </button>
-            <button
-              type="button"
               onClick={() => handleNavClick('leistungen')}
               className="flex items-center justify-between py-2 text-left hover:text-pink-700"
             >
@@ -204,10 +179,18 @@ export function Header({
             </button>
             <button
               type="button"
-              onClick={() => handleNavClick('sprechzeiten')}
+              onClick={() => handleNavClick('team')}
               className="flex items-center justify-between py-2 text-left hover:text-pink-700"
             >
-              <span>Sprechzeiten</span>
+              <span>Team</span>
+              <ChevronRight className="h-4 w-4 text-[#A37B85]" />
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick('praxis')}
+              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
+            >
+              <span>Praxis</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
             </button>
             <button
@@ -215,7 +198,7 @@ export function Header({
               onClick={() => handleNavClick('kontakt')}
               className="flex items-center justify-between py-2 text-left hover:text-pink-700"
             >
-              <span>Kontakt & Anfahrt</span>
+              <span>Kontakt</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
             </button>
           </nav>

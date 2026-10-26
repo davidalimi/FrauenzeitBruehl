@@ -153,13 +153,13 @@ export function TeamSection() {
         <div className="max-w-3xl text-left pb-10">
           <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
             <Users className="h-3.5 w-3.5" />
-            <span>Praxisteam Frauenzeit Brühl · 6 Persönlichkeiten für Ihre Gesundheit</span>
+            <span>Team Frauenzeit Brühl · 6 Persönlichkeiten für Ihre Gesundheit</span>
           </div>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#2B2326] sm:text-4xl">
-            Unser Praxisteam
+            Unser Team
           </h2>
           <p className="mt-3 text-base text-[#5C4A4F] leading-relaxed">
-            Mit hoher medizinischer Fachkompetenz, Empathie und moderner Diagnostik begleiten wir Sie durch jede Lebensphase. Lernen Sie unsere Fachärztinnen und unser eingespieltes Praxisteam kennen.
+            Mit hoher medizinischer Fachkompetenz, Empathie und moderner Diagnostik begleiten wir Sie durch jede Lebensphase. Lernen Sie unsere Fachärztinnen und unser eingespieltes Team kennen.
           </p>
         </div>
 
@@ -284,7 +284,7 @@ export function TeamSection() {
             <div className="flex items-center gap-2">
               <HeartHandshake className="h-4 w-4 text-pink-700" />
               <h3 className="text-sm font-bold uppercase tracking-wider text-[#735F64]">
-                Praxisteam & Assistenz
+                Team & Assistenz
               </h3>
             </div>
             <span className="text-xs text-[#826970]">
