@@ -77,12 +77,12 @@ export function Hero() {
         {/* Official Welcome Message: Clean typography without round border */}
         <div className="border-t border-[#F0E6E8] pt-10 sm:pt-14 text-left">
           {/* Letter Header */}
-          <div className="border-b border-[#F0E6E8] pb-6 mb-6">
+          <div className="mb-4">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#2B2326] leading-snug">
               Herzlich Willkommen auf der Webseite der Praxis FrauenzeitBrühl
             </h2>
 
-            <p className="mt-3 text-base sm:text-lg font-semibold text-pink-700">
+            <p className="mt-4 text-base sm:text-lg font-semibold text-pink-700">
               Liebe Patientinnen,
             </p>
           </div>

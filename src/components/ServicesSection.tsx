@@ -10,8 +10,10 @@ import {
   ChevronLeft,
   ChevronRight,
   Activity,
-  Phone
+  Phone,
+  Stethoscope
 } from 'lucide-react';
+import { SectionBackToTop } from './SectionBackToTop';
 
 export interface LeistungItem {
   id: 
@@ -109,8 +111,8 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     title: 'Mädchensprechstunde',
     subtitle: 'Ein guter Start in die Frauengesundheit · Für Mädchen & Teenager',
     badge: 'Jugendgesundheit · Einfühlsam & Vertraulich',
-    image: `${import.meta.env.BASE_URL}assets/leistungen/teenager-maedchensprechstunde.jpg`,
-    alt: 'Zwei junge Freundinnen lachen entspannt – Mädchensprechstunde Praxis Frauenzeit Brühl',
+    image: `${import.meta.env.BASE_URL}assets/aistudio/teenager-maedchensprechstunde_9c585e35.jpg`,
+    alt: 'Mädchen liest entspannt in der Natur – Mädchensprechstunde Praxis Frauenzeit Brühl',
     leadQuote: '„Der erste Besuch bei der Frauenärztin ist für viele junge Mädchen ein besonderer Moment – verbunden mit Neugier, Fragen oder auch Unsicherheit. Uns ist es wichtig, dass du dich bei uns wohlfühlst und einen geschützten Raum findest, in dem alle deine Fragen Platz haben.“',
     teaser: 'Keine Angst vor dem ersten Termin: Eine körperliche Untersuchung auf dem Stuhl ist beim Kennenlernen meist gar nicht nötig! Wir nehmen uns Zeit für alle deine Fragen zu Pubertät, Periode, Liebe & Verhütung.',
     detailedText: [
@@ -207,8 +209,8 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     title: 'Kinderwunsch',
     subtitle: 'Gemeinsam auf dem Weg zu Ihrem Wunschkind · Vorbereitung & Diagnostik',
     badge: 'Präkonzeptionelle Begleitung',
-    image: `${import.meta.env.BASE_URL}assets/leistungen/ersttrimester-screening.jpg`,
-    alt: 'Ultraschall und Vorbereitung auf das Wunschkind – Kinderwunsch Praxis Frauenzeit Brühl',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/schwangerschaftsbegleitung.jpg`,
+    alt: 'Schlafendes Neugeborenes – Erfüllter Kinderwunsch in der Praxis Frauenzeit Brühl',
     leadQuote: '„Der Wunsch nach einem Kind ist für viele Frauen und Paare eine ganz besondere Zeit – voller Vorfreude, Hoffnung und neuer Pläne. Wir begleiten Sie gerne bereits vor einer geplanten Schwangerschaft und unterstützen Sie dabei, gute Voraussetzungen für eine gesunde Schwangerschaft zu schaffen.“',
     teaser: 'Gute Voraussetzungen für eine gesunde Schwangerschaft schaffen: Von Zyklus- und Hormondiagnostik über Ernährung und Mikronährstoffe bis zur Begleitung bei Endometriose oder PCOS.',
     detailedText: [
@@ -257,8 +259,8 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     title: 'Schwangerschaft',
     subtitle: 'Einfühlsame & ganzheitliche Schwangerschaftsbegleitung',
     badge: 'Schwerpunkt · Pränatale Begleitung',
-    image: `${import.meta.env.BASE_URL}assets/leistungen/schwangerschaftsbegleitung.jpg`,
-    alt: 'Schwangere Frau hält behutsam rosa Babyschuhe auf ihrem Bauch',
+    image: `${import.meta.env.BASE_URL}assets/leistungen/schwangerschaft-vorsorge.jpg`,
+    alt: 'Schwangere Frau berührt liebevoll ihren Babybauch im sonnendurchfluteten Raum – Schwangerschaftsbegleitung Praxis Frauenzeit Brühl',
     leadQuote: '„Mit Ihrer Schwangerschaft beginnt ein neuer Lebensabschnitt – voller Vorfreude, Veränderungen und einzigartiger Momente.“',
     teaser: 'Vom positiven Schwangerschaftstest über alle Trimester bis ins Wochenbett: Wir begleiten Sie mit medizinischer Kompetenz, hoher Feindiagnostik-Expertise (DEGUM I) und herzlicher Fürsorge.',
     detailedText: [
@@ -739,13 +741,31 @@ export function ServicesSection() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedItem, currentModalIndex, filteredItems]);
 
+  useEffect(() => {
+    const handleOpenService = (event: Event) => {
+      const customEvent = event as CustomEvent<string>;
+      const targetId = customEvent.detail;
+      const found = LEISTUNGEN_DATA.find((item) => item.id === targetId);
+      if (found) {
+        setSelectedItem(found);
+      }
+    };
+
+    window.addEventListener('open-service', handleOpenService);
+    return () => window.removeEventListener('open-service', handleOpenService);
+  }, []);
+
   return (
     <section id="leistungen" className="relative overflow-hidden py-16 sm:py-24 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-20">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Section Header */}
         <div className="max-w-3xl text-left pb-8">
-          <h2 className="text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl lg:text-4xl">
+          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
+            <Stethoscope className="h-3.5 w-3.5" />
+            <span>Medizinisches Angebot</span>
+          </div>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl lg:text-4xl">
             Leistungen
           </h2>
           <p className="mt-2 text-sm sm:text-base text-[#5C4A4F] leading-relaxed">
@@ -1038,6 +1058,9 @@ export function ServicesSection() {
           </div>
         </div>
       )}
+
+      {/* Discreet corner up arrow */}
+      <SectionBackToTop />
     </section>
   );
 }

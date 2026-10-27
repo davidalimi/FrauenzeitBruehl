@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Building2 } from 'lucide-react';
+import { SectionBackToTop } from './SectionBackToTop';
 
 interface PraxisPhoto {
   id: string;
@@ -84,7 +85,7 @@ export function PraxisSection() {
   const currentPhoto = photos[currentIndex];
 
   return (
-    <section id="praxis" className="py-16 sm:py-24 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-20">
+    <section id="praxis" className="relative py-16 sm:py-24 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -177,6 +178,9 @@ export function PraxisSection() {
         </div>
 
       </div>
+
+      {/* Discreet corner up arrow */}
+      <SectionBackToTop />
     </section>
   );
 }

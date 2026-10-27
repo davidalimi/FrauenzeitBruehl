@@ -7,9 +7,11 @@ import {
   ChevronLeft,
   ChevronRight, 
   HeartHandshake, 
-  Stethoscope
+  Stethoscope,
+  Users
 } from 'lucide-react';
 import { DoctorModal, DOCTORS_DATA } from './DoctorModal';
+import { SectionBackToTop } from './SectionBackToTop';
 
 interface DoctorMember {
   id: 'birkenfeld' | 'ledwig';
@@ -145,15 +147,19 @@ export function TeamSection() {
   ];
 
   return (
-    <section id="team" className="py-16 sm:py-24 border-b border-[#F0E6E8] bg-white scroll-mt-20">
+    <section id="team" className="relative py-16 sm:py-24 border-b border-[#F0E6E8] bg-white scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl text-left pb-10">
-          <h2 className="text-3xl font-bold tracking-tight text-[#2B2326] sm:text-4xl">
+          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
+            <Users className="h-3.5 w-3.5" />
+            <span>Ärztinnen & Praxisteam</span>
+          </div>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#2B2326] sm:text-3xl lg:text-4xl">
             Unser Team
           </h2>
-          <p className="mt-3 text-base text-[#5C4A4F] leading-relaxed">
+          <p className="mt-2 text-sm sm:text-base text-[#5C4A4F] leading-relaxed">
             Mit hoher medizinischer Fachkompetenz, Empathie und moderner Diagnostik begleiten wir Sie durch jede Lebensphase. Lernen Sie unsere Fachärztinnen und unser eingespieltes Team kennen.
           </p>
         </div>
@@ -449,6 +455,9 @@ export function TeamSection() {
           </div>
         </div>
       )}
+
+      {/* Discreet corner up arrow */}
+      <SectionBackToTop />
     </section>
   );
 }

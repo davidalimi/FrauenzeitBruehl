@@ -4,7 +4,8 @@ import {
   Calendar, 
   Menu, 
   X, 
-  ChevronRight
+  ChevronRight,
+  ChevronDown
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -18,6 +19,7 @@ export function Header({
   onNavClick 
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [highlightsOpen, setHighlightsOpen] = useState(false);
 
   // Logo asset URL supporting Vite base path
   const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.png`;
@@ -29,6 +31,17 @@ export function Header({
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleServiceHighlightClick = (serviceId: string) => {
+    setHighlightsOpen(false);
+    setMobileMenuOpen(false);
+    if (onNavClick) onNavClick(serviceId);
+    const element = document.getElementById('leistungen');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    window.dispatchEvent(new CustomEvent('open-service', { detail: serviceId }));
   };
 
   return (
@@ -129,6 +142,60 @@ export function Header({
             >
               Leistungen
             </button>
+
+            {/* Schwerpunkte Menu: Ernährungsmedizin & Better Pelvi */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setHighlightsOpen(true)}
+              onMouseLeave={() => setHighlightsOpen(false)}
+            >
+              <button
+                type="button"
+                onClick={() => setHighlightsOpen(!highlightsOpen)}
+                className={`inline-flex items-center gap-1 text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-700 whitespace-nowrap cursor-pointer ${
+                  activeNav === 'ernaehrung' || activeNav === 'betterpelvi'
+                    ? 'text-pink-700 font-bold border-b-2 border-pink-700'
+                    : 'text-[#4D3F43] font-medium'
+                }`}
+                aria-expanded={highlightsOpen}
+              >
+                <span>Schwerpunkte</span>
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${highlightsOpen ? 'rotate-180 text-pink-700' : 'text-[#826970]'}`} />
+              </button>
+
+              {highlightsOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="rounded-2xl bg-white p-2 border border-[#E8D2D7] shadow-lg text-left divide-y divide-[#FAF5F6]">
+                    <button
+                      type="button"
+                      onClick={() => handleServiceHighlightClick('ernaehrung')}
+                      className="w-full text-left p-3 rounded-xl hover:bg-[#FAF1F3] transition-colors group cursor-pointer block"
+                    >
+                      <div className="font-semibold text-sm text-[#2B2326] group-hover:text-pink-700 transition-colors">
+                        Ernährungsmedizin
+                      </div>
+                      <div className="text-xs text-[#5C4A4F] mt-0.5">
+                        Ganzheitliche Beratung & Mikronährstoffe
+                      </div>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleServiceHighlightClick('betterpelvi')}
+                      className="w-full text-left p-3 rounded-xl hover:bg-[#FAF1F3] transition-colors group cursor-pointer block"
+                    >
+                      <div className="font-semibold text-sm text-[#2B2326] group-hover:text-pink-700 transition-colors">
+                        Better Pelvi
+                      </div>
+                      <div className="text-xs text-[#5C4A4F] mt-0.5">
+                        Innovative Beckenbodentherapie
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <button
               type="button"
               onClick={() => handleNavClick('kontakt')}
@@ -254,6 +321,30 @@ export function Header({
               <span>Leistungen</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
             </button>
+
+            {/* Mobile Highlights Sub-Menu */}
+            <div className="my-1 rounded-xl bg-[#FAF1F3]/70 p-2.5 space-y-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-pink-800 px-2 block">
+                Schwerpunkte & Highlights
+              </span>
+              <button
+                type="button"
+                onClick={() => handleServiceHighlightClick('ernaehrung')}
+                className="flex w-full items-center justify-between py-2 px-2.5 rounded-lg text-left text-sm font-medium text-[#2B2326] hover:bg-white hover:text-pink-700 transition-colors"
+              >
+                <span>Ernährungsmedizin</span>
+                <ChevronRight className="h-3.5 w-3.5 text-[#A37B85]" />
+              </button>
+              <button
+                type="button"
+                onClick={() => handleServiceHighlightClick('betterpelvi')}
+                className="flex w-full items-center justify-between py-2 px-2.5 rounded-lg text-left text-sm font-medium text-[#2B2326] hover:bg-white hover:text-pink-700 transition-colors"
+              >
+                <span>Better Pelvi</span>
+                <ChevronRight className="h-3.5 w-3.5 text-[#A37B85]" />
+              </button>
+            </div>
+
             <button
               type="button"
               onClick={() => handleNavClick('kontakt')}
