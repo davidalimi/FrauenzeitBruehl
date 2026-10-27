@@ -145,18 +145,13 @@ export function PraxisSection() {
             </button>
 
             {/* Caption on the Image */}
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-white">
-              <div className="text-left">
-                <span className="inline-block rounded-full bg-white/20 backdrop-blur-md px-3 py-0.5 text-xs font-semibold text-pink-200 border border-white/25 mb-1.5">
-                  {currentPhoto.category}
-                </span>
-                <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-white drop-shadow-sm">
-                  {currentPhoto.title}
-                </h3>
-              </div>
-              <span className="text-xs sm:text-sm font-mono font-medium bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full text-white/90 border border-white/20 shrink-0">
-                {currentIndex + 1} / {photos.length}
+            <div className="absolute bottom-5 left-5 right-5 text-left text-white">
+              <span className="inline-block rounded-full bg-white/20 backdrop-blur-md px-3 py-0.5 text-xs font-semibold text-pink-200 border border-white/25 mb-1.5">
+                {currentPhoto.category}
               </span>
+              <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-white drop-shadow-sm">
+                {currentPhoto.title}
+              </h3>
             </div>
           </div>
 

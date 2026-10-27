@@ -182,12 +182,22 @@ export function TeamSection() {
                   <div className="flex flex-col sm:flex-row gap-6 items-start">
                     {/* Portrait Photo Container */}
                     <div 
-                      className="relative w-full sm:w-48 sm:h-60 shrink-0 aspect-[3/4] sm:aspect-auto overflow-hidden rounded-2xl border-2 border-[#E8D2D7] bg-white shadow-sm"
+                      onClick={() => setSelectedDoctorId(doc.id)}
+                      className="relative w-full sm:w-48 sm:h-60 shrink-0 aspect-[3/4] sm:aspect-auto overflow-hidden rounded-2xl border-2 border-[#E8D2D7] bg-white shadow-sm cursor-pointer group/img"
+                      title="Klicken, um Vita & Details anzuzeigen"
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          setSelectedDoctorId(doc.id);
+                        }
+                      }}
                     >
                       <img
                         src={doc.image}
                         alt={`Porträt von ${doc.name}`}
-                        className="h-full w-full object-cover object-top"
+                        className="h-full w-full object-cover object-top transition-transform duration-300 group-hover/img:scale-105"
                         onError={(e) => {
                           const target = e.currentTarget;
                           const imgSrc = doc.image;
@@ -260,7 +270,7 @@ export function TeamSection() {
             <div className="flex items-center gap-2">
               <HeartHandshake className="h-4 w-4 text-pink-700" />
               <h3 className="text-sm font-bold uppercase tracking-wider text-[#735F64]">
-                Team & Assistenz
+                Praxis Team
               </h3>
             </div>
           </div>

@@ -4,6 +4,7 @@
   --font-heading: 'EB Garamond', Georgia, serif;
   --font-body: 'EB Garamond', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-quicksand: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   font-family: var(--font-body);
 }
@@ -28,6 +29,10 @@
 }
 
 @layer utilities {
+  .font-quicksand {
+    font-family: var(--font-quicksand);
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

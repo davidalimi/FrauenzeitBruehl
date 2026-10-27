@@ -3,8 +3,6 @@ import { Calendar, Phone, HeartHandshake } from 'lucide-react';
 export function Hero() {
   const doctolibUrl = 'https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl';
   const teamPhotoUrl = `${import.meta.env.BASE_URL}assets/hero/team.png`;
-  const drBirkenfeldImg = `${import.meta.env.BASE_URL}assets/team/anika-birkenfeld.png`;
-  const drLedwigImg = `${import.meta.env.BASE_URL}assets/team/corinna-ledwig.png`;
 
   return (
     <section className="relative overflow-hidden border-b border-[#F0E6E8] bg-gradient-to-b from-[#FAF5F6] via-white to-[#FCFBF9] py-10 sm:py-14 lg:py-16">
@@ -108,53 +106,10 @@ export function Hero() {
             </p>
           </div>
 
-          {/* Letter Sign-Off and Doctor Signatures */}
-          <div className="mt-8 pt-6 border-t border-[#F0E6E8] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 max-w-4xl">
-            <div>
-              <p className="text-sm font-semibold text-pink-700">Herzlichst,</p>
-              <p className="text-xs sm:text-sm font-semibold text-[#2B2326] mt-0.5">
-                Ihre neuen Frauenärztinnen der FrauenzeitBrühl
-              </p>
-            </div>
-
-            {/* Doctor Profile Cards */}
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-              {/* Dr. Birkenfeld */}
-              <div className="flex items-center gap-3 bg-white border border-[#E8D2D7] rounded-lg px-3.5 py-2 shadow-2xs">
-                <img
-                  src={drBirkenfeldImg}
-                  alt="Dr. med. Anika Birkenfeld"
-                  className="h-10 w-10 rounded-full object-cover border border-[#E8D2D7]"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    if (!target.src.includes('public/')) {
-                      target.src = './public/assets/team/anika-birkenfeld.png';
-                    }
-                  }}
-                />
-                <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-[#2B2326]">Dr. med. Anika Birkenfeld</h4>
-                </div>
-              </div>
-
-              {/* Dr. Ledwig */}
-              <div className="flex items-center gap-3 bg-white border border-[#E8D2D7] rounded-lg px-3.5 py-2 shadow-2xs">
-                <img
-                  src={drLedwigImg}
-                  alt="Dr. med. Corinna Ledwig"
-                  className="h-10 w-10 rounded-full object-cover border border-[#E8D2D7]"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    if (!target.src.includes('public/')) {
-                      target.src = './public/assets/team/corinna-ledwig.png';
-                    }
-                  }}
-                />
-                <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-[#2B2326]">Dr. med. Corinna Ledwig</h4>
-                </div>
-              </div>
-            </div>
+          {/* Signature */}
+          <div className="pt-4 flex items-center gap-3 text-sm font-semibold text-[#826970]">
+            <span className="h-px w-10 bg-[#E8D2D7]" />
+            <span>Dr. med. Anika Birkenfeld & Dr. med. Corinna Ledwig</span>
           </div>
         </div>
 
