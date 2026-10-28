@@ -152,7 +152,7 @@ export function TeamSection() {
         
         {/* Section Header */}
         <div className="max-w-3xl text-left pb-10">
-          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
+          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-900">
             <Users className="h-3.5 w-3.5" />
             <span>Ärztinnen & Praxisteam</span>
           </div>
@@ -170,7 +170,7 @@ export function TeamSection() {
         <div className="mb-14">
           <div className="flex items-center justify-between gap-4 mb-6 pb-2 border-b border-[#F0E6E8]">
             <div className="flex items-center gap-2">
-              <Stethoscope className="h-4 w-4 text-pink-700" />
+              <Stethoscope className="h-4 w-4 text-pink-900" />
               <h3 className="text-sm font-bold uppercase tracking-wider text-[#735F64]">
                 Ärztliche Leitung
               </h3>
@@ -220,7 +220,7 @@ export function TeamSection() {
                       <h4 className="text-xl sm:text-2xl font-extrabold text-[#2B2326] tracking-tight">
                         {doc.name}
                       </h4>
-                      <p className="mt-1 text-sm font-semibold text-pink-700">
+                      <p className="mt-1 text-sm font-semibold text-pink-900">
                         {doc.role}
                       </p>
                       
@@ -243,7 +243,7 @@ export function TeamSection() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {doc.points.map((pt) => (
                         <div key={pt} className="flex items-start gap-2 text-xs text-[#4D3F43]">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-pink-700 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="h-3.5 w-3.5 text-pink-900 shrink-0 mt-0.5" />
                           <span className="leading-snug">{pt}</span>
                         </div>
                       ))}
@@ -256,9 +256,9 @@ export function TeamSection() {
                   <button
                     type="button"
                     onClick={() => setSelectedDoctorId(doc.id)}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-white border border-[#E8D2D7] py-2.5 px-4 text-xs font-semibold text-pink-700 shadow-2xs hover:bg-pink-700 hover:text-white hover:border-pink-700 active:scale-[0.98] transition-all cursor-pointer group/btn"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-white border border-[#E8D2D7] py-2.5 px-4 text-xs font-semibold text-pink-900 shadow-2xs hover:bg-pink-900 hover:text-white hover:border-pink-900 active:scale-[0.98] transition-all cursor-pointer group/btn"
                   >
-                    <GraduationCap className="h-4 w-4 text-pink-700 group-hover/btn:text-white transition-colors" />
+                    <GraduationCap className="h-4 w-4 text-pink-900 group-hover/btn:text-white transition-colors" />
                     <span>Vita & Details ansehen</span>
                     <ChevronRight className="h-3.5 w-3.5 text-pink-400 group-hover/btn:text-white transition-colors" />
                   </button>
@@ -274,7 +274,7 @@ export function TeamSection() {
         <div>
           <div className="flex items-center justify-between gap-4 mb-6 pb-2 border-b border-[#F0E6E8]">
             <div className="flex items-center gap-2">
-              <HeartHandshake className="h-4 w-4 text-pink-700" />
+              <HeartHandshake className="h-4 w-4 text-pink-900" />
               <h3 className="text-sm font-bold uppercase tracking-wider text-[#735F64]">
                 Praxis Team
               </h3>
@@ -309,7 +309,7 @@ export function TeamSection() {
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors flex items-end justify-end p-2.5">
                       <span className="rounded-lg bg-white/95 px-2 py-1 text-[11px] font-semibold text-[#2B2326] shadow-xs backdrop-blur-xs opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center gap-1">
-                        <ZoomIn className="h-3 w-3 text-pink-700" />
+                        <ZoomIn className="h-3 w-3 text-pink-900" />
                         <span>Vergrößern</span>
                       </span>
                     </div>
@@ -320,7 +320,7 @@ export function TeamSection() {
                     <h4 className="text-base font-bold text-[#2B2326] leading-tight">
                       {member.name}
                     </h4>
-                    <p className="text-xs font-semibold text-pink-700 mt-0.5">
+                    <p className="text-xs font-semibold text-pink-900 mt-0.5">
                       {member.role}
                     </p>
                   </div>
@@ -364,7 +364,7 @@ export function TeamSection() {
               const prevIdx = idx <= 0 ? teamMembers.length - 1 : idx - 1;
               setSelectedMember(teamMembers[prevIdx]);
             }}
-            className="hidden sm:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 h-11 w-11 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            className="hidden sm:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 h-11 w-11 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-900 hover:scale-105 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
             aria-label="Vorherige Mitarbeiterin"
             title="Vorherige Mitarbeiterin (Pfeiltaste links)"
           >
@@ -378,7 +378,7 @@ export function TeamSection() {
               const nextIdx = (idx + 1) % teamMembers.length;
               setSelectedMember(teamMembers[nextIdx]);
             }}
-            className="hidden sm:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 h-11 w-11 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-110 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            className="hidden sm:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 h-11 w-11 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-900 hover:scale-110 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
             aria-label="Nächste Mitarbeiterin"
             title="Nächste Mitarbeiterin (Pfeiltaste rechts)"
           >
@@ -392,7 +392,7 @@ export function TeamSection() {
             <div className="flex items-center justify-between pb-3 border-b border-[#F0E6E8]">
               <div>
                 <h4 className="text-base font-bold text-[#2B2326]">{selectedMember.name}</h4>
-                <p className="text-xs text-pink-700 font-medium">{selectedMember.role}</p>
+                <p className="text-xs text-pink-900 font-medium">{selectedMember.role}</p>
               </div>
               <div className="flex items-center gap-1.5">
                 <button
@@ -402,7 +402,7 @@ export function TeamSection() {
                     const prevIdx = idx <= 0 ? teamMembers.length - 1 : idx - 1;
                     setSelectedMember(teamMembers[prevIdx]);
                   }}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-700 hover:bg-[#FAF5F6] transition-colors cursor-pointer"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-900 hover:bg-[#FAF5F6] transition-colors cursor-pointer"
                   aria-label="Vorherige Mitarbeiterin"
                   title="Vorherige (Pfeiltaste links)"
                 >
@@ -415,7 +415,7 @@ export function TeamSection() {
                     const nextIdx = (idx + 1) % teamMembers.length;
                     setSelectedMember(teamMembers[nextIdx]);
                   }}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-700 hover:bg-[#FAF5F6] transition-colors cursor-pointer"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-900 hover:bg-[#FAF5F6] transition-colors cursor-pointer"
                   aria-label="Nächste Mitarbeiterin"
                   title="Nächste (Pfeiltaste rechts)"
                 >

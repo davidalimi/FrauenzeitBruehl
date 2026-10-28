@@ -761,7 +761,7 @@ export function ServicesSection() {
         
         {/* Section Header */}
         <div className="max-w-3xl text-left pb-8">
-          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
+          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-900">
             <Stethoscope className="h-3.5 w-3.5" />
             <span>Medizinisches Angebot</span>
           </div>
@@ -780,7 +780,7 @@ export function ServicesSection() {
             onClick={() => setActiveFilter('alle')}
             className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
               activeFilter === 'alle'
-                ? 'bg-pink-700 text-white shadow-xs'
+                ? 'bg-pink-900 text-white shadow-xs'
                 : 'bg-white text-[#5C4A4F] border border-[#F0E6E8] hover:border-pink-300'
             }`}
           >
@@ -791,7 +791,7 @@ export function ServicesSection() {
             onClick={() => setActiveFilter('schwerpunkt')}
             className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
               activeFilter === 'schwerpunkt'
-                ? 'bg-pink-700 text-white shadow-xs'
+                ? 'bg-pink-900 text-white shadow-xs'
                 : 'bg-white text-[#5C4A4F] border border-[#F0E6E8] hover:border-pink-300'
             }`}
           >
@@ -802,7 +802,7 @@ export function ServicesSection() {
             onClick={() => setActiveFilter('gynaekologie')}
             className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
               activeFilter === 'gynaekologie'
-                ? 'bg-pink-700 text-white shadow-xs'
+                ? 'bg-pink-900 text-white shadow-xs'
                 : 'bg-white text-[#5C4A4F] border border-[#F0E6E8] hover:border-pink-300'
             }`}
           >
@@ -838,10 +838,10 @@ export function ServicesSection() {
 
                 {/* Content */}
                 <div className="mt-4">
-                  <h3 className="text-xl font-bold text-[#2B2326] group-hover:text-pink-700 transition-colors">
+                  <h3 className="text-xl font-bold text-[#2B2326] group-hover:text-pink-900 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-xs font-semibold text-pink-700">
+                  <p className="mt-1 text-xs font-semibold text-pink-900">
                     {item.subtitle}
                   </p>
                   <p className="mt-2.5 text-xs sm:text-sm text-[#5C4A4F] leading-relaxed line-clamp-3">
@@ -852,7 +852,7 @@ export function ServicesSection() {
                   <div className="mt-4 space-y-1.5 border-t border-[#F0E6E8] pt-3">
                     {item.keyHighlights.slice(0, 2).map((h, i) => (
                       <div key={i} className="flex items-start gap-2 text-xs text-[#4D3F43]">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-pink-700 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-3.5 w-3.5 text-pink-900 shrink-0 mt-0.5" />
                         <span className="leading-snug">{h}</span>
                       </div>
                     ))}
@@ -862,7 +862,7 @@ export function ServicesSection() {
 
               {/* Card Footer Action */}
               <div className="mt-5 pt-3 border-t border-[#F0E6E8] flex items-center justify-between">
-                <span className="text-xs font-bold text-pink-700 group-hover:underline flex items-center gap-1">
+                <span className="text-xs font-bold text-pink-900 group-hover:underline flex items-center gap-1">
                   <span>Details ansehen</span>
                   <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </span>
@@ -888,7 +888,7 @@ export function ServicesSection() {
               e.stopPropagation();
               handlePrevModal();
             }}
-            className="hidden xl:flex fixed left-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-110 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            className="hidden xl:flex fixed left-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-900 hover:scale-110 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
             aria-label="Vorherige Leistung"
             title="Vorherige Leistung (Pfeiltaste links)"
           >
@@ -900,7 +900,7 @@ export function ServicesSection() {
               e.stopPropagation();
               handleNextModal();
             }}
-            className="hidden xl:flex fixed right-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-110 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            className="hidden xl:flex fixed right-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-900 hover:scale-110 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
             aria-label="Nächste Leistung"
             title="Nächste Leistung (Pfeiltaste rechts)"
           >
@@ -918,7 +918,7 @@ export function ServicesSection() {
                 <button
                   type="button"
                   onClick={handlePrevModal}
-                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-700 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-900 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
                   aria-label="Vorherige Leistung"
                   title="Vorherige Leistung (Pfeiltaste links)"
                 >
@@ -927,7 +927,7 @@ export function ServicesSection() {
                 <button
                   type="button"
                   onClick={handleNextModal}
-                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-700 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-900 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
                   aria-label="Nächste Leistung"
                   title="Nächste Leistung (Pfeiltaste rechts)"
                 >
@@ -973,7 +973,7 @@ export function ServicesSection() {
               {/* In-Depth Text Paragraphs from official practice page */}
               <div className="space-y-3 text-xs sm:text-sm text-[#4D3F43] leading-relaxed">
                 <h4 className="font-bold text-[#2B2326] text-sm flex items-center gap-1.5">
-                  <HeartHandshake className="h-4 w-4 text-pink-700" />
+                  <HeartHandshake className="h-4 w-4 text-pink-900" />
                   <span>Medizinisches Konzept & Betreuung in unserer Praxis</span>
                 </h4>
                 {selectedItem.detailedText.map((p, idx) => (
@@ -986,19 +986,19 @@ export function ServicesSection() {
               {/* Clinical Focus Categories */}
               <div className="space-y-4 pt-2">
                 <h4 className="font-bold text-[#2B2326] text-sm flex items-center gap-1.5">
-                  <Activity className="h-4 w-4 text-pink-700" />
+                  <Activity className="h-4 w-4 text-pink-900" />
                   <span>Behandlungsspektrum & Schwerpunkte</span>
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {selectedItem.clinicalFocus.map((focusGroup, idx) => (
                     <div key={idx} className="rounded-xl border border-[#E8D2D7] bg-[#FCF8F9] p-4 space-y-2.5">
-                      <h5 className="text-xs font-bold uppercase tracking-wider text-pink-800">
+                      <h5 className="text-xs font-bold uppercase tracking-wider text-pink-950">
                         {focusGroup.category}
                       </h5>
                       <ul className="space-y-1.5 text-xs text-[#5C4A4F]">
                         {focusGroup.items.map((item, itemIdx) => (
                           <li key={itemIdx} className="flex items-start gap-2">
-                            <CheckCircle2 className="h-3.5 w-3.5 text-pink-700 shrink-0 mt-0.5" />
+                            <CheckCircle2 className="h-3.5 w-3.5 text-pink-900 shrink-0 mt-0.5" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -1010,7 +1010,7 @@ export function ServicesSection() {
 
               {/* Praxis Advantage Note */}
               <div className="rounded-xl border border-pink-100 bg-pink-50/50 p-4 flex items-start gap-3 text-xs text-[#5C4A4F]">
-                <ShieldCheck className="h-4 w-4 text-pink-700 shrink-0 mt-0.5" />
+                <ShieldCheck className="h-4 w-4 text-pink-900 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-[#2B2326] font-semibold block">Besonderheit in unserer Praxis:</strong>
                   <span>{selectedItem.practiceAdvantage}</span>

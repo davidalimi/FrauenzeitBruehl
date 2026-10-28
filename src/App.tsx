@@ -17,7 +17,7 @@ export default function App() {
   const [activeNav, setActiveNav] = useState('start');
 
   return (
-    <div className="min-h-screen bg-[#FCFBF9] text-[#2B2326] antialiased selection:bg-pink-700 selection:text-white font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-[#FCFBF9] text-[#2B2326] antialiased selection:bg-pink-900 selection:text-white font-sans overflow-x-hidden">
       {/* 1. Practice Header with Brand Logo, Navigation, and Action */}
       <Header 
         activeNav={activeNav}

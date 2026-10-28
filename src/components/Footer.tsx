@@ -4,7 +4,7 @@ import { X, Phone, ShieldCheck, FileText, ExternalLink, Download } from 'lucide-
 export function Footer() {
   const [activeModal, setActiveModal] = useState<'impressum' | 'privacy' | null>(null);
 
-  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.png`;
+  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.svg`;
   const doctolibUrl = 'https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl';
 
   // Handle ESC key to close modal
@@ -45,7 +45,7 @@ export function Footer() {
                     onError={(e) => {
                       const target = e.currentTarget;
                       if (!target.src.includes('public/')) {
-                        target.src = './public/assets/header/logo.png';
+                        target.src = './public/assets/header/logo.svg';
                       }
                     }}
                   />
@@ -192,9 +192,9 @@ export function Footer() {
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
               <div className="flex items-center gap-2">
                 {activeModal === 'impressum' ? (
-                  <FileText className="h-5 w-5 text-pink-700" />
+                  <FileText className="h-5 w-5 text-pink-900" />
                 ) : (
-                  <ShieldCheck className="h-5 w-5 text-pink-700" />
+                  <ShieldCheck className="h-5 w-5 text-pink-900" />
                 )}
                 <h3 className="text-base font-bold text-slate-900">
                   {activeModal === 'impressum'
@@ -259,7 +259,7 @@ export function Footer() {
                         href="https://www.aekno.de" 
                         target="_blank" 
                         rel="noreferrer" 
-                        className="text-pink-700 underline hover:text-pink-800"
+                        className="text-pink-900 underline hover:text-pink-950"
                       >
                         www.aekno.de
                       </a>.
@@ -316,7 +316,7 @@ export function Footer() {
                   {/* Official PDF Document Download */}
                   <div className="mt-6 p-4 sm:p-5 rounded-2xl border border-pink-200 bg-[#FCF8F9] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-start gap-3">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-pink-100 text-pink-700">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-pink-100 text-pink-900">
                         <FileText className="h-5 w-5" />
                       </div>
                       <div>
@@ -332,7 +332,7 @@ export function Footer() {
                       href={`${import.meta.env.BASE_URL}assets/docs/patienteninformation-datenschutz.pdf`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-pink-700 hover:bg-pink-800 text-white px-4 py-2.5 text-xs font-semibold shadow-xs transition-colors shrink-0 cursor-pointer"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-pink-900 hover:bg-pink-950 text-white px-4 py-2.5 text-xs font-semibold shadow-xs transition-colors shrink-0 cursor-pointer"
                     >
                       <Download className="h-4 w-4" />
                       <span>PDF ansehen / herunterladen</span>

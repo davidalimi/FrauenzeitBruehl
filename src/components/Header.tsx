@@ -22,7 +22,7 @@ export function Header({
   const [highlightsOpen, setHighlightsOpen] = useState(false);
 
   // Logo asset URL supporting Vite base path
-  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.png`;
+  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.svg`;
 
   const handleNavClick = (sectionId: string) => {
     if (onNavClick) onNavClick(sectionId);
@@ -61,8 +61,8 @@ export function Header({
             className="flex flex-col text-left group cursor-pointer shrink-0"
             aria-label="Frauenzeit Brühl Startseite"
           >
-            <span className="text-2xl xl:text-[27px] font-bold tracking-tight text-[#2B2326] font-sans leading-tight group-hover:text-pink-700 transition-colors">
-              Frauenzeit<span className="text-pink-700">Brühl</span>
+            <span className="text-2xl xl:text-[27px] font-bold tracking-tight text-[#2B2326] font-sans leading-tight group-hover:text-pink-900 transition-colors">
+              Frauenzeit<span className="text-pink-900">Brühl</span>
             </span>
             <span className="text-xs xl:text-sm font-medium text-[#826970] tracking-wide leading-tight mt-0.5">
               Gynäkologie & Geburtshilfe
@@ -74,8 +74,8 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('start')}
-              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-700 whitespace-nowrap cursor-pointer ${
-                activeNav === 'start' ? 'text-pink-700 font-bold border-b-2 border-pink-700' : 'text-[#4D3F43] font-medium'
+              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-900 whitespace-nowrap cursor-pointer ${
+                activeNav === 'start' ? 'text-pink-900 font-bold border-b-2 border-pink-900' : 'text-[#4D3F43] font-medium'
               }`}
             >
               Startseite
@@ -83,8 +83,8 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('philosophie')}
-              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-700 whitespace-nowrap cursor-pointer ${
-                activeNav === 'philosophie' ? 'text-pink-700 font-bold border-b-2 border-pink-700' : 'text-[#4D3F43] font-medium'
+              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-900 whitespace-nowrap cursor-pointer ${
+                activeNav === 'philosophie' ? 'text-pink-900 font-bold border-b-2 border-pink-900' : 'text-[#4D3F43] font-medium'
               }`}
             >
               Philosophie
@@ -92,8 +92,8 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('team')}
-              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-700 whitespace-nowrap cursor-pointer ${
-                activeNav === 'team' ? 'text-pink-700 font-bold border-b-2 border-pink-700' : 'text-[#4D3F43] font-medium'
+              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-900 whitespace-nowrap cursor-pointer ${
+                activeNav === 'team' ? 'text-pink-900 font-bold border-b-2 border-pink-900' : 'text-[#4D3F43] font-medium'
               }`}
             >
               Team
@@ -101,8 +101,8 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('praxis')}
-              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-700 whitespace-nowrap cursor-pointer ${
-                activeNav === 'praxis' ? 'text-pink-700 font-bold border-b-2 border-pink-700' : 'text-[#4D3F43] font-medium'
+              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-900 whitespace-nowrap cursor-pointer ${
+                activeNav === 'praxis' ? 'text-pink-900 font-bold border-b-2 border-pink-900' : 'text-[#4D3F43] font-medium'
               }`}
             >
               Praxis
@@ -118,7 +118,7 @@ export function Header({
               className="group cursor-pointer mx-1.5 xl:mx-3 shrink-0"
               aria-label="Frauenzeit Brühl Startseite"
             >
-              <div className="relative h-18 w-18 xl:h-20 xl:w-20 rounded-full p-1.5 border-2 border-[#E8D2D7] bg-[#FCF8F9] shadow-sm shrink-0 overflow-hidden group-hover:border-pink-700/60 transition-all group-hover:scale-105">
+              <div className="relative h-18 w-18 xl:h-20 xl:w-20 rounded-full p-1.5 border-2 border-[#E8D2D7] bg-[#FCF8F9] shadow-sm shrink-0 overflow-hidden group-hover:border-pink-900/60 transition-all group-hover:scale-105">
                 <img 
                   src={logoUrl} 
                   alt="Frauenzeit Brühl Logo" 
@@ -126,7 +126,7 @@ export function Header({
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (!target.src.includes('public/')) {
-                      target.src = './public/assets/header/logo.png';
+                      target.src = './public/assets/header/logo.svg';
                     }
                   }}
                 />
@@ -136,8 +136,8 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('leistungen')}
-              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-700 whitespace-nowrap cursor-pointer ${
-                activeNav === 'leistungen' ? 'text-pink-700 font-bold border-b-2 border-pink-700' : 'text-[#4D3F43] font-medium'
+              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-900 whitespace-nowrap cursor-pointer ${
+                activeNav === 'leistungen' ? 'text-pink-900 font-bold border-b-2 border-pink-900' : 'text-[#4D3F43] font-medium'
               }`}
             >
               Leistungen
@@ -152,15 +152,15 @@ export function Header({
               <button
                 type="button"
                 onClick={() => setHighlightsOpen(!highlightsOpen)}
-                className={`inline-flex items-center gap-1 text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-700 whitespace-nowrap cursor-pointer ${
+                className={`inline-flex items-center gap-1 text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-900 whitespace-nowrap cursor-pointer ${
                   activeNav === 'ernaehrung' || activeNav === 'betterpelvi'
-                    ? 'text-pink-700 font-bold border-b-2 border-pink-700'
+                    ? 'text-pink-900 font-bold border-b-2 border-pink-900'
                     : 'text-[#4D3F43] font-medium'
                 }`}
                 aria-expanded={highlightsOpen}
               >
                 <span>Schwerpunkte</span>
-                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${highlightsOpen ? 'rotate-180 text-pink-700' : 'text-[#826970]'}`} />
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${highlightsOpen ? 'rotate-180 text-pink-900' : 'text-[#826970]'}`} />
               </button>
 
               {highlightsOpen && (
@@ -171,7 +171,7 @@ export function Header({
                       onClick={() => handleServiceHighlightClick('ernaehrung')}
                       className="w-full text-left p-3 rounded-xl hover:bg-[#FAF1F3] transition-colors group cursor-pointer block"
                     >
-                      <div className="font-semibold text-sm text-[#2B2326] group-hover:text-pink-700 transition-colors">
+                      <div className="font-semibold text-sm text-[#2B2326] group-hover:text-pink-900 transition-colors">
                         Ernährungsmedizin
                       </div>
                       <div className="text-xs text-[#5C4A4F] mt-0.5">
@@ -184,7 +184,7 @@ export function Header({
                       onClick={() => handleServiceHighlightClick('betterpelvi')}
                       className="w-full text-left p-3 rounded-xl hover:bg-[#FAF1F3] transition-colors group cursor-pointer block"
                     >
-                      <div className="font-semibold text-sm text-[#2B2326] group-hover:text-pink-700 transition-colors">
+                      <div className="font-semibold text-sm text-[#2B2326] group-hover:text-pink-900 transition-colors">
                         Better Pelvi
                       </div>
                       <div className="text-xs text-[#5C4A4F] mt-0.5">
@@ -199,8 +199,8 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('kontakt')}
-              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-700 whitespace-nowrap cursor-pointer ${
-                activeNav === 'kontakt' ? 'text-pink-700 font-bold border-b-2 border-pink-700' : 'text-[#4D3F43] font-medium'
+              className={`text-base xl:text-[17px] transition-colors py-1.5 hover:text-pink-900 whitespace-nowrap cursor-pointer ${
+                activeNav === 'kontakt' ? 'text-pink-900 font-bold border-b-2 border-pink-900' : 'text-[#4D3F43] font-medium'
               }`}
             >
               Kontakt
@@ -213,7 +213,7 @@ export function Header({
               href="https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-pink-700 px-5 py-3 text-sm xl:text-base font-semibold text-white shadow-xs transition-all hover:bg-pink-800 active:scale-[0.98] whitespace-nowrap cursor-pointer"
+              className="inline-flex items-center gap-2 rounded-xl bg-pink-900 px-5 py-3 text-sm xl:text-base font-semibold text-white shadow-xs transition-all hover:bg-pink-950 active:scale-[0.98] whitespace-nowrap cursor-pointer"
             >
               <Calendar className="h-4 w-4" />
               <span>Termin Buchen</span>
@@ -239,14 +239,14 @@ export function Header({
                 onError={(e) => {
                   const target = e.currentTarget;
                   if (!target.src.includes('public/')) {
-                    target.src = './public/assets/header/logo.png';
+                    target.src = './public/assets/header/logo.svg';
                   }
                 }}
               />
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold tracking-tight text-[#2B2326]">
-                Frauenzeit<span className="text-pink-700">Brühl</span>
+                Frauenzeit<span className="text-pink-900">Brühl</span>
               </span>
               <span className="text-[10px] font-medium text-[#826970]">
                 Gynäkologie & Geburtshilfe
@@ -259,7 +259,7 @@ export function Header({
               href="https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg bg-pink-700 p-2.5 text-white shadow-xs hover:bg-pink-800 transition-colors"
+              className="rounded-lg bg-pink-900 p-2.5 text-white shadow-xs hover:bg-pink-950 transition-colors"
               title="Termin buchen"
               aria-label="Termin Buchen"
             >
@@ -284,7 +284,7 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('start')}
-              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
+              className="flex items-center justify-between py-2 text-left hover:text-pink-900"
             >
               <span>Startseite</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
@@ -292,7 +292,7 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('philosophie')}
-              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
+              className="flex items-center justify-between py-2 text-left hover:text-pink-900"
             >
               <span>Philosophie</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
@@ -300,7 +300,7 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('team')}
-              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
+              className="flex items-center justify-between py-2 text-left hover:text-pink-900"
             >
               <span>Team</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
@@ -308,7 +308,7 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('praxis')}
-              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
+              className="flex items-center justify-between py-2 text-left hover:text-pink-900"
             >
               <span>Praxis</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
@@ -316,7 +316,7 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('leistungen')}
-              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
+              className="flex items-center justify-between py-2 text-left hover:text-pink-900"
             >
               <span>Leistungen</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
@@ -324,13 +324,13 @@ export function Header({
 
             {/* Mobile Highlights Sub-Menu */}
             <div className="my-1 rounded-xl bg-[#FAF1F3]/70 p-2.5 space-y-1">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-pink-800 px-2 block">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-pink-950 px-2 block">
                 Schwerpunkte & Highlights
               </span>
               <button
                 type="button"
                 onClick={() => handleServiceHighlightClick('ernaehrung')}
-                className="flex w-full items-center justify-between py-2 px-2.5 rounded-lg text-left text-sm font-medium text-[#2B2326] hover:bg-white hover:text-pink-700 transition-colors"
+                className="flex w-full items-center justify-between py-2 px-2.5 rounded-lg text-left text-sm font-medium text-[#2B2326] hover:bg-white hover:text-pink-900 transition-colors"
               >
                 <span>Ernährungsmedizin</span>
                 <ChevronRight className="h-3.5 w-3.5 text-[#A37B85]" />
@@ -338,7 +338,7 @@ export function Header({
               <button
                 type="button"
                 onClick={() => handleServiceHighlightClick('betterpelvi')}
-                className="flex w-full items-center justify-between py-2 px-2.5 rounded-lg text-left text-sm font-medium text-[#2B2326] hover:bg-white hover:text-pink-700 transition-colors"
+                className="flex w-full items-center justify-between py-2 px-2.5 rounded-lg text-left text-sm font-medium text-[#2B2326] hover:bg-white hover:text-pink-900 transition-colors"
               >
                 <span>Better Pelvi</span>
                 <ChevronRight className="h-3.5 w-3.5 text-[#A37B85]" />
@@ -348,7 +348,7 @@ export function Header({
             <button
               type="button"
               onClick={() => handleNavClick('kontakt')}
-              className="flex items-center justify-between py-2 text-left hover:text-pink-700"
+              className="flex items-center justify-between py-2 text-left hover:text-pink-900"
             >
               <span>Kontakt</span>
               <ChevronRight className="h-4 w-4 text-[#A37B85]" />
@@ -362,7 +362,7 @@ export function Header({
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-pink-700 py-3 text-sm font-semibold text-white shadow-xs hover:bg-pink-800 transition-colors"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-pink-900 py-3 text-sm font-semibold text-white shadow-xs hover:bg-pink-950 transition-colors"
             >
               <Calendar className="h-4 w-4" />
               <span>Termin Buchen</span>
@@ -370,7 +370,7 @@ export function Header({
 
             <a
               href="tel:0223243545"
-              className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#E8D2D7] bg-[#FCF8F9] py-3 text-sm font-semibold text-pink-700 hover:bg-[#FAF5F6] transition-colors"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#E8D2D7] bg-[#FCF8F9] py-3 text-sm font-semibold text-pink-900 hover:bg-[#FAF5F6] transition-colors"
             >
               <Phone className="h-4 w-4" />
               <span>(02232) 43545</span>

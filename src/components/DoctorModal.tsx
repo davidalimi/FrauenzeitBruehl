@@ -260,8 +260,6 @@ interface DoctorModalProps {
 }
 
 export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProps) {
-  const [activeTab, setActiveTab] = useState<'vita' | 'career' | 'qualifications' | 'science'>('vita');
-
   const isAnika = doctor?.id === 'birkenfeld';
   const otherDoctorKey = isAnika ? 'ledwig' : 'birkenfeld';
   const otherDoctorName = isAnika ? 'Dr. med. Corinna Ledwig' : 'Dr. med. Anika Birkenfeld';
@@ -287,11 +285,6 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
     };
   }, [doctor, onClose, onSwitchDoctor, otherDoctorKey]);
 
-  // Reset tab to vita when doctor changes
-  useEffect(() => {
-    setActiveTab('vita');
-  }, [doctor?.id]);
-
   if (!doctor) return null;
 
   return (
@@ -311,7 +304,7 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
               e.stopPropagation();
               onSwitchDoctor(otherDoctorKey);
             }}
-            className="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            className="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-900 hover:scale-105 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
             aria-label={`Zu ${otherDoctorName} wechseln`}
             title={`Zu ${otherDoctorName} (Pfeiltaste links/rechts)`}
           >
@@ -323,7 +316,7 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
               e.stopPropagation();
               onSwitchDoctor(otherDoctorKey);
             }}
-            className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
+            className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/95 text-[#2B2326] shadow-xl hover:bg-white hover:text-pink-900 hover:scale-105 active:scale-95 transition-all border border-[#E8D2D7] cursor-pointer"
             aria-label={`Zu ${otherDoctorName} wechseln`}
             title={`Zu ${otherDoctorName} (Pfeiltaste links/rechts)`}
           >
@@ -342,7 +335,7 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
             <button
               type="button"
               onClick={() => onSwitchDoctor(otherDoctorKey)}
-              className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white/95 text-[11px] sm:text-xs font-semibold text-[#735F64] hover:text-pink-700 hover:bg-white border border-[#E8D2D7] shadow-xs transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white/95 text-[11px] sm:text-xs font-semibold text-[#735F64] hover:text-pink-900 hover:bg-white border border-[#E8D2D7] shadow-xs transition-colors cursor-pointer"
               title={`Zu ${otherDoctorName} wechseln`}
             >
               <span className="hidden xs:inline">Zu </span>
@@ -360,11 +353,11 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
           </button>
         </div>
 
-        {/* Modal Header Banner: Doctor Presentation & Quick Stats */}
-        <div className="bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-3.5 sm:p-7 shrink-0">
+        {/* Modal Header Banner: Doctor Presentation */}
+        <div className="bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-4 sm:p-6 shrink-0">
           <div className="flex flex-row items-center sm:items-start gap-3.5 sm:gap-5 pr-24 sm:pr-0">
             {/* Portrait Image */}
-            <div className="relative h-14 w-14 sm:h-36 sm:w-28 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-pink-700/20 shadow-md bg-white shrink-0">
+            <div className="relative h-16 w-16 sm:h-32 sm:w-28 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-pink-900/20 shadow-md bg-white shrink-0">
               <img
                 src={doctor.image}
                 alt={doctor.name}
@@ -379,246 +372,178 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
             </div>
 
             {/* Doctor Info */}
-            <div className="flex-1 min-w-0 text-left space-y-0.5 sm:space-y-1.5">
-              <h2 id="doctor-modal-title" className="text-base sm:text-3xl font-bold tracking-tight text-[#2B2326] truncate sm:whitespace-normal">
+            <div className="flex-1 min-w-0 text-left space-y-0.5 sm:space-y-1">
+              <h2 id="doctor-modal-title" className="text-base sm:text-2xl font-bold tracking-tight text-[#2B2326] truncate sm:whitespace-normal">
                 {doctor.name}
               </h2>
-              <p className="text-xs sm:text-sm font-medium text-pink-700 line-clamp-1 sm:line-clamp-none">
+              <p className="text-xs sm:text-sm font-semibold text-pink-900 line-clamp-1 sm:line-clamp-none">
                 {doctor.salutation}
               </p>
-              {/* Doctor Quote (visible in header on desktop, moved to body on mobile) */}
-              <p className="hidden sm:block text-xs sm:text-sm italic text-[#5C4A4F] max-w-2xl bg-white/80 p-2.5 rounded-xl border border-[#F0E6E8] shadow-2xs mt-2">
+              {/* Doctor Quote */}
+              <p className="hidden sm:block text-xs sm:text-sm italic text-[#5C4A4F] max-w-2xl bg-white/80 p-2.5 rounded-xl border border-[#F0E6E8] shadow-2xs mt-1.5">
                 {doctor.quote}
               </p>
             </div>
           </div>
-
-          {/* Navigation Tabs - Sleek single-line horizontal strip on mobile */}
-          <div className="mt-3 sm:mt-5 flex items-center gap-1.5 sm:gap-2 border-t border-[#F0E6E8] pt-2.5 sm:pt-4 overflow-x-auto no-scrollbar">
-            <button
-              type="button"
-              onClick={() => setActiveTab('vita')}
-              className={`shrink-0 flex items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
-                activeTab === 'vita'
-                  ? 'bg-pink-700 text-white shadow-xs'
-                  : 'bg-white text-[#735F64] hover:text-[#2B2326] border border-[#F0E6E8] hover:bg-[#FAF5F6]'
-              }`}
-            >
-              <Heart className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-              <span className="sm:inline hidden">Über mich & Vita</span>
-              <span className="sm:hidden inline">Vita</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('career')}
-              className={`shrink-0 flex items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
-                activeTab === 'career'
-                  ? 'bg-pink-700 text-white shadow-xs'
-                  : 'bg-white text-[#735F64] hover:text-[#2B2326] border border-[#F0E6E8] hover:bg-[#FAF5F6]'
-              }`}
-            >
-              <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-              <span className="sm:inline hidden">Beruflicher Werdegang ({doctor.careerTimeline.length})</span>
-              <span className="sm:hidden inline">Werdegang</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('qualifications')}
-              className={`shrink-0 flex items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
-                activeTab === 'qualifications'
-                  ? 'bg-pink-700 text-white shadow-xs'
-                  : 'bg-white text-[#735F64] hover:text-[#2B2326] border border-[#F0E6E8] hover:bg-[#FAF5F6]'
-              }`}
-            >
-              <Award className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-              <span className="sm:inline hidden">Qualifikationen & Verbände</span>
-              <span className="sm:hidden inline">Qualifikationen</span>
-            </button>
-            {(doctor.publications && doctor.publications.length > 0) && (
-              <button
-                type="button"
-                onClick={() => setActiveTab('science')}
-                className={`shrink-0 flex items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
-                  activeTab === 'science'
-                    ? 'bg-pink-700 text-white shadow-xs'
-                    : 'bg-white text-[#735F64] hover:text-[#2B2326] border border-[#F0E6E8] hover:bg-[#FAF5F6]'
-                }`}
-              >
-                <BookOpen className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-                <span className="sm:inline hidden">Forschung & Publikationen</span>
-                <span className="sm:hidden inline">Forschung</span>
-              </button>
-            )}
-          </div>
         </div>
 
-        {/* Modal Scrollable Body */}
-        <div className="flex-1 overflow-y-auto p-3.5 sm:p-7 space-y-4 sm:space-y-6">
+        {/* Modal Scrollable Body - Continuous spacious flow without tab buttons */}
+        <div className="flex-1 overflow-y-auto p-4 sm:p-7 space-y-7 sm:space-y-9">
           
-          {/* TAB 1: Über mich & Persönliche Geschichte */}
-          {activeTab === 'vita' && (
-            <div className="space-y-4 sm:space-y-6 animate-in fade-in duration-150">
-              {/* Mobile Quote Card */}
-              <div className="sm:hidden rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-3 text-xs italic text-[#4D3F43] leading-relaxed">
-                „{doctor.quote}“
+          {/* Mobile Quote Card */}
+          <div className="sm:hidden rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-3 text-xs italic text-[#4D3F43] leading-relaxed">
+            „{doctor.quote}“
+          </div>
+
+          {/* SECTION 1: Über mich & Philosophie */}
+          <section className="space-y-3.5 text-xs sm:text-sm text-[#4D3F43] leading-relaxed">
+            <h3 className="text-sm sm:text-base font-bold text-[#2B2326] flex items-center gap-2 border-b border-[#F0E6E8] pb-2">
+              <Heart className="h-4 w-4 text-pink-900 shrink-0" />
+              <span>Über mich & Philosophie</span>
+            </h3>
+            {doctor.aboutStory.map((paragraph, idx) => (
+              <p key={idx} className="bg-[#FAF5F6]/50 p-3 sm:p-3.5 rounded-xl border border-[#F0E6E8]/60">
+                {paragraph}
+              </p>
+            ))}
+
+            {/* Personal Notes */}
+            {doctor.personalNotes && (
+              <div className="rounded-2xl border border-[#E8D2D7] bg-white p-4 sm:p-5 shadow-2xs space-y-1.5 mt-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-pink-900 flex items-center gap-1.5">
+                  <Sparkles className="h-3.5 w-3.5 text-pink-900" />
+                  <span>Persönliches & Freizeit</span>
+                </h4>
+                <p className="text-xs text-[#5C4A4F] leading-relaxed">
+                  {doctor.personalNotes}
+                </p>
               </div>
+            )}
 
-              {/* Doctor Story */}
-              <div className="space-y-3 text-xs sm:text-sm text-[#4D3F43] leading-relaxed">
-                <h3 className="text-sm sm:text-base font-bold text-[#2B2326] flex items-center gap-2">
-                  <Heart className="h-4 w-4 text-pink-700 shrink-0" />
-                  <span>Persönlicher Werdegang & Philosophie</span>
-                </h3>
-                {doctor.aboutStory.map((paragraph, idx) => (
-                  <p key={idx} className="bg-[#FAF5F6]/50 p-3 rounded-xl border border-[#F0E6E8]/60">
-                    {paragraph}
-                  </p>
-                ))}
+            {/* Promotion Notice */}
+            {doctor.doctoralThesis && (
+              <div className="rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-4 flex items-start gap-3 text-xs text-[#4D3F43] mt-3">
+                <GraduationCap className="h-5 w-5 text-pink-900 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-[#2B2326] block">
+                    Promotion zum Dr. med. ({doctor.doctoralThesis.year}):
+                  </span>
+                  <span className="italic block mt-0.5 font-medium text-pink-950">
+                    „{doctor.doctoralThesis.title}“
+                  </span>
+                  <span className="text-[#735F64] block mt-0.5">
+                    {doctor.doctoralThesis.institution}
+                  </span>
+                </div>
               </div>
+            )}
+          </section>
 
-              {/* Personal Side / Family / Passions */}
-              {doctor.personalNotes && (
-                <div className="rounded-2xl border border-[#E8D2D7] bg-white p-5 shadow-2xs space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-pink-700 flex items-center gap-1.5">
-                    <Sparkles className="h-3.5 w-3.5 text-pink-700" />
-                    <span>Persönliches & Freizeit</span>
-                  </h4>
-                  <p className="text-xs text-[#5C4A4F] leading-relaxed">
-                    {doctor.personalNotes}
-                  </p>
-                </div>
-              )}
-
-              {/* Promotion Notice */}
-              {doctor.doctoralThesis && (
-                <div className="rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-4 flex items-start gap-3 text-xs text-[#4D3F43]">
-                  <GraduationCap className="h-5 w-5 text-pink-700 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-[#2B2326] block">
-                      Promotion zum Dr. med. ({doctor.doctoralThesis.year}):
-                    </span>
-                    <span className="italic block mt-0.5 font-medium text-pink-800">
-                      „{doctor.doctoralThesis.title}“
-                    </span>
-                    <span className="text-[#735F64] block mt-0.5">
-                      {doctor.doctoralThesis.institution}
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* TAB 2: Beruflicher Werdegang Timeline (More compact) */}
-          {activeTab === 'career' && (
-            <div className="space-y-3 animate-in fade-in duration-150">
-              <h3 className="text-sm font-bold text-[#2B2326] flex items-center gap-2 mb-2">
-                <Clock className="h-4 w-4 text-pink-700" />
-                <span>Stationen des beruflichen Werdegangs</span>
-              </h3>
-              <div className="relative pl-5 space-y-2.5 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#E8D2D7]">
-                {doctor.careerTimeline.map((item, idx) => (
-                  <div key={idx} className="relative">
-                    {/* Timeline bullet */}
-                    <div className="absolute -left-5 top-2.5 h-2 w-2 rounded-full border-2 border-white bg-pink-700 shadow-xs" />
-                    
-                    <div className="rounded-xl border border-[#F0E6E8] bg-white py-2.5 px-3.5 shadow-2xs hover:border-[#E8D2D7] transition-all">
-                      <div className="flex flex-wrap items-baseline justify-between gap-2">
-                        <span className="font-mono text-xs font-bold text-pink-700">
-                          {item.year}
-                        </span>
-                        <span className="text-[11px] text-[#735F64]">
-                          {item.organization}
-                        </span>
-                      </div>
-                      <h4 className="text-xs sm:text-sm font-semibold text-[#2B2326]">
-                        {item.title}
-                      </h4>
-                      {item.details && (
-                        <p className="mt-0.5 text-[11px] text-[#5C4A4F] leading-snug">
-                          {item.details}
-                        </p>
-                      )}
+          {/* SECTION 2: Beruflicher Werdegang Timeline */}
+          <section className="space-y-3.5">
+            <h3 className="text-sm sm:text-base font-bold text-[#2B2326] flex items-center gap-2 border-b border-[#F0E6E8] pb-2">
+              <Clock className="h-4 w-4 text-pink-900" />
+              <span>Beruflicher Werdegang</span>
+            </h3>
+            <div className="relative pl-5 space-y-2.5 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#E8D2D7]">
+              {doctor.careerTimeline.map((item, idx) => (
+                <div key={idx} className="relative">
+                  {/* Timeline bullet */}
+                  <div className="absolute -left-5 top-2.5 h-2 w-2 rounded-full border-2 border-white bg-pink-900 shadow-xs" />
+                  
+                  <div className="rounded-xl border border-[#F0E6E8] bg-white py-2.5 px-3.5 shadow-2xs hover:border-[#E8D2D7] transition-all">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <span className="font-mono text-xs font-bold text-pink-900">
+                        {item.year}
+                      </span>
+                      <span className="text-[11px] text-[#735F64]">
+                        {item.organization}
+                      </span>
                     </div>
+                    <h4 className="text-xs sm:text-sm font-semibold text-[#2B2326]">
+                      {item.title}
+                    </h4>
+                    {item.details && (
+                      <p className="mt-0.5 text-[11px] text-[#5C4A4F] leading-snug">
+                        {item.details}
+                      </p>
+                    )}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-          )}
+          </section>
 
-          {/* TAB 3: Qualifikationen & Mitgliedschaften */}
-          {activeTab === 'qualifications' && (
-            <div className="space-y-6 animate-in fade-in duration-150">
-              {/* Core Qualifications */}
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-[#2B2326] flex items-center gap-2">
-                  <Award className="h-4 w-4 text-pink-700" />
-                  <span>Zusatzqualifikationen & Zertifizierungen</span>
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {doctor.qualifications.map((qual, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 rounded-xl border border-[#F0E6E8] bg-white p-3 shadow-2xs">
-                      <CheckCircle2 className="h-4 w-4 text-pink-700 shrink-0 mt-0.5" />
-                      <span className="text-xs font-medium text-[#2B2326]">{qual}</span>
+          {/* SECTION 3: Qualifikationen & Verbände */}
+          <section className="space-y-4">
+            <h3 className="text-sm sm:text-base font-bold text-[#2B2326] flex items-center gap-2 border-b border-[#F0E6E8] pb-2">
+              <Award className="h-4 w-4 text-pink-900" />
+              <span>Qualifikationen & Verbände</span>
+            </h3>
+
+            {/* Core Qualifications */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {doctor.qualifications.map((qual, idx) => (
+                <div key={idx} className="flex items-start gap-2.5 rounded-xl border border-[#F0E6E8] bg-white p-3 shadow-2xs">
+                  <CheckCircle2 className="h-4 w-4 text-pink-900 shrink-0 mt-0.5" />
+                  <span className="text-xs font-medium text-[#2B2326]">{qual}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Further Training */}
+            {doctor.furtherTraining && (
+              <div className="space-y-2 pt-2">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#735F64]">
+                  Fortbildungen & Schwerpunkte:
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {doctor.furtherTraining.map((train, idx) => (
+                    <div key={idx} className="flex items-start gap-2 rounded-lg bg-[#FAF5F6] p-2.5 text-xs text-[#5C4A4F] border border-[#F0E6E8]/70">
+                      <Sparkles className="h-3.5 w-3.5 text-pink-900 shrink-0 mt-0.5" />
+                      <span>{train}</span>
                     </div>
                   ))}
                 </div>
               </div>
+            )}
 
-              {/* Further Training */}
-              {doctor.furtherTraining && (
-                <div className="space-y-3 pt-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#735F64]">
-                    Fortbildungen & Schwerpunkte:
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {doctor.furtherTraining.map((train, idx) => (
-                      <div key={idx} className="flex items-start gap-2 rounded-lg bg-[#FAF5F6] p-2.5 text-xs text-[#5C4A4F] border border-[#F0E6E8]/70">
-                        <Sparkles className="h-3.5 w-3.5 text-pink-600 shrink-0 mt-0.5" />
-                        <span>{train}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Memberships */}
-              <div className="space-y-3 pt-3 border-t border-[#F0E6E8]">
-                <h3 className="text-base font-bold text-[#2B2326] flex items-center gap-2">
-                  <Users className="h-4 w-4 text-pink-700" />
-                  <span>Mitgliedschaften in medizinischen Fachgesellschaften</span>
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {doctor.memberships.map((member, idx) => (
-                    <span 
-                      key={idx}
-                      className="inline-flex items-center gap-1.5 rounded-xl bg-white px-3.5 py-2 text-xs font-semibold text-[#2B2326] border border-[#E8D2D7] shadow-2xs"
-                    >
-                      <Stethoscope className="h-3.5 w-3.5 text-pink-700" />
-                      {member}
-                    </span>
-                  ))}
-                </div>
+            {/* Memberships */}
+            <div className="space-y-2 pt-2 border-t border-[#F0E6E8]/80">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#735F64] flex items-center gap-1.5">
+                <Users className="h-3.5 w-3.5 text-pink-900" />
+                <span>Mitgliedschaften in Fachgesellschaften:</span>
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {doctor.memberships.map((member, idx) => (
+                  <span 
+                    key={idx}
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-white px-3.5 py-1.5 text-xs font-semibold text-[#2B2326] border border-[#E8D2D7] shadow-2xs"
+                  >
+                    <Stethoscope className="h-3.5 w-3.5 text-pink-900" />
+                    {member}
+                  </span>
+                ))}
               </div>
             </div>
-          )}
+          </section>
 
-          {/* TAB 4: Forschung & Publikationen */}
-          {activeTab === 'science' && doctor.publications && (
-            <div className="space-y-4 animate-in fade-in duration-150">
-              <h3 className="text-base font-bold text-[#2B2326] flex items-center gap-2">
-                <BookOpen className="h-4 w-4 text-pink-700" />
-                <span>Wissenschaftliche Forschung & Fachpublikationen</span>
+          {/* SECTION 4: Forschung & Publikationen */}
+          {doctor.publications && doctor.publications.length > 0 && (
+            <section className="space-y-3.5">
+              <h3 className="text-sm sm:text-base font-bold text-[#2B2326] flex items-center gap-2 border-b border-[#F0E6E8] pb-2">
+                <BookOpen className="h-4 w-4 text-pink-900" />
+                <span>Forschung & Publikationen</span>
               </h3>
               <p className="text-xs text-[#5C4A4F] leading-relaxed">
                 Wissenschaftliche Originalarbeiten in internationalen Peer-Review-Fachzeitschriften zum Einfluss hormoneller und pflanzlicher Wirkstoffe (Phytoöstrogene) auf weibliche Gewebe:
               </p>
 
-              <div className="space-y-3.5 pt-2">
+              <div className="space-y-3 pt-1">
                 {doctor.publications.map((pub, idx) => (
-                  <div key={idx} className="rounded-xl border border-[#E8D2D7] bg-white p-4 shadow-2xs space-y-2">
+                  <div key={idx} className="rounded-xl border border-[#E8D2D7] bg-white p-3.5 shadow-2xs space-y-1.5">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="font-mono text-xs font-bold text-pink-700 bg-pink-50 px-2 py-0.5 rounded border border-pink-200">
+                      <span className="font-mono text-xs font-bold text-pink-900 bg-pink-50 px-2 py-0.5 rounded border border-pink-200">
                         {pub.year}
                       </span>
                       <span className="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-md">
@@ -634,7 +559,7 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
                   </div>
                 ))}
               </div>
-            </div>
+            </section>
           )}
 
         </div>

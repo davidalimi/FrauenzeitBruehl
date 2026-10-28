@@ -14,10 +14,10 @@ export function Hero() {
           {/* Left Column: Heading, Leitmotiv & Direct Actions */}
           <div className="lg:col-span-6 xl:col-span-6 text-left">
             <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#2B2326] leading-tight" style={{ textWrap: 'balance' }}>
-              Frauenzeit<span className="text-pink-700">Brühl</span>
+              Frauenzeit<span className="text-pink-900">Brühl</span>
             </h1>
 
-            <p className="mt-2.5 sm:mt-3 text-xl sm:text-2xl font-medium text-pink-700 tracking-tight leading-snug">
+            <p className="mt-2.5 sm:mt-3 text-xl sm:text-2xl font-medium text-pink-900 tracking-tight leading-snug">
               Zeit für Frauen. <br className="hidden sm:inline" />
               Zeit für Gesundheit. <br className="hidden sm:inline" />
               Zeit für Sie.
@@ -33,7 +33,7 @@ export function Hero() {
                 href={doctolibUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-pink-700 px-6 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-pink-800 active:scale-[0.98] transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-pink-900 px-6 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-pink-950 active:scale-[0.98] transition-all cursor-pointer"
               >
                 <Calendar className="h-4 w-4" />
                 <span>Termin Buchen</span>
@@ -41,16 +41,16 @@ export function Hero() {
 
               <a
                 href="tel:0223243545"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#E8D2D7] bg-white px-6 py-3.5 text-xs sm:text-sm font-semibold text-pink-700 shadow-2xs hover:bg-[#FAF5F6] active:scale-[0.98] transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#E8D2D7] bg-white px-6 py-3.5 text-xs sm:text-sm font-semibold text-pink-900 shadow-2xs hover:bg-[#FAF5F6] active:scale-[0.98] transition-all"
               >
-                <Phone className="h-4 w-4 text-pink-700" />
+                <Phone className="h-4 w-4 text-pink-900" />
                 <span>02232 / 43545</span>
               </a>
             </div>
 
             {/* Transition Note Badge */}
             <div className="mt-5 pt-4 border-t border-[#F0E6E8] flex items-center gap-2 text-xs text-[#735F64]">
-              <HeartHandshake className="h-4 w-4 text-pink-700 shrink-0" />
+              <HeartHandshake className="h-4 w-4 text-pink-900 shrink-0" />
               <span>Praxisübernahme von Frau Dr. Sabine Latta zum 1. Oktober 2026</span>
             </div>
           </div>
@@ -82,7 +82,7 @@ export function Hero() {
               Herzlich Willkommen auf der Webseite der Praxis FrauenzeitBrühl
             </h2>
 
-            <p className="mt-4 text-base sm:text-lg font-semibold text-pink-700">
+            <p className="mt-4 text-base sm:text-lg font-semibold text-pink-900">
               Liebe Patientinnen,
             </p>
           </div>

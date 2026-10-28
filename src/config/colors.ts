@@ -1,22 +1,22 @@
 /**
  * Centralized Design System Colors for Frauenzeit Brühl
- * Brand primary pink is unified to standard Tailwind pink-700 (#be185d).
+ * Brand primary pink is unified to standard Tailwind pink-900 (#831843).
  */
 
 export const colors = {
-  // Primary Brand Color (Tailwind pink-700)
+  // Primary Brand Color (Tailwind pink-900)
   primary: {
-    name: 'pink-700',
-    hex: '#be185d',
-    hexHover: '#9d174d', // pink-800
+    name: 'pink-900',
+    hex: '#831843',
+    hexHover: '#500724', // pink-950
     hexLight: '#fdf2f8', // pink-50
     classes: {
-      text: 'text-pink-700',
-      textHover: 'hover:text-pink-800',
-      bg: 'bg-pink-700',
-      bgHover: 'hover:bg-pink-800',
-      border: 'border-pink-700',
-      selection: 'selection:bg-pink-700 selection:text-white',
+      text: 'text-pink-900',
+      textHover: 'hover:text-pink-950',
+      bg: 'bg-pink-900',
+      bgHover: 'hover:bg-pink-950',
+      border: 'border-pink-900',
+      selection: 'selection:bg-pink-900 selection:text-white',
     },
   },
   // Neutral Warm Palette

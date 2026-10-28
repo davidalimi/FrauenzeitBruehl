@@ -24,7 +24,7 @@ export function PhilosophySection() {
             </p>
           </div>
 
-          <p className="text-base sm:text-lg font-medium text-pink-800 leading-relaxed">
+          <p className="text-base sm:text-lg font-medium text-pink-900 leading-relaxed">
             Wir freuen uns darauf, Sie kennenzulernen und Sie auf Ihrem persönlichen Lebensweg begleiten zu dürfen.
           </p>
         </div>

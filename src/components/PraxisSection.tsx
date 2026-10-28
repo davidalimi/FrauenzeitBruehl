@@ -90,7 +90,7 @@ export function PraxisSection() {
         
         {/* Header */}
         <div className="max-w-3xl text-left pb-8">
-          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-700">
+          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-pink-900">
             <Building2 className="h-3.5 w-3.5" />
             <span>Praxis · Mühlenstrasse 37 · 50321 Brühl</span>
           </div>
@@ -131,7 +131,7 @@ export function PraxisSection() {
             <button
               type="button"
               onClick={handlePrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
+              className="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-900 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
               aria-label="Vorheriges Bild"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -139,7 +139,7 @@ export function PraxisSection() {
             <button
               type="button"
               onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-700 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
+              className="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-900 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
               aria-label="Nächstes Bild"
             >
               <ChevronRight className="h-5 w-5" />
@@ -168,7 +168,7 @@ export function PraxisSection() {
                 }}
                 className={`transition-all rounded-full cursor-pointer ${
                   currentIndex === idx
-                    ? 'w-8 h-2.5 bg-pink-700'
+                    ? 'w-8 h-2.5 bg-pink-900'
                     : 'w-2.5 h-2.5 bg-[#D4C3C7] hover:bg-pink-400'
                 }`}
                 aria-label={`Gehe zu Bild ${idx + 1}: ${photo.title}`}

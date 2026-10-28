@@ -23,7 +23,7 @@ export function SectionBackToTop({
       onClick={scrollToTop}
       title="Nach oben"
       aria-label="Zum Anfang der Seite scrollen"
-      className={`absolute ${positionClasses} z-10 inline-flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white/85 hover:bg-white text-[#826970] hover:text-pink-700 border border-[#EADEE1] hover:border-pink-300 shadow-2xs hover:shadow-xs transition-all cursor-pointer group focus:outline-none focus:ring-2 focus:ring-pink-500/30 ${className}`}
+      className={`absolute ${positionClasses} z-10 inline-flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white/85 hover:bg-white text-[#826970] hover:text-pink-900 border border-[#EADEE1] hover:border-pink-300 shadow-2xs hover:shadow-xs transition-all cursor-pointer group focus:outline-none focus:ring-2 focus:ring-pink-500/30 ${className}`}
     >
       <ArrowUp className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5" />
       <span className="sr-only">Nach oben</span>
