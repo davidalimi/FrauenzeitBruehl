@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { 
   X, 
-  Calendar, 
   Award, 
   GraduationCap, 
   BookOpen, 
@@ -11,7 +10,6 @@ import {
   Clock, 
   Stethoscope, 
   Users,
-  ExternalLink,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
@@ -339,33 +337,34 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Controls: Doctor switch and close button */}
-        <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1.5 sm:gap-2">
           {onSwitchDoctor && (
             <button
               type="button"
               onClick={() => onSwitchDoctor(otherDoctorKey)}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 text-xs font-medium text-[#735F64] hover:text-pink-700 hover:bg-white border border-[#E8D2D7] shadow-xs transition-colors cursor-pointer"
-              title={`Zu ${otherDoctorName} (Pfeiltaste links/rechts)`}
+              className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white/95 text-[11px] sm:text-xs font-semibold text-[#735F64] hover:text-pink-700 hover:bg-white border border-[#E8D2D7] shadow-xs transition-colors cursor-pointer"
+              title={`Zu ${otherDoctorName} wechseln`}
             >
+              <span className="hidden xs:inline">Zu </span>
               <span>{otherDoctorName.replace('Dr. med. ', 'Dr. ')}</span>
-              <ChevronRight className="h-3.5 w-3.5" />
+              <ChevronRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
             </button>
           )}
           <button
             type="button"
             onClick={onClose}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-sm border border-[#E8D2D7] transition-colors cursor-pointer"
+            className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-xs border border-[#E8D2D7] transition-colors cursor-pointer"
             aria-label="Profil schließen"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
         </div>
 
         {/* Modal Header Banner: Doctor Presentation & Quick Stats */}
-        <div className="bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-5 sm:p-7 shrink-0">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+        <div className="bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-3.5 sm:p-7 shrink-0">
+          <div className="flex flex-row items-center sm:items-start gap-3.5 sm:gap-5 pr-24 sm:pr-0">
             {/* Portrait Image */}
-            <div className="relative h-28 w-24 sm:h-36 sm:w-28 rounded-2xl overflow-hidden border-2 border-pink-700/20 shadow-md bg-white shrink-0">
+            <div className="relative h-14 w-14 sm:h-36 sm:w-28 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-pink-700/20 shadow-md bg-white shrink-0">
               <img
                 src={doctor.image}
                 alt={doctor.name}
@@ -380,85 +379,94 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
             </div>
 
             {/* Doctor Info */}
-            <div className="flex-1 text-center sm:text-left space-y-1.5">
-              <h2 id="doctor-modal-title" className="text-2xl sm:text-3xl font-bold tracking-tight text-[#2B2326]">
+            <div className="flex-1 min-w-0 text-left space-y-0.5 sm:space-y-1.5">
+              <h2 id="doctor-modal-title" className="text-base sm:text-3xl font-bold tracking-tight text-[#2B2326] truncate sm:whitespace-normal">
                 {doctor.name}
               </h2>
-              <p className="text-sm font-medium text-pink-700">
+              <p className="text-xs sm:text-sm font-medium text-pink-700 line-clamp-1 sm:line-clamp-none">
                 {doctor.salutation}
               </p>
-              {/* Doctor Quote */}
-              <p className="text-xs sm:text-sm italic text-[#5C4A4F] max-w-2xl bg-white/80 p-2.5 rounded-xl border border-[#F0E6E8] shadow-2xs">
+              {/* Doctor Quote (visible in header on desktop, moved to body on mobile) */}
+              <p className="hidden sm:block text-xs sm:text-sm italic text-[#5C4A4F] max-w-2xl bg-white/80 p-2.5 rounded-xl border border-[#F0E6E8] shadow-2xs mt-2">
                 {doctor.quote}
               </p>
             </div>
           </div>
 
-          {/* Navigation Tabs */}
-          <div className="mt-6 flex flex-wrap items-center gap-1.5 sm:gap-2 border-t border-[#F0E6E8] pt-4">
+          {/* Navigation Tabs - Sleek single-line horizontal strip on mobile */}
+          <div className="mt-3 sm:mt-5 flex items-center gap-1.5 sm:gap-2 border-t border-[#F0E6E8] pt-2.5 sm:pt-4 overflow-x-auto no-scrollbar">
             <button
               type="button"
               onClick={() => setActiveTab('vita')}
-              className={`flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer ${
+              className={`shrink-0 flex items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
                 activeTab === 'vita'
                   ? 'bg-pink-700 text-white shadow-xs'
                   : 'bg-white text-[#735F64] hover:text-[#2B2326] border border-[#F0E6E8] hover:bg-[#FAF5F6]'
               }`}
             >
-              <Heart className="h-3.5 w-3.5" />
-              <span>Über mich & Vita</span>
+              <Heart className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+              <span className="sm:inline hidden">Über mich & Vita</span>
+              <span className="sm:hidden inline">Vita</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab('career')}
-              className={`flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer ${
+              className={`shrink-0 flex items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
                 activeTab === 'career'
                   ? 'bg-pink-700 text-white shadow-xs'
                   : 'bg-white text-[#735F64] hover:text-[#2B2326] border border-[#F0E6E8] hover:bg-[#FAF5F6]'
               }`}
             >
-              <Clock className="h-3.5 w-3.5" />
-              <span>Beruflicher Werdegang ({doctor.careerTimeline.length})</span>
+              <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+              <span className="sm:inline hidden">Beruflicher Werdegang ({doctor.careerTimeline.length})</span>
+              <span className="sm:hidden inline">Werdegang</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab('qualifications')}
-              className={`flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer ${
+              className={`shrink-0 flex items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
                 activeTab === 'qualifications'
                   ? 'bg-pink-700 text-white shadow-xs'
                   : 'bg-white text-[#735F64] hover:text-[#2B2326] border border-[#F0E6E8] hover:bg-[#FAF5F6]'
               }`}
             >
-              <Award className="h-3.5 w-3.5" />
-              <span>Qualifikationen & Verbände</span>
+              <Award className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+              <span className="sm:inline hidden">Qualifikationen & Verbände</span>
+              <span className="sm:hidden inline">Qualifikationen</span>
             </button>
             {(doctor.publications && doctor.publications.length > 0) && (
               <button
                 type="button"
                 onClick={() => setActiveTab('science')}
-                className={`flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer ${
+                className={`shrink-0 flex items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
                   activeTab === 'science'
                     ? 'bg-pink-700 text-white shadow-xs'
                     : 'bg-white text-[#735F64] hover:text-[#2B2326] border border-[#F0E6E8] hover:bg-[#FAF5F6]'
                 }`}
               >
-                <BookOpen className="h-3.5 w-3.5" />
-                <span>Forschung & Publikationen</span>
+                <BookOpen className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                <span className="sm:inline hidden">Forschung & Publikationen</span>
+                <span className="sm:hidden inline">Forschung</span>
               </button>
             )}
           </div>
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="flex-1 overflow-y-auto p-5 sm:p-7 space-y-6">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-7 space-y-4 sm:space-y-6">
           
           {/* TAB 1: Über mich & Persönliche Geschichte */}
           {activeTab === 'vita' && (
-            <div className="space-y-6 animate-in fade-in duration-150">
+            <div className="space-y-4 sm:space-y-6 animate-in fade-in duration-150">
+              {/* Mobile Quote Card */}
+              <div className="sm:hidden rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-3 text-xs italic text-[#4D3F43] leading-relaxed">
+                „{doctor.quote}“
+              </div>
+
               {/* Doctor Story */}
-              <div className="space-y-3.5 text-sm text-[#4D3F43] leading-relaxed">
-                <h3 className="text-base font-bold text-[#2B2326] flex items-center gap-2">
-                  <Heart className="h-4 w-4 text-pink-700" />
+              <div className="space-y-3 text-xs sm:text-sm text-[#4D3F43] leading-relaxed">
+                <h3 className="text-sm sm:text-base font-bold text-[#2B2326] flex items-center gap-2">
+                  <Heart className="h-4 w-4 text-pink-700 shrink-0" />
                   <span>Persönlicher Werdegang & Philosophie</span>
                 </h3>
                 {doctor.aboutStory.map((paragraph, idx) => (
@@ -630,43 +638,6 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
           )}
 
         </div>
-
-        {/* Modal Footer: Action Bar & Doctor Switch */}
-        <div className="bg-[#FAF5F6] border-t border-[#F0E6E8] p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
-          {/* Switch Doctor Partner Shortcut */}
-          {onSwitchDoctor && (
-            <button
-              type="button"
-              onClick={() => onSwitchDoctor(otherDoctorKey)}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-pink-700 hover:text-pink-800 transition-colors cursor-pointer py-1.5 px-2 rounded-lg hover:bg-white"
-            >
-              <span>Zu {otherDoctorName} wechseln</span>
-              <ChevronRight className="h-3.5 w-3.5" />
-            </button>
-          )}
-
-          <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2.5 text-xs font-semibold text-[#5C4A4F] bg-white hover:bg-[#F0E6E8] border border-[#E8D2D7] rounded-xl transition-colors cursor-pointer"
-            >
-              Schließen
-            </button>
-
-            <a
-              href={doctor.doctolibBookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-pink-700 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-pink-800 transition-all cursor-pointer"
-            >
-              <Calendar className="h-4 w-4" />
-              <span>Termin bei {doctor.name.replace('Dr. med. ', 'Dr. ')} vereinbaren</span>
-              <ExternalLink className="h-3.5 w-3.5 opacity-80" />
-            </a>
-          </div>
-        </div>
-
       </div>
     </div>
   );

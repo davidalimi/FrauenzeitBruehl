@@ -912,13 +912,13 @@ export function ServicesSection() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header Banner */}
-            <div className="relative bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-5 sm:p-7 shrink-0">
+            <div className="relative bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-3.5 sm:p-7 shrink-0">
               {/* Modal Navigation & Close Controls */}
-              <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5">
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1 sm:gap-1.5">
                 <button
                   type="button"
                   onClick={handlePrevModal}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-700 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-700 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
                   aria-label="Vorherige Leistung"
                   title="Vorherige Leistung (Pfeiltaste links)"
                 >
@@ -927,7 +927,7 @@ export function ServicesSection() {
                 <button
                   type="button"
                   onClick={handleNextModal}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-700 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-700 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
                   aria-label="Nächste Leistung"
                   title="Nächste Leistung (Pfeiltaste rechts)"
                 >
@@ -936,26 +936,26 @@ export function ServicesSection() {
                 <button
                   type="button"
                   onClick={() => setSelectedItem(null)}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer ml-1"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer ml-0.5 sm:ml-1"
                   aria-label="Schließen"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pr-24 sm:pr-28">
-                <div className="h-16 w-24 sm:h-20 sm:w-32 rounded-xl overflow-hidden border border-[#E8D2D7] bg-white shrink-0 shadow-2xs">
+              <div className="flex flex-row items-center gap-3.5 sm:gap-4 pr-24 sm:pr-28">
+                <div className="h-14 w-20 sm:h-20 sm:w-32 rounded-xl overflow-hidden border border-[#E8D2D7] bg-white shrink-0 shadow-2xs">
                   <img
                     src={selectedItem.image}
                     alt={selectedItem.title}
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#2B2326]">
+                <div className="min-w-0">
+                  <h3 className="text-base sm:text-2xl font-bold text-[#2B2326] truncate sm:whitespace-normal">
                     {selectedItem.title}
                   </h3>
-                  <p className="text-xs font-semibold text-[#5C4A4F] mt-0.5">
+                  <p className="text-xs font-semibold text-[#5C4A4F] mt-0.5 line-clamp-1 sm:line-clamp-none">
                     {selectedItem.subtitle}
                   </p>
                 </div>
@@ -1026,35 +1026,6 @@ export function ServicesSection() {
               )}
 
             </div>
-
-            {/* Modal Footer */}
-            <div className="bg-[#FAF5F6] border-t border-[#F0E6E8] p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
-              <span className="text-xs text-[#735F64] font-medium hidden sm:inline">
-                Praxis Frauenzeit Brühl · Dr. med. Anika Birkenfeld & Dr. med. Corinna Ledwig
-              </span>
-
-              <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
-                <button
-                  type="button"
-                  onClick={() => setSelectedItem(null)}
-                  className="px-4 py-2.5 text-xs font-semibold text-[#5C4A4F] bg-white hover:bg-[#F0E6E8] border border-[#E8D2D7] rounded-xl transition-colors cursor-pointer"
-                >
-                  Schließen
-                </button>
-
-                <a
-                  href="https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-pink-700 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-pink-800 transition-all cursor-pointer"
-                >
-                  <Calendar className="h-4 w-4" />
-                  <span>Termin zu dieser Leistung buchen</span>
-                  <ExternalLink className="h-3.5 w-3.5 opacity-80" />
-                </a>
-              </div>
-            </div>
-
           </div>
         </div>
       )}
