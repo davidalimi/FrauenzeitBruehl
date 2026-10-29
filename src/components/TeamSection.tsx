@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { 
   CheckCircle2, 
   X, 
-  ZoomIn, 
   GraduationCap, 
   ChevronLeft,
   ChevronRight, 
@@ -181,7 +180,7 @@ export function TeamSection() {
             {doctors.map((doc) => (
               <div
                 key={doc.id}
-                className="group relative flex flex-col justify-between rounded-3xl border-2 border-[#EADBDD] bg-[#FCF8F9] p-6 sm:p-7 text-left shadow-sm transition-all duration-300 hover:border-pink-600/60 hover:shadow-md"
+                className="group relative flex flex-col justify-between rounded-3xl border border-[#F0E6E8] bg-[#FCF8F9] p-6 sm:p-7 text-left shadow-sm transition-all duration-300 hover:border-[#E8D2D7] hover:shadow-md"
               >
                 <div>
                   {/* Doctor Photo & Basic Bio Layout */}
@@ -189,7 +188,7 @@ export function TeamSection() {
                     {/* Portrait Photo Container */}
                     <div 
                       onClick={() => setSelectedDoctorId(doc.id)}
-                      className="relative w-full sm:w-48 sm:h-60 shrink-0 aspect-[3/4] sm:aspect-auto overflow-hidden rounded-2xl border-2 border-[#E8D2D7] bg-white shadow-sm cursor-pointer group/img"
+                      className="relative w-full sm:w-48 sm:h-60 shrink-0 aspect-[3/4] sm:aspect-auto overflow-hidden rounded-2xl border border-[#E8D2D7] bg-white shadow-sm cursor-pointer group/img"
                       title="Klicken, um Vita & Details anzuzeigen"
                       role="button"
                       tabIndex={0}
@@ -307,12 +306,6 @@ export function TeamSection() {
                         }
                       }}
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors flex items-end justify-end p-2.5">
-                      <span className="rounded-lg bg-white/95 px-2 py-1 text-[11px] font-semibold text-[#2B2326] shadow-xs backdrop-blur-xs opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center gap-1">
-                        <ZoomIn className="h-3 w-3 text-pink-900" />
-                        <span>Vergrößern</span>
-                      </span>
-                    </div>
                   </div>
 
                   {/* Name & Role */}
@@ -438,19 +431,6 @@ export function TeamSection() {
                 alt={selectedMember.name}
                 className="h-full w-full object-cover object-top"
               />
-            </div>
-
-            <div className="mt-3 flex items-center justify-between text-xs text-[#5C4A4F]">
-              <span className="text-[11px] text-[#826970]">
-                {teamMembers.findIndex(m => m.id === selectedMember.id) + 1} von {teamMembers.length}
-              </span>
-              <button
-                type="button"
-                onClick={() => setSelectedMember(null)}
-                className="rounded-lg bg-[#2B2326] px-4 py-2 text-xs font-semibold text-white hover:bg-neutral-800 transition-colors cursor-pointer"
-              >
-                Schließen
-              </button>
             </div>
           </div>
         </div>
