@@ -22,7 +22,7 @@ export function Header({
   const [highlightsOpen, setHighlightsOpen] = useState(false);
 
   // Logo asset URL supporting Vite base path
-  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.svg`;
+  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.png`;
 
   const handleNavClick = (sectionId: string) => {
     if (onNavClick) onNavClick(sectionId);
@@ -118,7 +118,7 @@ export function Header({
               className="group cursor-pointer mx-1.5 xl:mx-3 shrink-0"
               aria-label="Frauenzeit Brühl Startseite"
             >
-              <div className="relative h-18 w-18 xl:h-20 xl:w-20 rounded-full p-1.5 border-2 border-[#E8D2D7] bg-[#FCF8F9] shadow-sm shrink-0 overflow-hidden group-hover:border-pink-900/60 transition-all group-hover:scale-105">
+              <div className="relative h-21 w-21 xl:h-24 xl:w-24 rounded-full bg-white shadow-xs shrink-0 overflow-hidden group-hover:scale-105 group-hover:shadow-md transition-all duration-200">
                 <img 
                   src={logoUrl} 
                   alt="Frauenzeit Brühl Logo" 
@@ -126,7 +126,7 @@ export function Header({
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (!target.src.includes('public/')) {
-                      target.src = './public/assets/header/logo.svg';
+                      target.src = './public/assets/header/logo.png';
                     }
                   }}
                 />
@@ -231,7 +231,7 @@ export function Header({
             }}
             className="flex items-center gap-3 text-left group cursor-pointer"
           >
-            <div className="relative h-13 w-13 rounded-full p-1 border border-[#E8D2D7] bg-[#FCF8F9] shadow-xs shrink-0 overflow-hidden">
+            <div className="relative h-15 w-15 sm:h-16 sm:w-16 rounded-full bg-white shadow-xs shrink-0 overflow-hidden group-hover:scale-105 transition-all">
               <img 
                 src={logoUrl} 
                 alt="Frauenzeit Brühl Logo" 
@@ -239,7 +239,7 @@ export function Header({
                 onError={(e) => {
                   const target = e.currentTarget;
                   if (!target.src.includes('public/')) {
-                    target.src = './public/assets/header/logo.svg';
+                    target.src = './public/assets/header/logo.png';
                   }
                 }}
               />

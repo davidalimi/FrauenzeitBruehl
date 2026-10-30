@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
-  <rect width="1000" height="1000" fill="#ffffff" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="11.5 11.5 977 977" width="1000" height="1000">
+  <circle cx="500" cy="500" r="488.5" fill="#ffffff" />
   
   <!-- Outer Circular Ring -->
   <circle cx="500" cy="500" r="484" fill="none" stroke="#831843" stroke-width="9" />

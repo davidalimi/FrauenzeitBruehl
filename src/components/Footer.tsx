@@ -4,7 +4,7 @@ import { X, Phone, ShieldCheck, FileText, ExternalLink, Download } from 'lucide-
 export function Footer() {
   const [activeModal, setActiveModal] = useState<'impressum' | 'privacy' | null>(null);
 
-  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.svg`;
+  const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.png`;
   const doctolibUrl = 'https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl';
 
   // Handle ESC key to close modal
@@ -37,7 +37,7 @@ export function Footer() {
             {/* Column 1: Brand & Practice Info (spans 2 columns) */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="relative h-11 w-11 rounded-full border border-slate-700 bg-white/10 p-0.5 overflow-hidden shrink-0">
+                <div className="relative h-12 w-12 rounded-full bg-white shadow-xs overflow-hidden shrink-0">
                   <img
                     src={logoUrl}
                     alt="Frauenzeit Brühl Logo"
@@ -45,7 +45,7 @@ export function Footer() {
                     onError={(e) => {
                       const target = e.currentTarget;
                       if (!target.src.includes('public/')) {
-                        target.src = './public/assets/header/logo.svg';
+                        target.src = './public/assets/header/logo.png';
                       }
                     }}
                   />
