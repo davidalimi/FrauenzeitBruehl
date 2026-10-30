@@ -972,15 +972,17 @@ export function ServicesSection() {
 
               {/* In-Depth Text Paragraphs from official practice page */}
               <div className="space-y-3 text-xs sm:text-sm text-[#4D3F43] leading-relaxed">
-                <h4 className="font-bold text-[#2B2326] text-sm flex items-center gap-1.5">
+                <h4 className="font-bold text-[#2B2326] text-sm flex items-center gap-1.5 border-b border-[#F0E6E8] pb-2">
                   <HeartHandshake className="h-4 w-4 text-pink-900" />
                   <span>Medizinisches Konzept & Betreuung in unserer Praxis</span>
                 </h4>
-                {selectedItem.detailedText.map((p, idx) => (
-                  <p key={idx} className="bg-white p-3.5 rounded-xl border border-[#F0E6E8] shadow-2xs">
-                    {p}
-                  </p>
-                ))}
+                <div className="space-y-3 text-[#4D3F43] leading-relaxed">
+                  {selectedItem.detailedText.map((p, idx) => (
+                    <p key={idx}>
+                      {p}
+                    </p>
+                  ))}
+                </div>
               </div>
 
               {/* Clinical Focus Categories */}

@@ -401,11 +401,13 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
               <Heart className="h-4 w-4 text-pink-900 shrink-0" />
               <span>Über mich & Philosophie</span>
             </h3>
-            {doctor.aboutStory.map((paragraph, idx) => (
-              <p key={idx} className="bg-[#FAF5F6]/50 p-3 sm:p-3.5 rounded-xl border border-[#F0E6E8]/60">
-                {paragraph}
-              </p>
-            ))}
+            <div className="space-y-3 sm:space-y-3.5 text-[#4D3F43] leading-relaxed">
+              {doctor.aboutStory.map((paragraph, idx) => (
+                <p key={idx}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
 
             {/* Personal Notes */}
             {doctor.personalNotes && (
