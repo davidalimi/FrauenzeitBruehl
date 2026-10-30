@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { PhilosophySection } from './components/PhilosophySection';
@@ -16,6 +16,38 @@ import { Footer } from './components/Footer';
 export default function App() {
   const [activeNav, setActiveNav] = useState('start');
 
+  useEffect(() => {
+    const sectionIds = ['kontakt', 'leistungen', 'praxis', 'team', 'philosophie', 'start'];
+    
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY < 120) {
+        setActiveNav('start');
+        return;
+      }
+
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 96;
+      const scrollTrigger = scrollY + headerHeight + 30;
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const h2 = el.querySelector('h2');
+          const target = h2 ? (h2.closest('.text-left') || h2) : el;
+          const targetTop = target.getBoundingClientRect().top + scrollY;
+          if (scrollTrigger >= targetTop) {
+            setActiveNav(id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#FCFBF9] text-[#2B2326] antialiased selection:bg-pink-900 selection:text-white font-sans overflow-x-hidden">
       {/* 1. Practice Header with Brand Logo, Navigation, and Action */}
@@ -24,7 +56,7 @@ export default function App() {
         onNavClick={setActiveNav}
       />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections (ordered identically to the navigation menu) */}
       <main id="start">
         {/* Welcome Hero Section featuring Praxisteam & Personal Welcome Message */}
         <Hero />
@@ -32,14 +64,14 @@ export default function App() {
         {/* Unsere Philosophie Section */}
         <PhilosophySection />
 
-        {/* Medical Services (Leistungen) Section */}
-        <ServicesSection />
-
         {/* Team Section */}
         <TeamSection />
 
         {/* Praxis Räumlichkeiten Carousel Section */}
         <PraxisSection />
+
+        {/* Medical Services (Leistungen) Section */}
+        <ServicesSection />
 
         {/* Contact & Hours Section */}
         <ContactSection />

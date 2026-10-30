@@ -5,7 +5,7 @@ export function Hero() {
   const teamPhotoUrl = `${import.meta.env.BASE_URL}assets/hero/team.png`;
 
   return (
-    <section className="relative overflow-hidden border-b border-[#F0E6E8] bg-gradient-to-b from-[#FAF5F6] via-white to-[#FCFBF9] py-10 sm:py-14 lg:py-16">
+    <section id="start" className="relative overflow-hidden border-b border-[#F0E6E8] bg-gradient-to-b from-[#FAF5F6] via-white to-[#FCFBF9] py-10 sm:py-14 lg:py-16 scroll-mt-24 xl:scroll-mt-28">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         
         {/* Top Hero Showcase: Brand, Direct Actions & Team Photo */}

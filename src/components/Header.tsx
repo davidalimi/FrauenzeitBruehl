@@ -27,9 +27,31 @@ export function Header({
   const handleNavClick = (sectionId: string) => {
     if (onNavClick) onNavClick(sectionId);
     setMobileMenuOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+
+    if (sectionId === 'start') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 96;
+
+      // Locate the section title heading or its title container
+      const h2 = section.querySelector('h2');
+      const titleTarget = h2 ? (h2.closest('.text-left') || h2) : section;
+
+      const targetRect = titleTarget.getBoundingClientRect();
+      const targetTop = targetRect.top + window.scrollY;
+      
+      // Position the section title at the top of the screen right below the header (with 12px breathing room)
+      const offsetPosition = targetTop - headerHeight - 12;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -37,9 +59,23 @@ export function Header({
     setHighlightsOpen(false);
     setMobileMenuOpen(false);
     if (onNavClick) onNavClick(serviceId);
-    const element = document.getElementById('leistungen');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    const section = document.getElementById('leistungen');
+    if (section) {
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 96;
+
+      const h2 = section.querySelector('h2');
+      const titleTarget = h2 ? (h2.closest('.text-left') || h2) : section;
+
+      const targetRect = titleTarget.getBoundingClientRect();
+      const targetTop = targetRect.top + window.scrollY;
+      const offsetPosition = targetTop - headerHeight - 12;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
     }
     window.dispatchEvent(new CustomEvent('open-service', { detail: serviceId }));
   };

@@ -2,7 +2,7 @@ import { SectionBackToTop } from './SectionBackToTop';
 
 export function PhilosophySection() {
   return (
-    <section id="philosophie" className="relative py-14 sm:py-18 lg:py-20 border-b border-[#F0E6E8] bg-white scroll-mt-20">
+    <section id="philosophie" className="relative pt-8 sm:pt-12 pb-14 sm:pb-18 border-b border-[#F0E6E8] bg-white scroll-mt-24 xl:scroll-mt-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-left">
         {/* Section Header */}
         <div className="border-b border-[#F0E6E8] pb-4 mb-6">

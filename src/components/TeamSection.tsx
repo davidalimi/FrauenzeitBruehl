@@ -146,7 +146,7 @@ export function TeamSection() {
   ];
 
   return (
-    <section id="team" className="relative py-16 sm:py-24 border-b border-[#F0E6E8] bg-white scroll-mt-20">
+    <section id="team" className="relative pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-white scroll-mt-24 xl:scroll-mt-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

@@ -756,7 +756,7 @@ export function ServicesSection() {
   }, []);
 
   return (
-    <section id="leistungen" className="relative overflow-hidden py-16 sm:py-24 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-20">
+    <section id="leistungen" className="relative overflow-hidden pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-24 xl:scroll-mt-28">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Section Header */}
