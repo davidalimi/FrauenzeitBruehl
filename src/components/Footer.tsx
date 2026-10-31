@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { X, Phone, ShieldCheck, FileText, ExternalLink, Download } from 'lucide-react';
 
-export function Footer() {
+interface FooterProps {
+  onOpenAccessibility?: () => void;
+}
+
+export function Footer({ onOpenAccessibility }: FooterProps = {}) {
   const [activeModal, setActiveModal] = useState<'impressum' | 'privacy' | null>(null);
 
   const logoUrl = `${import.meta.env.BASE_URL}assets/header/logo.png`;
@@ -118,6 +122,17 @@ export function Footer() {
                     Telefonische Beratung
                   </a>
                 </li>
+                {onOpenAccessibility && (
+                  <li>
+                    <button
+                      type="button"
+                      onClick={onOpenAccessibility}
+                      className="hover:text-white text-left transition-colors cursor-pointer text-pink-300 hover:underline"
+                    >
+                      Barrierefreiheit & Lesemodus
+                    </button>
+                  </li>
+                )}
               </ul>
             </div>
 

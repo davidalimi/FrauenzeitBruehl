@@ -4,19 +4,24 @@ import {
   Calendar, 
   Menu, 
   X, 
-  ChevronRight,
-  ChevronDown
+  ChevronRight, 
+  ChevronDown,
+  Accessibility
 } from 'lucide-react';
 
 interface HeaderProps {
   onOpenAppointmentModal?: () => void;
   activeNav?: string;
   onNavClick?: (nav: string) => void;
+  onOpenAccessibility?: () => void;
+  isA11yActive?: boolean;
 }
 
 export function Header({ 
   activeNav = 'start', 
-  onNavClick 
+  onNavClick,
+  onOpenAccessibility,
+  isA11yActive = false
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [highlightsOpen, setHighlightsOpen] = useState(false);
@@ -243,8 +248,27 @@ export function Header({
             </button>
           </nav>
 
-          {/* Right CTA: Termin Buchen */}
-          <div className="flex items-center justify-end shrink-0">
+          {/* Right CTA: Barrierefreiheit & Termin Buchen */}
+          <div className="flex items-center justify-end gap-2 xl:gap-3 shrink-0">
+            {onOpenAccessibility && (
+              <button
+                type="button"
+                onClick={onOpenAccessibility}
+                title="Barrierefreiheit & Lesekomfort anpassen"
+                className={`inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2.5 text-xs xl:text-sm font-semibold transition-all cursor-pointer shadow-2xs group ${
+                  isA11yActive
+                    ? 'bg-pink-900 text-white border-pink-900 shadow-xs'
+                    : 'bg-white text-[#4D3F43] border-[#E8D2D7] hover:text-pink-900 hover:border-pink-900/40 hover:bg-[#FAF1F3]'
+                }`}
+              >
+                <Accessibility className={`h-4 w-4 ${isA11yActive ? 'text-white' : 'text-pink-900'} group-hover:scale-110 transition-transform`} />
+                <span>Barrierefreiheit</span>
+                {isA11yActive && (
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                )}
+              </button>
+            )}
+
             <a
               href="https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl"
               target="_blank"
@@ -290,7 +314,23 @@ export function Header({
             </div>
           </a>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {onOpenAccessibility && (
+              <button
+                type="button"
+                onClick={onOpenAccessibility}
+                className={`rounded-lg p-2.5 transition-colors cursor-pointer border ${
+                  isA11yActive 
+                    ? 'bg-pink-900 text-white border-pink-900' 
+                    : 'bg-white text-pink-900 border-[#E8D2D7] hover:bg-[#FAF5F6]'
+                }`}
+                title="Barrierefreiheit"
+                aria-label="Barrierefreiheit anpassen"
+              >
+                <Accessibility className="h-4 w-4" />
+              </button>
+            )}
+
             <a
               href="https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl"
               target="_blank"
@@ -393,6 +433,29 @@ export function Header({
 
           {/* Mobile Direct Action Block */}
           <div className="mt-6 pt-5 border-t border-[#F0E6E8] space-y-3">
+            {onOpenAccessibility && (
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenAccessibility();
+                }}
+                className={`flex w-full items-center justify-between rounded-xl p-3 text-sm font-semibold transition-colors cursor-pointer border ${
+                  isA11yActive
+                    ? 'bg-pink-900 text-white border-pink-900'
+                    : 'bg-[#FCF8F9] text-[#2B2326] border-[#E8D2D7] hover:bg-[#FAF1F3]'
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  <Accessibility className="h-4 w-4 text-pink-900" />
+                  <span>Barrierefreiheit & Lesemodus</span>
+                </span>
+                <span className="text-xs bg-white/90 text-pink-950 px-2 py-0.5 rounded-md font-bold border border-[#E8D2D7]">
+                  {isA11yActive ? 'Aktiv' : 'Anpassen'}
+                </span>
+              </button>
+            )}
+
             <a
               href="https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl"
               target="_blank"

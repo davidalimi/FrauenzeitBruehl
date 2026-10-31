@@ -12,9 +12,16 @@ import { PraxisSection } from './components/PraxisSection';
 import { ServicesSection } from './components/ServicesSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { 
+  useAccessibility, 
+  AccessibilityModal, 
+  FloatingAccessibilityButton 
+} from './components/AccessibilityModal';
 
 export default function App() {
   const [activeNav, setActiveNav] = useState('start');
+  const [a11yModalOpen, setA11yModalOpen] = useState(false);
+  const a11y = useAccessibility();
 
   useEffect(() => {
     const sectionIds = ['kontakt', 'leistungen', 'praxis', 'team', 'philosophie', 'start'];
@@ -54,6 +61,8 @@ export default function App() {
       <Header 
         activeNav={activeNav}
         onNavClick={setActiveNav}
+        onOpenAccessibility={() => setA11yModalOpen(true)}
+        isA11yActive={a11y.settings.enabled}
       />
 
       {/* Main Content Sections (ordered identically to the navigation menu) */}
@@ -78,7 +87,20 @@ export default function App() {
       </main>
 
       {/* Comprehensive Practice Footer with Impressum and Datenschutz Modals */}
-      <Footer />
+      <Footer onOpenAccessibility={() => setA11yModalOpen(true)} />
+
+      {/* Accessibility Settings Modal Dialog */}
+      <AccessibilityModal 
+        isOpen={a11yModalOpen}
+        onClose={() => setA11yModalOpen(false)}
+        a11y={a11y}
+      />
+
+      {/* Floating Quick Accessibility Button (Bottom Left) */}
+      <FloatingAccessibilityButton 
+        onClick={() => setA11yModalOpen(true)}
+        isActive={a11y.settings.enabled}
+      />
     </div>
   );
 }
