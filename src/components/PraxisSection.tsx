@@ -19,44 +19,23 @@ export function PraxisSection() {
     {
       id: 'empfang',
       title: 'Empfang & Willkommensbereich',
-      category: 'Anmeldung',
-      image: `${import.meta.env.BASE_URL}assets/praxis/empfang.jpg`,
-      alt: 'Moderner, heller Empfangsbereich der Praxis Frauenzeit Brühl'
+      category: 'Empfang & Anmeldung',
+      image: `${import.meta.env.BASE_URL}assets/praxis/empfang.png`,
+      alt: 'Moderner, heller Empfangsbereich der Praxis Frauenzeit Brühl in der Mühlenstraße'
     },
     {
       id: 'wartebereich',
-      title: 'Wartebereich & Lounge',
+      title: 'Wartebereich & Spielecke',
       category: 'Wartebereich',
-      image: `${import.meta.env.BASE_URL}assets/praxis/wartebereich.jpg`,
-      alt: 'Gemütlicher und heller Wartebereich'
+      image: `${import.meta.env.BASE_URL}assets/praxis/wartebereich.png`,
+      alt: 'Heller, freundlicher Wartebereich mit Holzbänken, Zeitschriften und Spielecke für Kinder'
     },
     {
-      id: 'sprechzimmer',
-      title: 'Ärztliches Beratungszimmer',
-      category: 'Sprechzimmer',
-      image: `${import.meta.env.BASE_URL}assets/praxis/sprechzimmer.jpg`,
-      alt: 'Vertrauensvolles ärztliches Sprechzimmer für persönliche Beratung'
-    },
-    {
-      id: 'ultraschall',
-      title: 'Ultraschall & Pränataldiagnostik',
-      category: 'Diagnostik',
-      image: `${import.meta.env.BASE_URL}assets/praxis/ultraschall.jpg`,
-      alt: 'Moderner Untersuchungs- und Ultraschallraum mit Spezialgeräten'
-    },
-    {
-      id: 'labor',
-      title: 'Praxislabor & Vorsorgebereich',
-      category: 'Labor',
-      image: `${import.meta.env.BASE_URL}assets/praxis/labor.jpg`,
-      alt: 'Helles Praxislabor für Diagnostik und Blutanalysen'
-    },
-    {
-      id: 'betterpelvi',
-      title: 'BetterPelvi® Therapieraum',
-      category: 'Spezialtherapie',
-      image: `${import.meta.env.BASE_URL}assets/praxis/betterpelvi.jpg`,
-      alt: 'Ruhiger Behandlungsraum für Beckenbodentherapie'
+      id: 'untersuchung',
+      title: 'Ultraschall- & Untersuchungszimmer',
+      category: 'Diagnostik & Untersuchung',
+      image: `${import.meta.env.BASE_URL}assets/praxis/ultraschall.png`,
+      alt: 'Helles Untersuchungszimmer mit modernem Samsung Ultraschallgerät, Untersuchungsstuhl und Laborplatz'
     }
   ];
 
@@ -127,54 +106,57 @@ export function PraxisSection() {
             {/* Subtle Gradient for Caption Readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
 
-            {/* Left / Right Chevron Navigation Buttons */}
-            <button
-              type="button"
-              onClick={handlePrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-900 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
-              aria-label="Vorheriges Bild"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-900 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
-              aria-label="Nächstes Bild"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
+            {/* Left / Right Chevron Navigation Buttons (shown when multiple photos exist) */}
+            {photos.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-900 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
+                  aria-label="Vorheriges Bild"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#2B2326] shadow-md hover:bg-white hover:text-pink-900 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-xs"
+                  aria-label="Nächstes Bild"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </>
+            )}
 
-            {/* Caption on the Image */}
+            {/* Caption on the Image - Clean Minimal Look */}
             <div className="absolute bottom-5 left-5 right-5 text-left text-white">
-              <span className="inline-block rounded-full bg-white/20 backdrop-blur-md px-3 py-0.5 text-xs font-semibold text-pink-200 border border-white/25 mb-1.5">
-                {currentPhoto.category}
-              </span>
-              <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-white drop-shadow-sm">
+              <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-white drop-shadow-md">
                 {currentPhoto.title}
               </h3>
             </div>
           </div>
 
-          {/* Dots Indicator */}
-          <div className="py-4 bg-[#FAF5F6] border-t border-[#F0E6E8] flex items-center justify-center gap-2">
-            {photos.map((photo, idx) => (
-              <button
-                key={photo.id}
-                type="button"
-                onClick={() => {
-                  setIsAutoPlaying(false);
-                  setCurrentIndex(idx);
-                }}
-                className={`transition-all rounded-full cursor-pointer ${
-                  currentIndex === idx
-                    ? 'w-8 h-2.5 bg-pink-900'
-                    : 'w-2.5 h-2.5 bg-[#D4C3C7] hover:bg-pink-400'
-                }`}
-                aria-label={`Gehe zu Bild ${idx + 1}: ${photo.title}`}
-              />
-            ))}
-          </div>
+          {/* Dots Indicator (shown when multiple photos exist) */}
+          {photos.length > 1 && (
+            <div className="py-4 bg-[#FAF5F6] border-t border-[#F0E6E8] flex items-center justify-center gap-2">
+              {photos.map((photo, idx) => (
+                <button
+                  key={photo.id}
+                  type="button"
+                  onClick={() => {
+                    setIsAutoPlaying(false);
+                    setCurrentIndex(idx);
+                  }}
+                  className={`transition-all rounded-full cursor-pointer ${
+                    currentIndex === idx
+                      ? 'w-8 h-2.5 bg-pink-900'
+                      : 'w-2.5 h-2.5 bg-[#D4C3C7] hover:bg-pink-400'
+                  }`}
+                  aria-label={`Gehe zu Bild ${idx + 1}: ${photo.title}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
       </div>
