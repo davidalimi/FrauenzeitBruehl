@@ -31,11 +31,18 @@ export function PraxisSection() {
       alt: 'Heller, freundlicher Wartebereich mit Holzbänken, Zeitschriften und Spielecke für Kinder'
     },
     {
-      id: 'untersuchung',
-      title: 'Ultraschall- & Untersuchungszimmer',
+      id: 'ultraschall',
+      title: 'Ultraschall & Diagnostik',
       category: 'Diagnostik & Untersuchung',
       image: `${import.meta.env.BASE_URL}assets/praxis/ultraschall.png`,
       alt: 'Helles Untersuchungszimmer mit modernem Samsung Ultraschallgerät, Untersuchungsstuhl und Laborplatz'
+    },
+    {
+      id: 'behandlungsraum',
+      title: 'Untersuchungs- & Behandlungsraum',
+      category: 'Behandlung & Vorsorge',
+      image: `${import.meta.env.BASE_URL}assets/praxis/behandlungsraum.jpg`,
+      alt: 'Moderner gynäkologischer Behandlungsraum mit ergonomischem Untersuchungsstuhl, Untersuchungsleuchte und Laborarbeitsplatz'
     }
   ];
 
