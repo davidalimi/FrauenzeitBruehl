@@ -1,14 +1,69 @@
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Calendar, Phone, HeartHandshake } from 'lucide-react';
+
+interface HeroSlide {
+  src: string;
+  fallback: string;
+  alt: string;
+}
 
 export function Hero() {
   const doctolibUrl = 'https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl';
-  const teamPhotoUrl = `${import.meta.env.BASE_URL}assets/hero/team.png`;
+
+  const slides: HeroSlide[] = [
+    {
+      src: `${import.meta.env.BASE_URL}assets/hero/team.png`,
+      fallback: './public/assets/hero/team.png',
+      alt: 'Das Team der Praxis Frauenzeit Brühl mit Dr. med. Anika Birkenfeld und Dr. med. Corinna Ledwig',
+    },
+    {
+      src: `${import.meta.env.BASE_URL}assets/hero/ultraschall-vorsorge.jpg`,
+      fallback: './public/assets/hero/ultraschall-vorsorge.jpg',
+      alt: 'Schwangere Patientin bei der Ultraschallvorsorge in der Praxis Frauenzeit Brühl',
+    },
+    {
+      src: `${import.meta.env.BASE_URL}assets/hero/familie-ultraschall.jpg`,
+      fallback: './public/assets/hero/familie-ultraschall.jpg',
+      alt: 'Eltern und Kind mit Ultraschallbild in der Schwangerschaftsbegleitung',
+    },
+    {
+      src: `${import.meta.env.BASE_URL}assets/hero/frauengesundheit-bluete.jpg`,
+      fallback: './public/assets/hero/frauengesundheit-bluete.jpg',
+      alt: 'Symbol für ganzheitliche Frauengesundheit und behutsame gynäkologische Begleitung',
+    },
+    {
+      src: `${import.meta.env.BASE_URL}assets/hero/frauengesundheit-konzept.jpg`,
+      fallback: './public/assets/hero/frauengesundheit-konzept.jpg',
+      alt: 'Ganzheitliche Frauengesundheit und individuelle Fürsorge in allen Lebensphasen',
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % slides.length);
+  }, [slides.length]);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    // Slower auto-advance: 6.5 seconds per slide
+    timerRef.current = setInterval(() => {
+      nextSlide();
+    }, 6500);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isPaused, nextSlide]);
 
   return (
-    <section id="start" className="relative overflow-hidden border-b border-[#F0E6E8] bg-gradient-to-b from-[#F4F5F7] via-white to-[#F8F9FA] py-10 sm:py-14 lg:py-16 scroll-mt-24 xl:scroll-mt-28">
+    <section id="start" className="relative overflow-hidden border-b border-[#F0E6E8] bg-[#F8F9FA] py-10 sm:py-14 lg:py-16 scroll-mt-24 xl:scroll-mt-28">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         
-        {/* Top Hero Showcase: Brand, Direct Actions & Team Photo */}
+        {/* Top Hero Showcase: Brand, Direct Actions & Clean Visual Slideshow */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Heading, Leitmotiv & Direct Actions */}
@@ -55,20 +110,43 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Team Showcase Photo */}
+          {/* Right Column: Clean Hero Photo Slideshow (No titles/subtitles) */}
           <div className="lg:col-span-6 xl:col-span-6">
-            <div className="overflow-hidden rounded-2xl shadow-sm">
-              <img
-                src={teamPhotoUrl}
-                alt="Das Team der Praxis Frauenzeit Brühl"
-                className="w-full h-auto object-cover block"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.src.includes('public/')) {
-                    target.src = './public/assets/hero/team.png';
-                  }
-                }}
-              />
+            <div 
+              className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-sm border border-[#F0E6E8] bg-[#F1E8EB] group select-none"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={() => setIsPaused(true)}
+              onTouchEnd={() => setIsPaused(false)}
+              role="region"
+              aria-label="Praxis Bildergalerie"
+            >
+              {/* Stacked Images with smooth, calm cross-fade */}
+              {slides.map((slide, index) => {
+                const isActive = index === currentIndex;
+                return (
+                  <div
+                    key={slide.src}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                      isActive ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none z-0'
+                    }`}
+                    aria-hidden={!isActive}
+                  >
+                    <img
+                      src={slide.src}
+                      alt={slide.alt}
+                      className="h-full w-full object-cover object-center block"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (!target.src.includes('public/')) {
+                          target.src = slide.fallback;
+                        }
+                      }}
+                    />
+                  </div>
+                );
+              })}
+
             </div>
           </div>
 

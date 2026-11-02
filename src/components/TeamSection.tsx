@@ -77,7 +77,7 @@ export function TeamSection() {
   ];
 
   // The 4 Team Members below the doctors (Grid of 4):
-  // 1. Janine (Managerin), 2. Nina (Praxisassistenz), 3. Saskia (MFA), 4. Melissa (MFA)
+  // 1. Janine (Managerin), 2. Nina (MFA), 3. Saskia (MFA), 4. Melissa (MFA)
   const teamMembers: TeamAssistant[] = [
     {
       id: 'engels',
@@ -98,9 +98,9 @@ export function TeamSection() {
     {
       id: 'greger',
       name: 'Nina Greger',
-      role: 'Praxisassistenz',
+      role: 'Medizinische Fachangestellte',
       badge: 'Praxisteam',
-      category: 'Praxisassistenz',
+      category: 'MFA',
       image: `${import.meta.env.BASE_URL}assets/team/nina-greger.jpg`,
       bio: 'Unterstützt bei gynäkologischen Untersuchungen, Vorsorgen und Behandlungen mit Ruhe, Erfahrung und menschlicher Wärme.',
       points: [
@@ -146,7 +146,7 @@ export function TeamSection() {
   ];
 
   return (
-    <section id="team" className="relative pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-white scroll-mt-24 xl:scroll-mt-28">
+    <section id="team" className="relative pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-[#F8F9FA] scroll-mt-24 xl:scroll-mt-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

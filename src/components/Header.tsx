@@ -84,29 +84,14 @@ export function Header({
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#F0E6E8] shadow-xs font-quicksand">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Desktop Layout (lg and above): Left Brand Text | Center Nav with Logo in middle between Praxis & Leistungen | Right CTA */}
+        {/* Desktop Layout (lg and above): Spacious Symmetrical Center Nav with Center Logo | Compact Right CTA */}
         <div className="hidden lg:flex h-24 xl:h-26 items-center justify-between gap-4">
           
-          {/* Left Brand Text: FrauenzeitBrühl / Gynäkologie & Geburtshilfe */}
-          <a 
-            href="#start" 
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('start');
-            }}
-            className="flex flex-col text-left group cursor-pointer shrink-0"
-            aria-label="Frauenzeit Brühl Startseite"
-          >
-            <span className="text-2xl xl:text-[27px] font-bold tracking-tight text-[#2B2326] leading-tight group-hover:text-pink-900 transition-colors">
-              Frauenzeit<span className="text-pink-900">Brühl</span>
-            </span>
-            <span className="text-xs xl:text-sm font-medium text-[#826970] tracking-wide leading-tight mt-0.5">
-              Gynäkologie & Geburtshilfe
-            </span>
-          </a>
+          {/* Left balance spacer for optical centering of center navigation and logo */}
+          <div className="w-28 xl:w-32 shrink-0" aria-hidden="true" />
 
-          {/* Center Navigation: Startseite, Philosophie, Team, Praxis, [Logo], Leistungen, Kontakt */}
-          <nav className="flex items-center justify-center gap-3.5 xl:gap-5">
+          {/* Center Navigation: Startseite, Philosophie, Team, Praxis, [Logo], Leistungen, Schwerpunkte, Kontakt */}
+          <nav className="flex items-center justify-center gap-5 xl:gap-9 2xl:gap-11 flex-1">
             <button
               type="button"
               onClick={() => handleNavClick('start')}
@@ -151,7 +136,7 @@ export function Header({
                 e.preventDefault();
                 handleNavClick('start');
               }}
-              className="group cursor-pointer mx-1.5 xl:mx-3 shrink-0"
+              className="group cursor-pointer mx-2.5 xl:mx-6 2xl:mx-8 shrink-0"
               aria-label="Frauenzeit Brühl Startseite"
             >
               <div className="relative h-21 w-21 xl:h-24 xl:w-24 rounded-full bg-white shadow-xs shrink-0 overflow-hidden group-hover:scale-105 group-hover:shadow-md transition-all duration-200">
@@ -243,16 +228,16 @@ export function Header({
             </button>
           </nav>
 
-          {/* Right CTA: Termin Buchen (Compact Version) */}
-          <div className="flex items-center justify-end gap-2 xl:gap-3 shrink-0">
+          {/* Right CTA: Termin Buchen (Refined Compact Version) */}
+          <div className="w-28 xl:w-32 flex items-center justify-end shrink-0">
             <a
               href="https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-pink-900 px-3.5 py-2 text-xs xl:text-sm font-semibold text-white shadow-xs transition-all hover:bg-pink-950 active:scale-[0.98] whitespace-nowrap cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-pink-900 px-3 py-1.5 text-xs font-semibold text-white shadow-2xs transition-all hover:bg-pink-950 active:scale-[0.98] whitespace-nowrap cursor-pointer"
             >
               <Calendar className="h-3.5 w-3.5" />
-              <span>Termin Buchen</span>
+              <span>Termin buchen</span>
             </a>
           </div>
         </div>
@@ -265,7 +250,8 @@ export function Header({
               e.preventDefault();
               handleNavClick('start');
             }}
-            className="flex items-center gap-3 text-left group cursor-pointer"
+            className="flex items-center text-left group cursor-pointer"
+            aria-label="Frauenzeit Brühl Startseite"
           >
             <div className="relative h-15 w-15 sm:h-16 sm:w-16 rounded-full bg-white shadow-xs shrink-0 overflow-hidden group-hover:scale-105 transition-all">
               <img 
@@ -279,14 +265,6 @@ export function Header({
                   }
                 }}
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight text-[#2B2326]">
-                Frauenzeit<span className="text-pink-900">Brühl</span>
-              </span>
-              <span className="text-xs font-semibold text-pink-900">
-                Gynäkologie & Geburtshilfe
-              </span>
             </div>
           </a>
 

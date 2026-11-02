@@ -61,7 +61,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     subtitle: 'Zeit für Ihre Anliegen · Diagnostik & einfühlsame Behandlung',
     badge: 'Gynäkologische Grundversorgung',
     image: `${import.meta.env.BASE_URL}assets/leistungen/allgemeine-gynaekologie.jpg`,
-    alt: 'Allgemeine Gynäkologie und einfühlsame Beratung in der Praxis Frauenzeit Brühl',
+    alt: 'Konzept Frauengesundheit und Organanatomie in schützenden Händen – Allgemeine Gynäkologie Praxis Frauenzeit Brühl',
     leadQuote: '„In unserer allgemeinen gynäkologischen Sprechstunde nehmen wir uns Zeit für Ihre Anliegen und behandeln Sie bei Beschwerden und gynäkologischen Erkrankungen. Unser Ziel ist es, die Ursachen Ihrer Beschwerden zu erkennen und gemeinsam mit Ihnen einen passenden Behandlungsweg zu finden.“',
     teaser: 'Ob Regelschmerzen, Endometriose und Adenomyose, Hormonstörungen oder die Nachsorge nach Krankenhausaufenthalten: Wir gehen den Ursachen auf den Grund und finden gemeinsam die optimale Therapie.',
     detailedText: [
@@ -111,7 +111,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     title: 'Mädchensprechstunde',
     subtitle: 'Ein guter Start in die Frauengesundheit · Für Mädchen & Teenager',
     badge: 'Jugendgesundheit · Einfühlsam & Vertraulich',
-    image: `${import.meta.env.BASE_URL}assets/aistudio/teenager-maedchensprechstunde_9c585e35.jpg`,
+    image: `${import.meta.env.BASE_URL}assets/leistungen/teenager-maedchensprechstunde.jpg`,
     alt: 'Mädchen liest entspannt in der Natur – Mädchensprechstunde Praxis Frauenzeit Brühl',
     leadQuote: '„Der erste Besuch bei der Frauenärztin ist für viele junge Mädchen ein besonderer Moment – verbunden mit Neugier, Fragen oder auch Unsicherheit. Uns ist es wichtig, dass du dich bei uns wohlfühlst und einen geschützten Raum findest, in dem alle deine Fragen Platz haben.“',
     teaser: 'Keine Angst vor dem ersten Termin: Eine körperliche Untersuchung auf dem Stuhl ist beim Kennenlernen meist gar nicht nötig! Wir nehmen uns Zeit für alle deine Fragen zu Pubertät, Periode, Liebe & Verhütung.',
@@ -260,7 +260,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     subtitle: 'Einfühlsame & ganzheitliche Schwangerschaftsbegleitung',
     badge: 'Schwerpunkt · Pränatale Begleitung',
     image: `${import.meta.env.BASE_URL}assets/leistungen/schwangerschaft-vorsorge.jpg`,
-    alt: 'Schwangere Frau berührt liebevoll ihren Babybauch im sonnendurchfluteten Raum – Schwangerschaftsbegleitung Praxis Frauenzeit Brühl',
+    alt: 'Werdende Mutter und Partner mit kleinen Babyschuhen auf dem Babybauch – Schwangerschaftsbegleitung Praxis Frauenzeit Brühl',
     leadQuote: '„Mit Ihrer Schwangerschaft beginnt ein neuer Lebensabschnitt – voller Vorfreude, Veränderungen und einzigartiger Momente.“',
     teaser: 'Mit Ihrer Schwangerschaft beginnt ein neuer Lebensabschnitt – voller Vorfreude, Veränderungen und einzigartiger Momente.',
     detailedText: [
@@ -309,7 +309,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     subtitle: 'Früher erkennen. Besser behandeln. · Regelmäßige Vorsorge rettet Leben',
     badge: 'Prävention & Früherkennung',
     image: `${import.meta.env.BASE_URL}assets/leistungen/krebsfrueherkennung.jpg`,
-    alt: 'Einfühlsame Krebsfrüherkennung und gynäkologische Vorsorgeuntersuchung – Praxis Frauenzeit Brühl',
+    alt: 'Brustkrebs-Prävention und Früherkennungssymbol Rosa Schleife – Praxis Frauenzeit Brühl',
     leadQuote: '„Viele gynäkologische Krebserkrankungen verursachen in frühen Stadien keine Beschwerden. Regelmäßige Früherkennungsuntersuchungen ermöglichen es, Zellveränderungen oder Erkrankungen frühzeitig zu entdecken und dadurch die Heilungschancen deutlich zu verbessern.“',
     teaser: 'Regelmäßige gynäkologische Früherkennung: Jährliche Vorsorge, Pap-Abstrich, HPV-Co-Test ab 35 und Tastuntersuchung der Brust in vertrauensvoller Atmosphäre.',
     detailedText: [

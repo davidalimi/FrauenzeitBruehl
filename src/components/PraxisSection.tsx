@@ -31,6 +31,13 @@ export function PraxisSection() {
       alt: 'Heller, freundlicher Wartebereich mit Holzbänken, Zeitschriften und Spielecke für Kinder'
     },
     {
+      id: 'sprechzimmer',
+      title: 'Sprechzimmer & Beratung',
+      category: 'Beratung & Gespräch',
+      image: `${import.meta.env.BASE_URL}assets/praxis/sprechzimmer.png`,
+      alt: 'Helles, stilvolles Sprechzimmer mit gemütlichem Sessel und Schreibtisch für vertrauliche Gespräche'
+    },
+    {
       id: 'ultraschall',
       title: 'Ultraschall & Diagnostik',
       category: 'Diagnostik & Untersuchung',
@@ -41,8 +48,15 @@ export function PraxisSection() {
       id: 'behandlungsraum',
       title: 'Untersuchungs- & Behandlungsraum',
       category: 'Behandlung & Vorsorge',
-      image: `${import.meta.env.BASE_URL}assets/praxis/behandlungsraum.jpg`,
+      image: `${import.meta.env.BASE_URL}assets/praxis/behandlungsraum.png`,
       alt: 'Moderner gynäkologischer Behandlungsraum mit ergonomischem Untersuchungsstuhl, Untersuchungsleuchte und Laborarbeitsplatz'
+    },
+    {
+      id: 'labor',
+      title: 'Praxislabor & Vorbereitung',
+      category: 'Labor & Diagnostik',
+      image: `${import.meta.env.BASE_URL}assets/praxis/labor.png`,
+      alt: 'Praxiseigenes Labor und Vorbereitungsraum für Blutentnahmen, Analysen und CTG'
     }
   ];
 
@@ -71,7 +85,7 @@ export function PraxisSection() {
   const currentPhoto = photos[currentIndex];
 
   return (
-    <section id="praxis" className="relative pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-[#F8F9FA] scroll-mt-24 xl:scroll-mt-28">
+    <section id="praxis" className="relative pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-white scroll-mt-24 xl:scroll-mt-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

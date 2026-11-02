@@ -5,7 +5,7 @@ export function ContactSection() {
   const doctolibUrl = 'https://www.doctolib.de/praxis/bruehl/praxis-frauenzeit-bruehl';
 
   return (
-    <section id="kontakt" className="relative pt-8 sm:pt-12 pb-16 sm:pb-24 bg-[#F8F9FA] border-b border-[#F0E6E8] scroll-mt-24 xl:scroll-mt-28">
+    <section id="kontakt" className="relative pt-8 sm:pt-12 pb-16 sm:pb-24 bg-white border-b border-[#F0E6E8] scroll-mt-24 xl:scroll-mt-28">
       <div id="sprechzeiten" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 scroll-mt-24 xl:scroll-mt-28">
         
         {/* Section Header: Left-aligned like Unsere Praxis */}
@@ -25,9 +25,9 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           
           {/* Main Sprechzeiten Timetable Card (Left Column) */}
-          <div className="lg:col-span-7 flex flex-col justify-between rounded-2xl bg-white p-6 sm:p-8 border border-[#F0E6E8] shadow-xs text-left h-full">
-            <div className="flex items-center gap-2.5 pb-4 border-b border-[#F5EDEF]">
-              <div className="h-9 w-9 rounded-xl bg-[#F3F4F6] flex items-center justify-center text-pink-900">
+          <div className="lg:col-span-7 flex flex-col justify-between rounded-2xl bg-[#F8F9FA] p-6 sm:p-8 border border-[#E8D2D7] shadow-xs text-left h-full">
+            <div className="flex items-center gap-2.5 pb-4 border-b border-[#E8D2D7]">
+              <div className="h-9 w-9 rounded-xl bg-white flex items-center justify-center text-pink-900 border border-[#E8D2D7]">
                 <Clock className="h-5 w-5" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#2B2326]">
@@ -36,7 +36,7 @@ export function ContactSection() {
             </div>
             
             {/* Hours Table (Balanced across the card height) */}
-            <div className="my-auto py-2 space-y-1 text-xs sm:text-sm divide-y divide-[#F3F4F6] font-quicksand">
+            <div className="my-auto py-2 space-y-1 text-xs sm:text-sm divide-y divide-[#E8D2D7] font-quicksand">
               <div className="flex items-center justify-between py-3">
                 <span className="font-semibold text-[#2B2326]">Montag</span>
                 <span className="text-[#5C4A4F] font-medium tabular-nums text-right">08:00 – 13:00 & 14:00 – 18:00 Uhr</span>
@@ -68,7 +68,7 @@ export function ContactSection() {
               href={doctolibUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-2xl bg-white p-4 sm:p-4.5 border border-[#F0E6E8] shadow-2xs hover:border-pink-400 hover:shadow-xs transition-all cursor-pointer"
+              className="group block rounded-2xl bg-[#F8F9FA] p-4 sm:p-4.5 border border-[#E8D2D7] shadow-2xs hover:border-pink-400 hover:shadow-xs transition-all cursor-pointer"
             >
               <div className="flex items-start gap-3.5">
                 <div className="h-10 w-10 rounded-xl bg-pink-900 text-white flex items-center justify-center shrink-0 group-hover:bg-pink-950 transition-colors shadow-2xs">
@@ -96,10 +96,10 @@ export function ContactSection() {
               href="https://maps.app.goo.gl/jpkhX3wU7SzwhnGX6"
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-2xl bg-white p-4 sm:p-4.5 border border-[#F0E6E8] shadow-2xs hover:border-pink-300 hover:shadow-xs transition-all cursor-pointer"
+              className="group block rounded-2xl bg-[#F8F9FA] p-4 sm:p-4.5 border border-[#E8D2D7] shadow-2xs hover:border-pink-400 hover:shadow-xs transition-all cursor-pointer"
             >
               <div className="flex items-start gap-3.5">
-                <div className="h-10 w-10 rounded-xl bg-[#F3F4F6] text-pink-900 flex items-center justify-center shrink-0 group-hover:bg-pink-900 group-hover:text-white transition-colors">
+                <div className="h-10 w-10 rounded-xl bg-white text-pink-900 flex items-center justify-center shrink-0 group-hover:bg-pink-900 group-hover:text-white transition-colors border border-[#E8D2D7]">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -122,10 +122,10 @@ export function ContactSection() {
             {/* Row 3: Phone Card */}
             <a
               href="tel:0223243545"
-              className="group block rounded-2xl bg-white p-4 sm:p-4.5 border border-[#F0E6E8] shadow-2xs hover:border-pink-300 hover:shadow-xs transition-all cursor-pointer"
+              className="group block rounded-2xl bg-[#F8F9FA] p-4 sm:p-4.5 border border-[#E8D2D7] shadow-2xs hover:border-pink-400 hover:shadow-xs transition-all cursor-pointer"
             >
               <div className="flex items-start gap-3.5">
-                <div className="h-10 w-10 rounded-xl bg-[#F3F4F6] text-pink-900 flex items-center justify-center shrink-0 group-hover:bg-pink-900 group-hover:text-white transition-colors">
+                <div className="h-10 w-10 rounded-xl bg-white text-pink-900 flex items-center justify-center shrink-0 group-hover:bg-pink-900 group-hover:text-white transition-colors border border-[#E8D2D7]">
                   <Phone className="h-5 w-5" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -148,10 +148,10 @@ export function ContactSection() {
             {/* Row 4: Email Card */}
             <a
               href="mailto:praxis@frauenzeit-bruehl.de"
-              className="group block rounded-2xl bg-white p-4 sm:p-4.5 border border-[#F0E6E8] shadow-2xs hover:border-pink-300 hover:shadow-xs transition-all cursor-pointer"
+              className="group block rounded-2xl bg-[#F8F9FA] p-4 sm:p-4.5 border border-[#E8D2D7] shadow-2xs hover:border-pink-400 hover:shadow-xs transition-all cursor-pointer"
             >
               <div className="flex items-start gap-3.5">
-                <div className="h-10 w-10 rounded-xl bg-[#F3F4F6] text-pink-900 flex items-center justify-center shrink-0 group-hover:bg-pink-900 group-hover:text-white transition-colors">
+                <div className="h-10 w-10 rounded-xl bg-white text-pink-900 flex items-center justify-center shrink-0 group-hover:bg-pink-900 group-hover:text-white transition-colors border border-[#E8D2D7]">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div className="flex-1 min-w-0">
