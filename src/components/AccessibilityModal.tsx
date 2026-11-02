@@ -188,7 +188,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
         {/* Top Header */}
         <div className="flex items-center justify-between pb-4 border-b border-[#F0E6E8]">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FAF1F3] text-pink-900 border border-[#E8D2D7]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F3F4F6] text-pink-900 border border-[#E8D2D7]">
               <Accessibility className="h-5 w-5" />
             </div>
             <div>
@@ -203,7 +203,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
           <button
             type="button"
             onClick={onClose}
-            className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-[#FAF5F6] text-neutral-500 hover:text-[#2B2326] hover:bg-neutral-200 transition-colors cursor-pointer"
+            className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-[#F3F4F6] text-neutral-500 hover:text-[#2B2326] hover:bg-neutral-200 transition-colors cursor-pointer"
             aria-label="Schließen"
           >
             <X className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -211,7 +211,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
         </div>
 
         {/* Master One-Click Switch */}
-        <div className="mt-5 rounded-2xl bg-gradient-to-br from-[#FAF1F3] via-white to-[#FCF8F9] border-2 border-pink-900/30 p-4 sm:p-5 shadow-xs">
+        <div className="mt-5 rounded-2xl bg-gradient-to-br from-[#F8F9FA] via-white to-[#F3F4F6] border-2 border-pink-900/30 p-4 sm:p-5 shadow-xs">
           <div className="flex items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-1.5 font-bold text-sm sm:text-base text-[#2B2326]">
@@ -261,7 +261,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
           </span>
 
           {/* 1. Schriftgröße */}
-          <div className="rounded-xl border border-[#F0E6E8] bg-[#FCF8F9] p-3.5 space-y-2">
+          <div className="rounded-xl border border-[#F0E6E8] bg-[#F8F9FA] p-3.5 space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#2B2326] flex items-center gap-1.5">
                 <Type className="h-3.5 w-3.5 text-pink-900" />
@@ -280,7 +280,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
                 className={`py-2 px-3 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                   settings.fontSize === 'normal'
                     ? 'bg-pink-900 text-white border-pink-900 shadow-2xs'
-                    : 'bg-white text-[#4D3F43] border-[#E8D2D7] hover:bg-[#FAF1F3]'
+                    : 'bg-white text-[#4D3F43] border-[#E8D2D7] hover:bg-[#F3F4F6]'
                 }`}
               >
                 100%
@@ -291,7 +291,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
                 className={`py-2 px-3 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                   settings.fontSize === 'large'
                     ? 'bg-pink-900 text-white border-pink-900 shadow-2xs'
-                    : 'bg-white text-[#4D3F43] border-[#E8D2D7] hover:bg-[#FAF1F3]'
+                    : 'bg-white text-[#4D3F43] border-[#E8D2D7] hover:bg-[#F3F4F6]'
                 }`}
               >
                 115% (A+)
@@ -302,7 +302,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
                 className={`py-2 px-3 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                   settings.fontSize === 'xlarge'
                     ? 'bg-pink-900 text-white border-pink-900 shadow-2xs'
-                    : 'bg-white text-[#4D3F43] border-[#E8D2D7] hover:bg-[#FAF1F3]'
+                    : 'bg-white text-[#4D3F43] border-[#E8D2D7] hover:bg-[#F3F4F6]'
                 }`}
               >
                 130% (A++)
@@ -311,7 +311,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
           </div>
 
           {/* 2. Hoher Kontrast */}
-          <div className="flex items-center justify-between rounded-xl border border-[#F0E6E8] bg-[#FCF8F9] p-3.5">
+          <div className="flex items-center justify-between rounded-xl border border-[#F0E6E8] bg-[#F8F9FA] p-3.5">
             <div className="flex items-center gap-2.5">
               <Sun className="h-4 w-4 text-pink-900" />
               <div>
@@ -339,7 +339,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
           </div>
 
           {/* 3. Gut lesbare serifenlose Schrift */}
-          <div className="flex items-center justify-between rounded-xl border border-[#F0E6E8] bg-[#FCF8F9] p-3.5">
+          <div className="flex items-center justify-between rounded-xl border border-[#F0E6E8] bg-[#F8F9FA] p-3.5">
             <div className="flex items-center gap-2.5">
               <Eye className="h-4 w-4 text-pink-900" />
               <div>
@@ -367,7 +367,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
           </div>
 
           {/* 4. Links unterstreichen */}
-          <div className="flex items-center justify-between rounded-xl border border-[#F0E6E8] bg-[#FCF8F9] p-3.5">
+          <div className="flex items-center justify-between rounded-xl border border-[#F0E6E8] bg-[#F8F9FA] p-3.5">
             <div className="flex items-center gap-2.5">
               <Underline className="h-4 w-4 text-pink-900" />
               <div>
@@ -395,7 +395,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
           </div>
 
           {/* 5. Bewegung / Animationen reduzieren */}
-          <div className="flex items-center justify-between rounded-xl border border-[#F0E6E8] bg-[#FCF8F9] p-3.5">
+          <div className="flex items-center justify-between rounded-xl border border-[#F0E6E8] bg-[#F8F9FA] p-3.5">
             <div className="flex items-center gap-2.5">
               <PauseCircle className="h-4 w-4 text-pink-900" />
               <div>
@@ -428,7 +428,7 @@ export function AccessibilityModal({ isOpen, onClose, a11y }: AccessibilityModal
           <button
             type="button"
             onClick={resetSettings}
-            className="inline-flex items-center gap-1.5 text-xs text-[#735F64] hover:text-pink-900 py-1.5 px-2.5 rounded-lg hover:bg-[#FAF1F3] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs text-[#735F64] hover:text-pink-900 py-1.5 px-2.5 rounded-lg hover:bg-[#F3F4F6] transition-colors cursor-pointer"
           >
             <RotateCcw className="h-3.5 w-3.5" />
             <span>Zurücksetzen</span>

@@ -5,7 +5,7 @@ export function Hero() {
   const teamPhotoUrl = `${import.meta.env.BASE_URL}assets/hero/team.png`;
 
   return (
-    <section id="start" className="relative overflow-hidden border-b border-[#F0E6E8] bg-gradient-to-b from-[#FAF5F6] via-white to-[#FCFBF9] py-10 sm:py-14 lg:py-16 scroll-mt-24 xl:scroll-mt-28">
+    <section id="start" className="relative overflow-hidden border-b border-[#F0E6E8] bg-gradient-to-b from-[#F4F5F7] via-white to-[#F8F9FA] py-10 sm:py-14 lg:py-16 scroll-mt-24 xl:scroll-mt-28">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         
         {/* Top Hero Showcase: Brand, Direct Actions & Team Photo */}
@@ -41,7 +41,7 @@ export function Hero() {
 
               <a
                 href="tel:0223243545"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#E8D2D7] bg-white px-6 py-3.5 text-xs sm:text-sm font-semibold text-pink-900 shadow-2xs hover:bg-[#FAF5F6] active:scale-[0.98] transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#E8D2D7] bg-white px-6 py-3.5 text-xs sm:text-sm font-semibold text-pink-900 shadow-2xs hover:bg-[#F3F4F6] active:scale-[0.98] transition-all"
               >
                 <Phone className="h-4 w-4 text-pink-900" />
                 <span>02232 / 43545</span>

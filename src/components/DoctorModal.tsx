@@ -354,7 +354,7 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
         </div>
 
         {/* Modal Header Banner: Doctor Presentation */}
-        <div className="bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-4 sm:p-6 shrink-0">
+        <div className="bg-gradient-to-r from-[#F8F9FA] via-white to-[#F3F4F6] border-b border-[#F0E6E8] p-4 sm:p-6 shrink-0">
           <div className="flex flex-row items-center sm:items-start gap-3.5 sm:gap-5 pr-24 sm:pr-0">
             {/* Portrait Image */}
             <div className="relative h-16 w-16 sm:h-32 sm:w-28 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-pink-900/20 shadow-md bg-white shrink-0">
@@ -391,7 +391,7 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
         <div className="flex-1 overflow-y-auto p-4 sm:p-7 space-y-7 sm:space-y-9">
           
           {/* Mobile Quote Card */}
-          <div className="sm:hidden rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-3 text-xs italic text-[#4D3F43] leading-relaxed">
+          <div className="sm:hidden rounded-xl border border-[#F0E6E8] bg-[#F8F9FA] p-3 text-xs italic text-[#4D3F43] leading-relaxed">
             „{doctor.quote}“
           </div>
 
@@ -424,7 +424,7 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
 
             {/* Promotion Notice */}
             {doctor.doctoralThesis && (
-              <div className="rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-4 flex items-start gap-3 text-xs text-[#4D3F43] mt-3">
+              <div className="rounded-xl border border-[#F0E6E8] bg-[#F8F9FA] p-4 flex items-start gap-3 text-xs text-[#4D3F43] mt-3">
                 <GraduationCap className="h-5 w-5 text-pink-900 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold text-[#2B2326] block">
@@ -501,7 +501,7 @@ export function DoctorModal({ doctor, onClose, onSwitchDoctor }: DoctorModalProp
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {doctor.furtherTraining.map((train, idx) => (
-                    <div key={idx} className="flex items-start gap-2 rounded-lg bg-[#FAF5F6] p-2.5 text-xs text-[#5C4A4F] border border-[#F0E6E8]/70">
+                    <div key={idx} className="flex items-start gap-2 rounded-lg bg-[#F8F9FA] p-2.5 text-xs text-[#5C4A4F] border border-[#F0E6E8]/70">
                       <Sparkles className="h-3.5 w-3.5 text-pink-900 shrink-0 mt-0.5" />
                       <span>{train}</span>
                     </div>

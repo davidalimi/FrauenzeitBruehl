@@ -79,14 +79,14 @@ export const THEME_CONFIG: ThemeConfig = {
       default: '#BE185D', // Warmes Praxis-Himbeer / Pink-700
       hover: '#9D174D',   // Dunkleres Pink-800 für Hover-Zustände
       light: '#FCE7F3',   // Zartes Pink-100 für Badge-Hintergründe
-      surface: '#FAF5F6', // Zart getönter Sektionshintergrund
-      subtle: '#FCF8F9',  // Heller Kartenhintergrund
+      surface: '#F8F9FA', // Zart getönter Sektionshintergrund (hellgrau)
+      subtle: '#F3F4F6',  // Heller Kartenhintergrund
       border: '#F0E6E8',  // Sanfte Rahmenlinie
     },
     background: {
-      page: '#FCFBF9',    // Warmer Praxis-Hintergrund
+      page: '#F8F9FA',    // Heller neutraler Praxis-Hintergrund
       card: '#FFFFFF',    // Reines Weiß für Inhaltskarten
-      sectionAlt: '#FAF5F6', // Alternierender Sektionshintergrund
+      sectionAlt: '#F4F5F7', // Alternierender Sektionshintergrund (hellgrau)
     },
     text: {
       main: '#2B2326',   // Tiefes Warmgrau / Kohle für Überschriften

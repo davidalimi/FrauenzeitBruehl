@@ -21,8 +21,8 @@ export const colors = {
   },
   // Neutral Warm Palette
   neutral: {
-    pageBg: '#FCFBF9',
-    sectionBg: '#FAF5F6',
+    pageBg: '#F8F9FA',
+    sectionBg: '#F4F5F7',
     borderSoft: '#F0E6E8',
     borderAccent: '#E8D2D7',
     textPrimary: '#2B2326',

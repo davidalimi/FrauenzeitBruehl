@@ -180,7 +180,7 @@ export function TeamSection() {
             {doctors.map((doc) => (
               <div
                 key={doc.id}
-                className="group relative flex flex-col justify-between rounded-3xl border border-[#F0E6E8] bg-[#FCF8F9] p-6 sm:p-7 text-left shadow-sm transition-all duration-300 hover:border-[#E8D2D7] hover:shadow-md"
+                className="group relative flex flex-col justify-between rounded-3xl border border-[#F0E6E8] bg-[#F8F9FA] p-6 sm:p-7 text-left shadow-sm transition-all duration-300 hover:border-[#E8D2D7] hover:shadow-md"
               >
                 <div>
                   {/* Doctor Photo & Basic Bio Layout */}
@@ -284,7 +284,7 @@ export function TeamSection() {
             {teamMembers.map((member) => (
               <div
                 key={member.id}
-                className="flex flex-col justify-between rounded-2xl border border-[#F0E6E8] bg-[#FCF8F9] p-5 text-left shadow-2xs transition-all duration-200 hover:border-[#E8D2D7] hover:shadow-sm"
+                className="flex flex-col justify-between rounded-2xl border border-[#F0E6E8] bg-[#F8F9FA] p-5 text-left shadow-2xs transition-all duration-200 hover:border-[#E8D2D7] hover:shadow-sm"
               >
                 <div>
                   {/* Team Member Photo */}
@@ -395,7 +395,7 @@ export function TeamSection() {
                     const prevIdx = idx <= 0 ? teamMembers.length - 1 : idx - 1;
                     setSelectedMember(teamMembers[prevIdx]);
                   }}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-900 hover:bg-[#FAF5F6] transition-colors cursor-pointer"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-900 hover:bg-[#F3F4F6] transition-colors cursor-pointer"
                   aria-label="Vorherige Mitarbeiterin"
                   title="Vorherige (Pfeiltaste links)"
                 >
@@ -408,7 +408,7 @@ export function TeamSection() {
                     const nextIdx = (idx + 1) % teamMembers.length;
                     setSelectedMember(teamMembers[nextIdx]);
                   }}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-900 hover:bg-[#FAF5F6] transition-colors cursor-pointer"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#E8D2D7] bg-white text-neutral-600 hover:text-pink-900 hover:bg-[#F3F4F6] transition-colors cursor-pointer"
                   aria-label="Nächste Mitarbeiterin"
                   title="Nächste (Pfeiltaste rechts)"
                 >
@@ -425,7 +425,7 @@ export function TeamSection() {
               </div>
             </div>
 
-            <div className="mt-3 overflow-hidden rounded-xl border border-[#E8D2D7] bg-[#FCF8F9] aspect-3/4 w-full">
+            <div className="mt-3 overflow-hidden rounded-xl border border-[#E8D2D7] bg-[#F8F9FA] aspect-3/4 w-full">
               <img
                 src={selectedMember.image}
                 alt={selectedMember.name}

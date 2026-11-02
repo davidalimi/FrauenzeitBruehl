@@ -56,13 +56,11 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FCFBF9] text-[#2B2326] antialiased selection:bg-pink-900 selection:text-white font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-[#F8F9FA] text-[#2B2326] antialiased selection:bg-pink-900 selection:text-white font-sans overflow-x-hidden">
       {/* 1. Practice Header with Brand Logo, Navigation, and Action */}
       <Header 
         activeNav={activeNav}
         onNavClick={setActiveNav}
-        onOpenAccessibility={() => setA11yModalOpen(true)}
-        isA11yActive={a11y.settings.enabled}
       />
 
       {/* Main Content Sections (ordered identically to the navigation menu) */}

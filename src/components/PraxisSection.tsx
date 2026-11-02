@@ -71,7 +71,7 @@ export function PraxisSection() {
   const currentPhoto = photos[currentIndex];
 
   return (
-    <section id="praxis" className="relative pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-24 xl:scroll-mt-28">
+    <section id="praxis" className="relative pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-[#F8F9FA] scroll-mt-24 xl:scroll-mt-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -145,7 +145,7 @@ export function PraxisSection() {
 
           {/* Dots Indicator (shown when multiple photos exist) */}
           {photos.length > 1 && (
-            <div className="py-4 bg-[#FAF5F6] border-t border-[#F0E6E8] flex items-center justify-center gap-2">
+            <div className="py-4 bg-[#F4F5F7] border-t border-[#F0E6E8] flex items-center justify-center gap-2">
               {photos.map((photo, idx) => (
                 <button
                   key={photo.id}

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light !important;
   --font-heading: 'EB Garamond', Georgia, serif;
   --font-body: 'EB Garamond', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -9,9 +10,25 @@
   font-family: var(--font-body);
 }
 
+html, body {
+  color-scheme: light !important;
+  background-color: #F8F9FA !important;
+  color: #2B2326 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root, html, body {
+    color-scheme: light !important;
+    background-color: #F8F9FA !important;
+    color: #2B2326 !important;
+  }
+}
+
 @layer base {
   body {
     font-family: var(--font-body);
+    background-color: #F8F9FA;
+    color: #2B2326;
   }
 
   h1, h2, h3, h4, h5, h6,
@@ -21,6 +38,12 @@
 
   nav, button {
     font-family: var(--font-heading);
+  }
+
+  /* Header uses Quicksand, sans-serif */
+  header,
+  header * {
+    font-family: var(--font-quicksand), sans-serif;
   }
 
   code, pre, kbd {
@@ -43,7 +66,14 @@
 }
 
 html {
+  font-size: 110%; /* Increased overall font size by 10% for improved clarity and readability */
   scroll-behavior: smooth;
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 112.5%; /* 18px base on large desktop displays */
+  }
 }
 
 /* ============================================================== */
@@ -52,11 +82,11 @@ html {
 
 /* Font Sizing */
 html.a11y-large-text {
-  font-size: 115% !important;
+  font-size: 125% !important;
 }
 
 html.a11y-extra-large-text {
-  font-size: 130% !important;
+  font-size: 140% !important;
 }
 
 /* Readable Sans-Serif Font with Comfortable Spacing */

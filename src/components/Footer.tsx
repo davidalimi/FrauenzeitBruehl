@@ -32,16 +32,16 @@ export function Footer({ onOpenAccessibility }: FooterProps = {}) {
 
   return (
     <>
-      <footer className="relative overflow-hidden bg-slate-900 text-slate-300 border-t border-slate-800 pt-16 pb-12">
+      <footer className="relative overflow-hidden bg-[#F4F5F7] text-[#5C4A4F] border-t border-[#E8D2D7] pt-14 pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Main Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#E8D2D7] text-left">
             
             {/* Column 1: Brand & Practice Info (spans 2 columns) */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="relative h-12 w-12 rounded-full bg-white shadow-xs overflow-hidden shrink-0">
+                <div className="relative h-12 w-12 rounded-full bg-white shadow-2xs border border-[#E8D2D7] overflow-hidden shrink-0">
                   <img
                     src={logoUrl}
                     alt="Frauenzeit Brühl Logo"
@@ -55,30 +55,30 @@ export function Footer({ onOpenAccessibility }: FooterProps = {}) {
                   />
                 </div>
                 <div>
-                  <span className="text-xl font-bold tracking-tight text-white font-sans">
-                    Frauenzeit<span className="text-pink-400">Brühl</span>
+                  <span className="text-xl font-bold tracking-tight text-[#2B2326] font-sans">
+                    Frauenzeit<span className="text-pink-900">Brühl</span>
                   </span>
-                  <span className="block text-xs font-medium text-slate-400">
+                  <span className="block text-xs font-semibold text-pink-900">
                     Gynäkologie & Geburtshilfe
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+              <p className="text-xs text-[#5C4A4F] leading-relaxed max-w-sm">
                 Gemeinschaftspraxis für Gynäkologie und Geburtshilfe · Dr. med. Anika Birkenfeld & Dr. med. Corinna Ledwig
               </p>
 
-              <div className="pt-2 text-xs text-slate-400 space-y-1">
-                <div className="text-slate-300 font-medium">Mühlenstraße 37 · 50321 Brühl</div>
+              <div className="pt-2 text-xs text-[#5C4A4F] space-y-1.5">
+                <div className="text-[#2B2326] font-semibold">Mühlenstraße 37 · 50321 Brühl</div>
                 <div>
                   Telefon:{' '}
-                  <a href="tel:0223243545" className="text-pink-400 hover:text-pink-300 transition-colors">
-                    02232/43545
+                  <a href="tel:0223243545" className="text-pink-900 hover:text-pink-950 font-semibold transition-colors">
+                    02232 / 43545
                   </a>
                 </div>
                 <div>
                   E-Mail:{' '}
-                  <a href="mailto:praxis@frauenzeit-bruehl.de" className="text-pink-400 hover:text-pink-300 transition-colors">
+                  <a href="mailto:praxis@frauenzeit-bruehl.de" className="text-pink-900 hover:text-pink-950 font-semibold transition-colors">
                     praxis@frauenzeit-bruehl.de
                   </a>
                 </div>
@@ -87,38 +87,38 @@ export function Footer({ onOpenAccessibility }: FooterProps = {}) {
 
             {/* Column 3: Service & Termine */}
             <div className="space-y-3">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#2B2326]">
                 Service & Termine
               </h4>
-              <ul className="space-y-2 text-xs text-slate-400">
+              <ul className="space-y-2.5 text-xs text-[#5C4A4F]">
                 <li>
                   <a
                     href={doctolibUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-pink-400 hover:text-pink-300 transition-colors font-medium"
+                    className="inline-flex items-center gap-1.5 text-pink-900 hover:text-pink-950 transition-colors font-bold"
                   >
                     <span>Online-Terminbuchung</span>
                     <ExternalLink className="h-3 w-3" />
                   </a>
                 </li>
                 <li>
-                  <a href="#team" className="hover:text-white transition-colors">
+                  <a href="#team" className="hover:text-pink-900 transition-colors">
                     Ärztinnen & Team
                   </a>
                 </li>
                 <li>
-                  <a href="#praxis" className="hover:text-white transition-colors">
+                  <a href="#praxis" className="hover:text-pink-900 transition-colors">
                     Praxis
                   </a>
                 </li>
                 <li>
-                  <a href="#kontakt" className="hover:text-white transition-colors">
+                  <a href="#kontakt" className="hover:text-pink-900 transition-colors">
                     Kontakt & Sprechzeiten
                   </a>
                 </li>
                 <li>
-                  <a href="tel:0223243545" className="hover:text-white transition-colors">
+                  <a href="tel:0223243545" className="hover:text-pink-900 transition-colors">
                     Telefonische Beratung
                   </a>
                 </li>
@@ -127,7 +127,7 @@ export function Footer({ onOpenAccessibility }: FooterProps = {}) {
                     <button
                       type="button"
                       onClick={onOpenAccessibility}
-                      className="hover:text-white text-left transition-colors cursor-pointer text-pink-300 hover:underline"
+                      className="hover:text-pink-950 text-left transition-colors cursor-pointer text-pink-900 font-semibold hover:underline"
                     >
                       Barrierefreiheit & Lesemodus
                     </button>
@@ -138,25 +138,25 @@ export function Footer({ onOpenAccessibility }: FooterProps = {}) {
 
             {/* Column 4: Notfallnummern */}
             <div className="space-y-3">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-red-400">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-rose-800">
                 Notfallnummern
               </h4>
-              <div className="space-y-3 text-xs text-slate-400">
+              <div className="space-y-3 text-xs text-[#5C4A4F]">
                 <div>
-                  <span className="text-slate-300 block font-semibold">Lebensbedrohlicher Notfall:</span>
-                  <a href="tel:112" className="text-base font-bold text-red-400 hover:underline tabular-nums">
+                  <span className="text-[#2B2326] block font-semibold">Lebensbedrohlicher Notfall:</span>
+                  <a href="tel:112" className="text-base font-bold text-rose-700 hover:underline tabular-nums">
                     112
                   </a>
                 </div>
                 <div>
-                  <span className="text-slate-300 block font-semibold">Ärztlicher Bereitschaftsdienst:</span>
-                  <a href="tel:116117" className="text-base font-bold text-sky-400 hover:underline tabular-nums">
+                  <span className="text-[#2B2326] block font-semibold">Ärztlicher Bereitschaftsdienst:</span>
+                  <a href="tel:116117" className="text-base font-bold text-pink-900 hover:underline tabular-nums">
                     116 117
                   </a>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Giftnotrufzentrale:</span>
-                  <a href="tel:+4955119240" className="hover:text-white transition-colors tabular-nums">
+                  <span className="text-[#735F64] block text-[11px]">Giftnotrufzentrale:</span>
+                  <a href="tel:+4955119240" className="text-[#2B2326] hover:text-pink-900 transition-colors tabular-nums">
                     +49 (0)551 19240
                   </a>
                 </div>
@@ -166,7 +166,7 @@ export function Footer({ onOpenAccessibility }: FooterProps = {}) {
           </div>
 
           {/* Bottom Bar: Copyright & Legal Modals */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#826970]">
             <div>
               © {new Date().getFullYear()} FrauenzeitBrühl · Alle Rechte vorbehalten.
             </div>
@@ -175,15 +175,15 @@ export function Footer({ onOpenAccessibility }: FooterProps = {}) {
               <button
                 type="button"
                 onClick={() => setActiveModal('impressum')}
-                className="hover:text-slate-300 transition-colors cursor-pointer"
+                className="hover:text-pink-900 transition-colors cursor-pointer"
               >
                 Impressum (Legal Notice)
               </button>
-              <span aria-hidden="true" className="text-slate-700">·</span>
+              <span aria-hidden="true" className="text-[#C4A8AF]">·</span>
               <button
                 type="button"
                 onClick={() => setActiveModal('privacy')}
-                className="hover:text-slate-300 transition-colors cursor-pointer"
+                className="hover:text-pink-900 transition-colors cursor-pointer"
               >
                 Datenschutz (Privacy & GDPR)
               </button>
@@ -329,9 +329,9 @@ export function Footer({ onOpenAccessibility }: FooterProps = {}) {
                   </div>
 
                   {/* Official PDF Document Download */}
-                  <div className="mt-6 p-4 sm:p-5 rounded-2xl border border-pink-200 bg-[#FCF8F9] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="mt-6 p-4 sm:p-5 rounded-2xl border border-pink-200 bg-[#F8F9FA] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-start gap-3">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-pink-100 text-pink-900">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E5E7EB] text-pink-900">
                         <FileText className="h-5 w-5" />
                       </div>
                       <div>

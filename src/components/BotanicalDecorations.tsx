@@ -170,7 +170,7 @@ export function CottonSprig({ className = "w-48 h-48 text-[#D9C2C8]" }: { classN
         <circle cx="2" cy="4" r="12" fill="#FFFFFF" fillOpacity="0.9" />
         <circle cx="-8" cy="2" r="11" fill="#FFFFFF" fillOpacity="0.85" />
         {/* Warm shadow tint */}
-        <circle cx="2" cy="-6" r="10" fill="#FAF5F6" fillOpacity="0.6" />
+        <circle cx="2" cy="-6" r="10" fill="#F3F4F6" fillOpacity="0.6" />
       </g>
 
       {/* Cotton Boll 2 (Lower side) */}

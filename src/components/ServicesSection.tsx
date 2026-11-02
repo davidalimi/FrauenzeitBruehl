@@ -212,7 +212,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     image: `${import.meta.env.BASE_URL}assets/leistungen/schwangerschaftsbegleitung.jpg`,
     alt: 'Schlafendes Neugeborenes – Erfüllter Kinderwunsch in der Praxis Frauenzeit Brühl',
     leadQuote: '„Der Wunsch nach einem Kind ist für viele Frauen und Paare eine ganz besondere Zeit – voller Vorfreude, Hoffnung und neuer Pläne. Wir begleiten Sie gerne bereits vor einer geplanten Schwangerschaft und unterstützen Sie dabei, gute Voraussetzungen für eine gesunde Schwangerschaft zu schaffen.“',
-    teaser: 'Gute Voraussetzungen für eine gesunde Schwangerschaft schaffen: Von Zyklus- und Hormondiagnostik über Ernährung und Mikronährstoffe bis zur Begleitung bei Endometriose oder PCOS.',
+    teaser: 'Der Wunsch nach einem Kind ist für viele Frauen und Paare eine ganz besondere Zeit – voller Vorfreude, Hoffnung und neuer Pläne.',
     detailedText: [
       'Der Wunsch nach einem Kind ist für Frauen und Paare eine intensive Lebensphase voller Vorfreude, Hoffnung und Gedanken an die Zukunft. Wir begleiten Sie gerne bereits im Vorfeld, um Ihren Körper bestmöglich auf die Empfängnis vorzubereiten.',
       'In einem persönlichen, ruhigen Gespräch nehmen wir uns Zeit für Ihre Fragen. Wir betrachten Ihre persönliche Situation, Ihren Zyklus, Ihren Lebensstil und eventuelle Vorerkrankungen.',
@@ -262,7 +262,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     image: `${import.meta.env.BASE_URL}assets/leistungen/schwangerschaft-vorsorge.jpg`,
     alt: 'Schwangere Frau berührt liebevoll ihren Babybauch im sonnendurchfluteten Raum – Schwangerschaftsbegleitung Praxis Frauenzeit Brühl',
     leadQuote: '„Mit Ihrer Schwangerschaft beginnt ein neuer Lebensabschnitt – voller Vorfreude, Veränderungen und einzigartiger Momente.“',
-    teaser: 'Vom positiven Schwangerschaftstest über alle Trimester bis ins Wochenbett: Wir begleiten Sie mit medizinischer Kompetenz, hoher Feindiagnostik-Expertise (DEGUM I) und herzlicher Fürsorge.',
+    teaser: 'Mit Ihrer Schwangerschaft beginnt ein neuer Lebensabschnitt – voller Vorfreude, Veränderungen und einzigartiger Momente.',
     detailedText: [
       'Herzlichen Glückwunsch zu Ihrer Schwangerschaft! Neben den regulären medizinischen Vorsorgeuntersuchungen nehmen wir uns bewusst ausreichend Zeit für Ihre Fragen, Gedanken und individuellen Wünsche. Uns ist eine vertrauensvolle Betreuung auf Augenhöhe besonders wichtig, damit Sie gut informiert und mit einem sicheren Gefühl durch Ihre Schwangerschaft gehen.',
       'Die Schwangerschaftsvorsorge beginnt in der Regel ab der 7. Schwangerschaftswoche (bei besonderen Fragestellungen selbstverständlich auch früher). Bis zur 30. Schwangerschaftswoche finden die Vorsorgeuntersuchungen alle vier Wochen statt, anschließend alle zwei Wochen bis zur Geburt.',
@@ -458,7 +458,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     image: `${import.meta.env.BASE_URL}assets/leistungen/hormonsprechstunde.jpg`,
     alt: 'Hormonbalance Bausteine mit den Aufschriften Estrogen und Progesterone',
     leadQuote: '„Hormone beeinflussen den weiblichen Körper in jeder Lebensphase.“',
-    teaser: 'Sie steuern Vitalität, Zyklus, Fruchtbarkeit und seelisches Wohlbefinden: Bereits feinste hormonelle Ungleichgewichte können den Alltag belasten. Wir finden die Ursache.',
+    teaser: 'Hormone beeinflussen den weiblichen Körper in jeder Lebensphase.',
     detailedText: [
       'Hormone steuern unzählige lebenswichtige Prozesse im Körper der Frau. Schon geringe Abweichungen des hormonellen Gleichgewichts können zu Zyklusunregelmäßigkeiten, Hautveränderungen, Erschöpfung oder ungewollter Kinderlosigkeit führen.',
       'In unserer spezialisierten Hormonsprechstunde steht eine ausführliche Anamnese und eine präzise, zielgerichtete Labordiagnostik an erster Stelle.',
@@ -509,7 +509,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     image: `${import.meta.env.BASE_URL}assets/leistungen/menopausensprechstunde.jpg`,
     alt: 'Arrangement aus zarten Rosen, Uhr und Menopause-Schriftzug auf rosa Hintergrund',
     leadQuote: '„Mit den Wechseljahren beginnt ein ganz natürlicher Wandel, den jede Frau unterschiedlich erlebt.“',
-    teaser: 'Bereits ab dem 40. Lebensjahr können erste hormonelle Veränderungen eintreffen. Wir betrachten Sie als Ganzes und bieten moderne, sichere Therapiekonzepte.',
+    teaser: 'Mit den Wechseljahren beginnt ein ganz natürlicher Wandel, den jede Frau unterschiedlich erlebt.',
     detailedText: [
       'Mit den Wechseljahren beginnt ein ganz natürlicher, aber oft herausfordernder hormoneller Wandel. Häufig treten bereits in der Perimenopause – oft bei noch regelmäßigem Zyklus – erste Symptome wie Schlafstörungen, Hitzewallungen, Stimmungsschwankungen oder Konzentrationsprobleme auf.',
       'In unserer Menopausensprechstunde nehmen wir uns bewusst viel Zeit für Sie. Wir betrachten nicht bloß einzelne Laborwerte, sondern Ihre gesamte Lebenssituation und Ihr persönliches Wohlbefinden.',
@@ -559,7 +559,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     image: `${import.meta.env.BASE_URL}assets/leistungen/ernaehrungsmedizin.jpg`,
     alt: 'Frische, gesunde bunte Ernährung mit mediterranem Gemüse, Beeren, Nüssen und Vitalstoffen',
     leadQuote: '„Eine ausgewogene, gesunde Ernährung ist ein wesentlicher Baustein für unsere Gesundheit und unser Wohlbefinden.“',
-    teaser: 'Gezielte ernährungsmedizinische Therapie verbindet gynäkologische Behandlung mit individueller Prävention. Alltagstauglich, nachhaltig und ohne kurzfristige Diäten.',
+    teaser: 'Eine ausgewogene, gesunde Ernährung ist ein wesentlicher Baustein für unsere Gesundheit und Wohlbefinden.',
     detailedText: [
       'Die Ernährungsmedizin berücksichtigt die enge, wissenschaftlich belegte Wechselwirkung zwischen Ernährung, Stoffwechsel, Hormonhaushalt und Entzündungsprozessen im weiblichen Körper.',
       'Viele gynäkologische Beschwerden – von chronischen Schmerzen bei Endometriose über Zyklusstörungen bis hin zu Wechseljahresbeschwerden – können durch eine gezielte Anpassung der Ernährungsweise spürbar positiv beeinflusst werden.',
@@ -609,7 +609,7 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     image: `${import.meta.env.BASE_URL}assets/leistungen/betterpelvi-therapie.jpg`,
     alt: 'Hände halten behutsam eine blühende Rose als Symbol für Beckenbodengesundheit und Wohlbefinden',
     leadQuote: '„Der Beckenboden spielt eine zentrale Rolle für Kontinenz, Stabilität und unser körperliches Wohlbefinden.“',
-    teaser: 'Gezielte Aktivierung der tiefen Beckenbodenmuskulatur: Vollständig bekleidet, schmerzfrei und in nur 20–30 Minuten auf dem innovativen BetterPelvi® Beckenbodenstuhl.',
+    teaser: 'Der Beckenboden spielt eine zentrale Rolle für Kontinenz, Stabilität und unser körperliches Wohlbefinden.',
     detailedText: [
       'Der Beckenboden stützt Blase, Darm und Gebärmutter, sorgt für Kontinenz und bildet das fundamentale Zentrum unserer Körpermitte und Rumpfstabilität. Schwangerschaft, Geburt, hormonelle Umstellungen im Klimakterium oder Operationen können diese Muskulatur schwächen.',
       'Die Folgen reichen von unwillkürlichem Urinverlust (beim Husten, Lachen, Sport) über Senkungs- und Druckgefühle bis hin zu chronischen Rückenschmerzen.',
@@ -657,8 +657,8 @@ export const LEISTUNGEN_DATA: LeistungItem[] = [
     badge: 'Schwerpunkt · Individuelle Vorsorge',
     image: `${import.meta.env.BASE_URL}assets/leistungen/wahlleistungen-igel.jpg`,
     alt: 'Zart blühender Kirschblütenzweig vor hellem Hintergrund als Symbol für Schutz und Vorsorge',
-    leadQuote: '„Wir bieten Ihnen neben den Kassenleistungen ein ausgewähltes Spektrum sinnvoller individueller Gesundheitsleistungen an.“',
-    teaser: 'Erweiterte Vorsorge und Diagnostik über den gesetzlichen Basisschutz hinaus: Individuell abgestimmt auf Ihr persönliches Sicherheitsbedürfnis und Lebensalter.',
+    leadQuote: '„Wir bieten Ihnen neben den Leistungen der gesetzlichen Krankenkassen ein ausgewähltes Spektrum an individuellen Gesundheitsleistungen an.“',
+    teaser: 'Wir bieten Ihnen neben den Leistungen der gesetzlichen Krankenkassen ein ausgewähltes Spektrum an individuellen Gesundheitsleistungen an.',
     detailedText: [
       'Ihre Gesundheit liegt uns am Herzen. Die gesetzlichen Früherkennungsprogramme bieten eine solide Grundabsicherung, lassen jedoch einige hochmoderne und präzise diagnostische Methoden unberücksichtigt.',
       'Deshalb bieten wir Ihnen in unserer Praxis ein sorgfältig ausgewähltes, medizinisch sinnvolles Spektrum an individuellen Gesundheitsleistungen (IGeL) an.',
@@ -756,7 +756,7 @@ export function ServicesSection() {
   }, []);
 
   return (
-    <section id="leistungen" className="relative overflow-hidden pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-[#FAF5F6]/40 scroll-mt-24 xl:scroll-mt-28">
+    <section id="leistungen" className="relative overflow-hidden pt-8 sm:pt-12 pb-16 sm:pb-24 border-b border-[#F0E6E8] bg-[#F8F9FA] scroll-mt-24 xl:scroll-mt-28">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Section Header */}
@@ -811,16 +811,16 @@ export function ServicesSection() {
         </div>
 
         {/* Clean Responsive Service Cards Grid (3 cols on lg, 2 on md, 1 on mobile) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {filteredItems.map((item) => (
             <div
               key={item.id}
               onClick={() => setSelectedItem(item)}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[#F0E6E8] bg-white p-5 sm:p-6 text-left shadow-2xs transition-all duration-300 hover:border-[#E8D2D7] hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#F0E6E8] bg-white p-4 sm:p-5 text-left shadow-2xs transition-all duration-300 hover:border-[#E8D2D7] hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
             >
               <div>
                 {/* Photo */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#FAF5F6] border border-[#F0E6E8]">
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#F3F4F6] border border-[#F0E6E8]">
                   <img
                     src={item.image}
                     alt={item.alt}
@@ -836,32 +836,19 @@ export function ServicesSection() {
                   />
                 </div>
 
-                {/* Content */}
-                <div className="mt-4">
-                  <h3 className="text-xl font-bold text-[#2B2326] group-hover:text-pink-900 transition-colors">
+                {/* Content: Title and Text */}
+                <div className="mt-3.5">
+                  <h3 className="text-lg sm:text-xl font-bold text-[#2B2326] group-hover:text-pink-900 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-xs font-semibold text-pink-900">
-                    {item.subtitle}
-                  </p>
-                  <p className="mt-2.5 text-xs sm:text-sm text-[#5C4A4F] leading-relaxed line-clamp-3">
+                  <p className="mt-2 text-sm text-[#5C4A4F] leading-relaxed line-clamp-3">
                     {item.teaser}
                   </p>
-
-                  {/* Highlights */}
-                  <div className="mt-4 space-y-1.5 border-t border-[#F0E6E8] pt-3">
-                    {item.keyHighlights.slice(0, 2).map((h, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-[#4D3F43]">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-pink-900 shrink-0 mt-0.5" />
-                        <span className="leading-snug">{h}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
 
               {/* Card Footer Action */}
-              <div className="mt-5 pt-3 border-t border-[#F0E6E8] flex items-center justify-between">
+              <div className="mt-4 pt-3 border-t border-[#F0E6E8] flex items-center justify-between">
                 <span className="text-xs font-bold text-pink-900 group-hover:underline flex items-center gap-1">
                   <span>Details ansehen</span>
                   <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -912,7 +899,7 @@ export function ServicesSection() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header Banner */}
-            <div className="relative bg-gradient-to-r from-[#FAF5F6] via-white to-[#FCF8F9] border-b border-[#F0E6E8] p-3.5 sm:p-7 shrink-0">
+            <div className="relative bg-gradient-to-r from-[#F4F5F7] via-white to-[#F8F9FA] border-b border-[#F0E6E8] p-3.5 sm:p-7 shrink-0">
               {/* Modal Navigation & Close Controls */}
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1 sm:gap-1.5">
                 <button
@@ -966,7 +953,7 @@ export function ServicesSection() {
             <div className="flex-1 overflow-y-auto p-5 sm:p-7 space-y-6">
               
               {/* Lead Quote */}
-              <div className="rounded-2xl border border-[#F0E6E8] bg-[#FAF5F6] p-4 text-xs sm:text-sm italic text-[#4D3F43] leading-relaxed font-medium">
+              <div className="rounded-2xl border border-[#F0E6E8] bg-[#F3F4F6] p-4 text-xs sm:text-sm italic text-[#4D3F43] leading-relaxed font-medium">
                 {selectedItem.leadQuote}
               </div>
 
@@ -993,7 +980,7 @@ export function ServicesSection() {
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {selectedItem.clinicalFocus.map((focusGroup, idx) => (
-                    <div key={idx} className="rounded-xl border border-[#E8D2D7] bg-[#FCF8F9] p-4 space-y-2.5">
+                    <div key={idx} className="rounded-xl border border-[#E8D2D7] bg-[#F8F9FA] p-4 space-y-2.5">
                       <h5 className="text-xs font-bold uppercase tracking-wider text-pink-950">
                         {focusGroup.category}
                       </h5>
@@ -1011,7 +998,7 @@ export function ServicesSection() {
               </div>
 
               {/* Praxis Advantage Note */}
-              <div className="rounded-xl border border-pink-100 bg-pink-50/50 p-4 flex items-start gap-3 text-xs text-[#5C4A4F]">
+              <div className="rounded-xl border border-pink-100 bg-[#F8F9FA] p-4 flex items-start gap-3 text-xs text-[#5C4A4F]">
                 <ShieldCheck className="h-4 w-4 text-pink-900 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-[#2B2326] font-semibold block">Besonderheit in unserer Praxis:</strong>
@@ -1021,7 +1008,7 @@ export function ServicesSection() {
 
               {/* Cost & Insurance hint */}
               {selectedItem.costNote && (
-                <div className="rounded-xl border border-[#F0E6E8] bg-[#FAF5F6] p-4 text-xs text-[#735F64] leading-relaxed">
+                <div className="rounded-xl border border-[#F0E6E8] bg-[#F3F4F6] p-4 text-xs text-[#735F64] leading-relaxed">
                   <strong className="text-[#2B2326] block font-semibold mb-1">Abrechnung & Krankenkassen:</strong>
                   <p>{selectedItem.costNote}</p>
                 </div>
