@@ -895,43 +895,43 @@ export function ServicesSection() {
           </button>
 
           <div 
-            className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-2xl border border-[#F0E6E8] flex flex-col animate-in zoom-in-95 duration-200"
+            className="relative w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl max-h-[92vh] overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-2xl border border-[#F0E6E8] flex flex-col animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header Banner */}
-            <div className="relative bg-gradient-to-r from-[#F4F5F7] via-white to-[#F8F9FA] border-b border-[#F0E6E8] p-3.5 sm:p-7 shrink-0">
+            <div className="relative bg-gradient-to-r from-[#F4F5F7] via-white to-[#F8F9FA] border-b border-[#F0E6E8] p-3.5 sm:p-6 lg:p-8 shrink-0">
               {/* Modal Navigation & Close Controls */}
-              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1 sm:gap-1.5">
+              <div className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 flex items-center gap-1 sm:gap-2">
                 <button
                   type="button"
                   onClick={handlePrevModal}
-                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-900 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-900 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
                   aria-label="Vorherige Leistung"
                   title="Vorherige Leistung (Pfeiltaste links)"
                 >
-                  <ChevronLeft className="h-4 w-4" />
+                  <ChevronLeft className="h-4 w-4 lg:h-5 lg:w-5" />
                 </button>
                 <button
                   type="button"
                   onClick={handleNextModal}
-                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-900 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-white/90 text-neutral-600 hover:text-pink-900 hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer"
                   aria-label="Nächste Leistung"
                   title="Nächste Leistung (Pfeiltaste rechts)"
                 >
-                  <ChevronRight className="h-4 w-4" />
+                  <ChevronRight className="h-4 w-4 lg:h-5 lg:w-5" />
                 </button>
                 <button
                   type="button"
                   onClick={() => setSelectedItem(null)}
-                  className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer ml-0.5 sm:ml-1"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-white/90 text-neutral-500 hover:text-[#2B2326] hover:bg-white shadow-xs border border-[#E8D2D7] transition-all cursor-pointer ml-1"
                   aria-label="Schließen"
                 >
-                  <X className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <X className="h-4 w-4 sm:h-5 sm:w-5 lg:h-5 lg:w-5" />
                 </button>
               </div>
 
-              <div className="flex flex-row items-center gap-3.5 sm:gap-4 pr-24 sm:pr-28">
-                <div className="h-14 w-20 sm:h-20 sm:w-32 rounded-xl overflow-hidden border border-[#E8D2D7] bg-white shrink-0 shadow-2xs">
+              <div className="flex flex-row items-center gap-3.5 sm:gap-5 lg:gap-6 pr-28 sm:pr-36">
+                <div className="h-14 w-20 sm:h-20 sm:w-32 lg:h-24 lg:w-40 xl:h-28 xl:w-44 rounded-xl sm:rounded-2xl overflow-hidden border border-[#E8D2D7] bg-white shrink-0 shadow-2xs">
                   <img
                     src={selectedItem.image}
                     alt={selectedItem.title}
@@ -939,10 +939,10 @@ export function ServicesSection() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-base sm:text-2xl font-bold text-[#2B2326] truncate sm:whitespace-normal">
+                  <h3 className="text-base sm:text-2xl lg:text-3xl font-bold text-[#2B2326] truncate sm:whitespace-normal">
                     {selectedItem.title}
                   </h3>
-                  <p className="text-xs font-semibold text-[#5C4A4F] mt-0.5 line-clamp-1 sm:line-clamp-none">
+                  <p className="text-xs sm:text-sm lg:text-base font-semibold text-[#5C4A4F] mt-1 line-clamp-1 sm:line-clamp-none">
                     {selectedItem.subtitle}
                   </p>
                 </div>
@@ -950,20 +950,20 @@ export function ServicesSection() {
             </div>
 
             {/* Modal Scrollable Body */}
-            <div className="flex-1 overflow-y-auto p-5 sm:p-7 space-y-6">
+            <div className="flex-1 overflow-y-auto p-5 sm:p-7 lg:p-9 xl:p-10 space-y-6 lg:space-y-8">
               
               {/* Lead Quote */}
-              <div className="rounded-2xl border border-[#F0E6E8] bg-[#F3F4F6] p-4 text-xs sm:text-sm italic text-[#4D3F43] leading-relaxed font-medium">
+              <div className="rounded-2xl border border-[#F0E6E8] bg-[#F3F4F6] p-4 lg:p-6 text-xs sm:text-sm lg:text-base italic text-[#4D3F43] leading-relaxed font-medium">
                 {selectedItem.leadQuote}
               </div>
 
               {/* In-Depth Text Paragraphs from official practice page */}
-              <div className="space-y-3 text-xs sm:text-sm text-[#4D3F43] leading-relaxed">
-                <h4 className="font-bold text-[#2B2326] text-sm flex items-center gap-1.5 border-b border-[#F0E6E8] pb-2">
-                  <HeartHandshake className="h-4 w-4 text-pink-900" />
+              <div className="space-y-3.5 lg:space-y-4 text-xs sm:text-sm lg:text-[15px] xl:text-base text-[#4D3F43] leading-relaxed">
+                <h4 className="font-bold text-[#2B2326] text-sm sm:text-base lg:text-lg flex items-center gap-2 border-b border-[#F0E6E8] pb-2.5">
+                  <HeartHandshake className="h-4 w-4 lg:h-5 lg:w-5 text-pink-900" />
                   <span>Medizinisches Konzept & Betreuung in unserer Praxis</span>
                 </h4>
-                <div className="space-y-3 text-[#4D3F43] leading-relaxed">
+                <div className="space-y-3 lg:space-y-4 text-[#4D3F43] leading-relaxed">
                   {selectedItem.detailedText.map((p, idx) => (
                     <p key={idx}>
                       {p}
@@ -974,20 +974,20 @@ export function ServicesSection() {
 
               {/* Clinical Focus Categories */}
               <div className="space-y-4 pt-2">
-                <h4 className="font-bold text-[#2B2326] text-sm flex items-center gap-1.5">
-                  <Activity className="h-4 w-4 text-pink-900" />
+                <h4 className="font-bold text-[#2B2326] text-sm sm:text-base lg:text-lg flex items-center gap-2">
+                  <Activity className="h-4 w-4 lg:h-5 lg:w-5 text-pink-900" />
                   <span>Behandlungsspektrum & Schwerpunkte</span>
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                   {selectedItem.clinicalFocus.map((focusGroup, idx) => (
-                    <div key={idx} className="rounded-xl border border-[#E8D2D7] bg-[#F8F9FA] p-4 space-y-2.5">
-                      <h5 className="text-xs font-bold uppercase tracking-wider text-pink-950">
+                    <div key={idx} className="rounded-2xl border border-[#E8D2D7] bg-[#F8F9FA] p-4 sm:p-5 lg:p-6 space-y-3">
+                      <h5 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-pink-950">
                         {focusGroup.category}
                       </h5>
-                      <ul className="space-y-1.5 text-xs text-[#5C4A4F]">
+                      <ul className="space-y-2 text-xs sm:text-sm text-[#5C4A4F] leading-relaxed">
                         {focusGroup.items.map((item, itemIdx) => (
-                          <li key={itemIdx} className="flex items-start gap-2">
-                            <CheckCircle2 className="h-3.5 w-3.5 text-pink-900 shrink-0 mt-0.5" />
+                          <li key={itemIdx} className="flex items-start gap-2.5">
+                            <CheckCircle2 className="h-4 w-4 text-pink-900 shrink-0 mt-0.5" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -998,18 +998,18 @@ export function ServicesSection() {
               </div>
 
               {/* Praxis Advantage Note */}
-              <div className="rounded-xl border border-pink-100 bg-[#F8F9FA] p-4 flex items-start gap-3 text-xs text-[#5C4A4F]">
-                <ShieldCheck className="h-4 w-4 text-pink-900 shrink-0 mt-0.5" />
+              <div className="rounded-2xl border border-pink-100 bg-[#F8F9FA] p-4 sm:p-5 lg:p-6 flex items-start gap-3.5 text-xs sm:text-sm text-[#5C4A4F] leading-relaxed">
+                <ShieldCheck className="h-5 w-5 text-pink-900 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-[#2B2326] font-semibold block">Besonderheit in unserer Praxis:</strong>
+                  <strong className="text-[#2B2326] font-semibold block text-xs sm:text-sm mb-0.5">Besonderheit in unserer Praxis:</strong>
                   <span>{selectedItem.practiceAdvantage}</span>
                 </div>
               </div>
 
               {/* Cost & Insurance hint */}
               {selectedItem.costNote && (
-                <div className="rounded-xl border border-[#F0E6E8] bg-[#F3F4F6] p-4 text-xs text-[#735F64] leading-relaxed">
-                  <strong className="text-[#2B2326] block font-semibold mb-1">Abrechnung & Krankenkassen:</strong>
+                <div className="rounded-2xl border border-[#F0E6E8] bg-[#F3F4F6] p-4 sm:p-5 lg:p-6 text-xs sm:text-sm text-[#735F64] leading-relaxed">
+                  <strong className="text-[#2B2326] block font-semibold mb-1 text-xs sm:text-sm">Abrechnung & Krankenkassen:</strong>
                   <p>{selectedItem.costNote}</p>
                 </div>
               )}
